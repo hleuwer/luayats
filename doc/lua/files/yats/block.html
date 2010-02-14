@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li><strong>yats/block.lua</strong></li>
+	
+	<li>
+		<a href="../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/block.lua</code></h1>
+
+
+<p>Luayats - Hierarchical block structures (module: yats). <br> <br><b>module: yats</b><br> <br> <b>Definition of class 'block':</b><br> The class 'block' is used to establish hierarchichal networks. In order to use this functionality a user defined class must be declared, that inherits from class 'block', e.g.<br> <code>yats.switch = class(yats.block)</code>.<br> <br> The constructor for a 'block' class looks very similar to the constructor for normal network object classes:<br> <code>function yats.switch:new(param) ... end </code>.<br> <br> Once the user defined class (here 'switch') has been defined, any number of instances can be created and connected.<br> The following rules must be followed during definition of a 'block' object class:<br> <ul> <li> The baseclass's init() routine must be called at the beginning: <code>self.super():init()</code> <li> Wrap all names of internal names using <code>self:localname("mux")</code>, which generates the extended name "switch/mux". <li> Since 'block' object's inputs may be connected to different internal objects an object name must be given in input declaration: <code>self:definp{self:localname("mux"), "in1"}</code>. </ul><br> See the file 'switch.lua' for an example where a multiplexer and a demultiplexer are grouped into a 'block' object 'switch'. An example for the usage of a 'switch'  can be found in the 'example' folder in luayats/src/lua/examples. <br><br> <b>Internals:</b><br> The 'block' class functions as a proxy to internal objects, that are no longer visible to the main configuration script.Lua classes for traffic sources. This is achieved in the following way:<br> <ul> <li> All internal objects name are automatically prefixed with the name of the block instance, e.g. switch/mux or switch/demux. <li> Input and output connector (dummy) objects are instantiated inside the block, that connect internal objects to the outer world. The performance penalty for these extra objects is minimal (one function call). <li> The 'new' baseclass 'block' re-implements the following methods from 'root':~ <code>connect(), handle(), definp(), defout(), finish()</code>. If an outer object is connected to 'block' object input connectors 'in1, in2, ...' are used, which are real C-level objects. When connecting the 'block' object to the outer world, an output connector 'out1, out2, ...' are used. Input and output connectors simply forward data items. Internal objects are connected to input and output connectors in a normal way. <li> The resulting netlist is still flat. </ul> </p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer, Backnang.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;GNU Public License.</p>
+
+
+<p><small><b>Release:</b> 3.0 $Id: block.lua 221 2009-06-06 05:45:40Z leuwer $</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#block:addobj">block:addobj</a>&nbsp;(obj)</td>
+	<td class="summary">Adds a local object to the block.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#block:connect">block:connect</a>&nbsp;()</td>
+	<td class="summary">Wrapper for connecting objects.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#block:definp">block:definp</a>&nbsp;(out)</td>
+	<td class="summary">Define one input of the 'block' object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#block:defout">block:defout</a>&nbsp;(outputs)</td>
+	<td class="summary">Define the 'block' object's outputs.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#block:finish">block:finish</a>&nbsp;()</td>
+	<td class="summary">Finish a 'block' object class definition.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#block:handle">block:handle</a>&nbsp;(peer, pin)</td>
+	<td class="summary">The 'block' objects <code>handle()</code> method.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#block:init">block:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for hierarchical network objects.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#block:localname">block:localname</a>&nbsp;(name)</td>
+	<td class="summary">Extends local names by the block's name.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#block:restim">block:restim</a>&nbsp;()</td>
+	<td class="summary">Notification of simulation time reset.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="block:addobj"></a><strong>block:addobj</strong>&nbsp;(obj)</dt>
+<dd>
+Adds a local object to the block.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  obj: table Object to be added.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to the object.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="block:connect"></a><strong>block:connect</strong>&nbsp;()</dt>
+<dd>
+Wrapper for connecting objects.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="block:definp"></a><strong>block:definp</strong>&nbsp;(out)</dt>
+<dd>
+Define one input of the 'block' object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  out: table or string - A output descriptor. See yats.html.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="block:defout"></a><strong>block:defout</strong>&nbsp;(outputs)</dt>
+<dd>
+Define the 'block' object's outputs.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  outputs: table - A table of outputs. See also yats.html.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="block:finish"></a><strong>block:finish</strong>&nbsp;()</dt>
+<dd>
+Finish a 'block' object class definition.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+References to Lua-object and the name of the object.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="block:handle"></a><strong>block:handle</strong>&nbsp;(peer, pin)</dt>
+<dd>
+The 'block' objects <code>handle()</code> method. It is used to get handle response for the peer object. The method is called during the connect procedure by the peer object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  peer: table - Reference to the object receiving the handle.
+	</li>
+	
+	<li>
+	  pin: string - Input pin name.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Handle of input pin and the input pin object.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="block:init"></a><strong>block:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for hierarchical network objects.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameters to 'block' object instance.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to a 'block' instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="block:localname"></a><strong>block:localname</strong>&nbsp;(name)</dt>
+<dd>
+Extends local names by the block's name.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: string Local object name.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+string Global object name, e.g. switch/mux.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="block:restim"></a><strong>block:restim</strong>&nbsp;()</dt>
+<dd>
+Notification of simulation time reset. Calls method <code>restim()</code> of all objects included in the block.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

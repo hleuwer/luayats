@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb"><head><meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" /><meta name="generator" content="HTML Tidy for Linux/x86 (vers 1 September 2005), see www.w3.org" /><title>Luayats - Programmer's Manual</title><link media="screen" href="style.css" rel="stylesheet" type="text/css" /><link media="print" rel="stylesheet" href="styleprint.css" type="text/css" />
+
+
+  
+  
+
+
+
+  
+  
+  
+  
+
+
+  
+  <meta content="Herbert Leuwer" name="author" /></head>
+<body><a name="home2" id="home2"></a><a href="http://www.lua.org"><img style="border: 0px solid ; left: 0px; top: 6px; width: 115px; height: 118px; float: left;" id="lualogo" alt="www.lua.org" src="luayats.png" name="lualogo" hspace="20" /></a>
+
+
+<div id="header">
+<h1 style="height: 120px; margin-left: 0px; width: 928px;">
+<big><big><a name="home" id="home"></a><br />
+
+
+Luayats - Programmer's Manual</big></big><br />Network Simulation&nbsp;with YATS and Lua</h1>
+
+
+</div>
+
+
+<div id="leftnavigation">
+<ul>
+
+
+  <li style="margin-left: 0px; width: 185px;"><a class="current" href="index.html">Home</a></li>
+
+
+  <li><a href="index.html#license">License</a></li>
+
+
+  <li><a href="index.html#features">Features</a></li>
+
+
+  <li><a href="index.html#download">Download</a></li>
+
+
+  <li><a href="index.html#installation">Installation</a></li>
+
+
+  
+
+
+  <li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="introduction.html#introduction">User Manual</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="../../luayats-migrate/doc/refindex.html">API Reference Index</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="running.html">Programmer's Manual</a></li><ul><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#kernel">Simulation Kernel</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="running.html">Data Types</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#netobjects">Network Objects</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#datatypes">Data Objects</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#create">Creating Network Objects</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#connect">Connecting Instances</a></li></ul>
+
+
+  <li><a href="index.html#whatsnew">What's New</a></li>
+
+
+  <li><a href="index.html#links">Links</a></li>
+
+
+  <li><a href="index.html#todo">ToDo</a></li><li><a href="index.html#credits">Credits</a></li>
+
+
+</ul>
+
+
+</div>
+
+
+<div id="content">
+<h1><a name="kernel" id="luagraph"></a>Simulation Kernel&nbsp;</h1>The Luayats simulation environment consists of the following core components:<br /><ul><li>Simulator object&nbsp;<a href="lua/files/yats/core.html#sim:connect">yats.sim</a> with the calendar queue</li><li>Network
+objects, that implement the actual functionality by sending and
+receiving data items from other objects and scheduling events into the
+calendar queue.&nbsp;</li><li>Connection management to connect the network objects to a network</li><li>Data handling for sending and receiving data items.</li></ul><h3><a name="phases"></a>Simulation Phases</h3>A simulation runs in three phases<br /><ul><li>Declaration phase: Initialization of simulator and instantiation of network objects</li><li>Connection phase: Connects network objects to a consistent netlist</li><li>Execution phase: Runs the simulation by scheduling events and data item exchange between network objects.</li></ul><h3><a name="calendar"></a>Calendar Queue</h3>Central&nbsp;part
+of the simulation kernel is the&nbsp;calendar queue, which operates on
+events created and scheduled by network objects. Events are queued in
+the calendar queue according to their scheduled due time using the
+methods<p>&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: monospace;">alarme(event, time)</span> or <span style="font-family: monospace;">eache(event, time)</span><br />&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: monospace;">alarml(event, time<span style="font-family: Arial,Helvetica,sans-serif;">) or </span><span style="font-family: monospace;">eachl(event, time)</span><span style="font-family: Arial,Helvetica,sans-serif;">.</span></span></p><p>Once
+the internal timeslot counter reaches the scheduling time of an event,
+the event fires: single shot events are&nbsp;removed from the calendar,
+cyclic events are automatically re-scheduled before the event handler
+is called.and one of the following net objects methods is called<span style="font-family: monospace;">.&nbsp;</span></p><p><span style="font-family: monospace;">&nbsp; &nbsp;early(event)</span> or <span style="font-family: monospace;"><br />&nbsp; &nbsp;late(event)<span style="font-family: Arial,Helvetica,sans-serif;">.</span></span></p><p>A single shot event can also be manually&nbsp;re-scheduled in the event handler to become a cyclical event.</p><p>The timeslot counter advances when all events have been processed.</p><p>Luayats splits a timetick into 2 different phases:</p><ul><li>The EARLY phase is the phase where net objects transfer data</li><li>The LATE phase is the phase where houskeeping function are executed, e.g. scheduling algorithms.</li></ul><p>Corresponding
+to the timeslot phases, events scheduled with <span style="font-family: monospace;">alarme(event, time)</span> fire
+in the EARLY timeslot phase and events scheduled with <span style="font-family: monospace;">alarml(event,
+time)</span> fire in the LATE timeslot phase.&nbsp;</p><h2><a name="netobjects"></a>Network Objects</h2>Network objects are instances of network classes. Each network object implements at least the following mandatory&nbsp; methods:<br /><br /><table style="text-align: left; width: 657px;" border="0" cellpadding="2" cellspacing="2"><tbody><tr><td style="font-family: monospace; width: 238px;">early(event)</td><td style="width: 399px;">Called by the calendar queue when an early event fires</td></tr><tr><td style="font-family: monospace; width: 238px;">late(event)</td><td style="width: 399px;">Called by the calendar queue when a late event fires</td></tr><tr><td style="font-family: monospace; width: 238px;">handle(inputname, successor)</td><td style="width: 399px;">Called
+by an network object during connect() to establish the connection to
+it's successor. The function returns a handle to be used during sending
+data items with <span style="font-family: monospace;">rec(data, handle)</span></td></tr><tr><td style="font-family: monospace; width: 238px;">connect()</td><td style="width: 399px;">Called by the simulation kernel for all network objects during the connection phase.&nbsp;</td></tr><tr><td style="font-family: monospace; width: 238px;">rec(data, ihandle)</td><td style="width: 399px;">Called by a network object to send data to it's successor</td></tr><tr><td style="font-family: monospace; width: 238px;"></td><td style="width: 399px;"></td></tr></tbody></table><br />Normally
+network objects are dynamically instantiated via Lua in the simulation
+control script. All network classes are automatically made visible to
+Lua during&nbsp; compilation&nbsp; using the tool tolua++.<br /><h5><a name="classhierarchy"></a>Class Hierarchy</h5><p>Luayats
+has a built-in scheme for object oriented programming. &nbsp;Each
+network object class has a C++ and a Lua representative.<br />The Hierarchy and the relation between the C++ universe and the Lua universe is shown in the figure below.</p><p><img style="width: 718px; height: 723px;" alt="" src="classtree.png" /></p><p>The scheme provides the following features:</p><ul><li>Methods and members of the C++ objects are visible to Lua scripts</li><li>Lua scripts can override C++ methods and members</li><li>Lua scripts can extend objects with members and methods both at during class declaration and during runtime.</li><li>Lua scripts have full access to both,&nbsp; the Lua and the C++ inheritance chain.</li><li>The
+user can declare new network objects in Lua using either a Lua or a C++
+defined class as base class. This is especially useful for rapid
+prototyping of new network models without the need to compile.&nbsp;</li></ul><p>During
+class definition using <span style="font-family: monospace;">newclass = class(baseclass)</span> the original proxy table created by tolua++ is renamed
+and a new class is defined using the original one as base class. In
+order to simplify object initialization most of the constructor work is
+done using Lua in the&nbsp;constructor function <span style="font-family: monospace;">init(params)</span> of the new class. When a
+class instance (object) is created the methods of the base class
+are copied into the newly created object.&nbsp;</p><p>The C++ object is
+created as userdata. which is stored in the Lua registry and set as
+metatable for the new proxy table.</p><p>The class hierarchy is as follows:</p><p style="font-weight: bold;">_BASE</p><dl><dd>This is the immediate base class (old proxy class) created by tolua++.</dd></dl><dl style="font-weight: bold; font-style: italic;"><dt>root</dt></dl><dl><dd>Builds
+the lowest level in the class hierarchy and&nbsp;provides basically
+virtual methods. &nbsp;The class is extended with additional methods.</dd></dl><dl><dt style="font-style: italic; font-weight: bold;">ino</dt><dd>Provides generic methods to each network object, also called node.</dd></dl><p><span style="font-weight: bold; font-style: italic;">in1out, inxout &nbsp;&nbsp; &nbsp;</span>&nbsp;&nbsp;&nbsp;</p><dl><dd>Base class for network object with multiple inputs and one or multiple outputs</dd><dt></dt></dl><p><span style="font-weight: bold;"><a name="constructors"></a>Constructors and destructors</span></p><p>The
+C++ constructor&nbsp;typically restricts it's work to the absolute
+minimum and to those initializations, that cannot be performed in
+Lua.&nbsp;Most
+of the initialization is performed by the Lua constructor function <span style="font-family: monospace;">CLASS.init(param)</span>, which receives a parameter table with named&nbsp;parameters, which can be defined in arbitrary order.&nbsp;</p><p>The
+Lua constructor also defines the objects inputs and output and
+registers events with the simulation calendar, if required. It finally
+calls the Lua function <span style="font-family: monospace;">self:finish()</span>, which finalizes the object
+construction by calling the C++ baseclass's member function&nbsp;<span style="font-family: monospace;">act()</span>.</p><p>Network
+objects are automatically deleted via Lua garbage collection. The C++
+destructor is called automatically when the Lua object is collected.</p><p>However,
+Luayats does not collect network objects directly when the simulation
+end. The objects are collected temporarily in hidden table for post
+mortem debugging purposes.&nbsp;&nbsp;</p><h2><a name="datatypes"></a>Data Objects</h2><p>Luayats
+provides a couple of data item classes. Data items are crated,&nbsp;
+sent and deleted between network objects. The creation often occurs in
+sources while the deletion occurs in the sink network object.</p><p>The most important data types are</p><dl style="font-weight: bold; font-style: italic;"><dt>cell</dt></dl><dl><dd>ATM cell for direct usage or as base class for other datatypes.&nbsp;</dd></dl><p style="font-weight: bold; font-style: italic;">frame</p><dl><dd>Generic frame, which has a number of different frame discriminators.</dd></dl><p>There exist also a number of derived data item types. See src/kernel/data.h for more details.</p><p>Data
+objects are not actually deleted upon their deconstruction. The are
+merely stored in pools for later reuse. This speeds up the allocation
+of data items a lot. The pool grows as allocation of data items grow.
+It never shrinks. This mechanism is implemented by overloading the data types new and delete methods.</p><p style="font-weight: bold;">NOTE:</p><p>When
+using Lua defined network objects, there exists a possible race
+condition in conjunction with the interworking between the C++
+&nbsp;and the Lua universe. Generally a data item created via Lua is
+subject to Lua's garbage collection. If the data item has been sent
+into a queue residing in the C++ universe it is invisible to Lua and
+Lua may collect this object.</p><p>It is therefore recommended to keep
+a reference to such items within the Lua universe until the item is not
+needed any longer in order to avoid the data item to be collected by
+Lua.</p><h2><a name="create"></a>Creating Network Object Classes</h2><h3>Creating net objects with C++</h3><p>This is the standard way to create high performance network object classes. The following steps are required:</p><ul><li>Define the network object class in a header file</li><li>Define the required minimum set of methods, like rec(), early(), late() and so on.</li><li>Mark the methods and members to be wrapped to Lua using the //tolua_begin //tolua_end and //tolua_export directives.</li><li>Include the header file into the file src/lua/yats.pkg</li><li>Write the Lua defined base class which implements the Lua constructor <span style="font-family: monospace;">init(params)</span></li><li>Compile Luayats<span style="font-family: monospace;"><br /></span></li></ul><span style="font-family: monospace;"></span><p>Most of the standard Luayats network object classes are defined in this way.</p><h3>Creating net objects with Lua</h3><p>For
+rapid prototyping it is convenient and often sufficient from a speed
+point of view to invent new network object classes without any C++ knowledge and&nbsp;recompilation. Follow the following steps:</p><ul><li>Define a Lua define base class using <span style="font-family: monospace; font-weight: bold;">lua1out</span> or <span style="font-weight: bold; font-family: monospace;">luaxout</span></li><ul><li>These<span style="font-weight: bold;"> </span>classes
+are predefined and can be used like any other C++ base class. They are
+the Lua equivalent to in1out and inxout for C++ based network object
+classes.</li></ul><li>Define the required methods <span style="font-weight: bold;">l</span><span style="font-family: monospace; font-weight: bold;">uarec()</span>, <span style="font-family: monospace; font-weight: bold;">luaearly()</span> and <span style="font-family: monospace; font-weight: bold;">lualate()</span></li></ul><p>The
+Lua defined net object class can be used like any other network object
+class. It performs a lot slower because event handlers and data
+receiving function are implemented in Lua. However, depending on what
+you want to simulate, Lua's high performance allows you do valuable
+simulations using this method.</p><p>See the file <a href="../yats/dummy.lua">yats/dummy.lua</a> for an example.</p><h2><a name="assembly"></a>Assembling Network Object Classes</h2><p>Luayats provides ways to build new network object classes from already availabe classes. </p><h3>Assembling net objects with C++</h3><p>It
+is possible to use already avalable&nbsp;C++ network object classes
+within the definition of a new one. Since this method of assembling new
+classes is very flexible, no generic rules can be given here. However ,
+the class ethbridge is an example, which defines new functionality for
+ethernet frame classification and forwarding and uses the already
+available frame base priority multiplexer muxFrmPrio for it's output
+queuing. The multiplexers are instantiated in the Lua level constructor
+<span style="font-family: monospace;">ethbridge:init(params).&nbsp;</span></p><p>Two additional steps have to be undertaken:</p><ul><li>Since
+we use embedded multiplexers&nbsp;at the outputs, we have to ensure
+that their connect() function is called to establish a proper netlist
+for Luayats. This is done by overloading the network object's (here
+ethbridge) connect function and &nbsp;call the corresponding connect()
+functions of the multiplexers. At the inputs the handle() function of
+the ethbridge class is used. </li><li>Ensure internal connectivity by
+calling the multiplexers rec() function directly from an ethbridge
+method, here: ethbridge:rec().</li></ul><h3>Assembling net objects with Lua block structure</h3><p>Luayats
+provides a generic mechanism to construct block structures using
+available network object classes without touching C++ code.&nbsp;</p><p>There is a generic net object class <span style="font-weight: bold;">block</span>
+that acts as a container for arbitrary subnetlists, even in multiple
+levels. The class block has the same methods as the class root to help
+in network object class definition.</p><p>See the file <a href="../yats/switch.lua">yats/switch.lua</a> for examples.</p><h2><a name="connect"></a>Connecting Instances</h2><p>Instances
+of network object classes need to be connected. During node
+instantiation the successor nodes and their inputs are given as
+parameter out using the successor node's name (text) and it's input pin
+names. Luayats resolves the netlist automatically by calling the <span style="font-family: monospace;">connect()</span> method of all defined network objects. This is done in the Lua control script via <span style="font-family: monospace;">sim:connect()</span>. The objects will then call their successors <span style="font-family: monospace;">handle()</span>
+method to receive a handle for the corresponding input of the
+successor. This handle is then used when sending data items to a
+successor node.</p><p>Luayats detects unconnected pins and raises an appropriate error.</p></div>
+
+
+<div id="footer"><small>(c) 2003-2009 Herbert Leuwer, April 2009&nbsp;&nbsp;
+&nbsp;<a href="mailto:herbert.leuwer@t-online.de">Contact</a></small></div>
+
+
+</body></html>

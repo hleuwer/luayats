@@ -1,0 +1,1668 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li><strong>yats/rstp.lua</strong></li>
+	
+	<li>
+		<a href="../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/rstp.lua</code></h1>
+
+
+<p>LuaYats - Spanning Tree Protocol. <br> <br><b>module: yats</b><br> <br> Lua classes for Rapid Spanning Tree. It is based on rstplib from Alex Rozin. The library was modified in order to run multiple spanning tree instances in the single threaded environment of luayats. This module provides wrapper functions for a convenient instantiation and simulation of spanning tree instances in luayats. </p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer, Backnang.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;GNU Public License.</p>
+
+
+<p><small><b>Release:</b> 3.0 $Id: rstp.lua 222 2009-06-06 05:51:35Z leuwer $</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge.cb_flush_fdb">bridge.cb_flush_fdb</a>&nbsp;(rstp, portno, vid, typ, reason, ena)</td>
+	<td class="summary">Callback from RSTP.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge.cb_forwarding">bridge.cb_forwarding</a>&nbsp;(rstp, portno, vid, ena)</td>
+	<td class="summary">Callback from RSTP.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge.cb_hardware_mode">bridge.cb_hardware_mode</a>&nbsp;(rstp, vid, mode)</td>
+	<td class="summary">Callback from RSTP.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge.cb_learning">bridge.cb_learning</a>&nbsp;(rstp, portno, vid, ena)</td>
+	<td class="summary">Callback from RSTP.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge.cb_portstate">bridge.cb_portstate</a>&nbsp;(rstp, portno, vid, state)</td>
+	<td class="summary">Callback from RSTP.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge.cb_tx_bpdu">bridge.cb_tx_bpdu</a>&nbsp;(rstp, portno, vid, bpdu, len, state)</td>
+	<td class="summary">Callback from RSTP.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:Trace">bridge:Trace</a>&nbsp;(enadis)</td>
+	<td class="summary">Control bridge Tracing.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:config_port">bridge:config_port</a>&nbsp;(vid, portlist, what, val)</td>
+	<td class="summary">Configure Spanning Tree port FSMs.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:config_stp">bridge:config_stp</a>&nbsp;(vid, what, val)</td>
+	<td class="summary">Configure Spanning Tree FSM.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:disable_port">bridge:disable_port</a>&nbsp;(portno)</td>
+	<td class="summary">Disable a bridge port.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:enable_port">bridge:enable_port</a>&nbsp;(portno)</td>
+	<td class="summary">Enable a bridge port.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:get_port">bridge:get_port</a>&nbsp;(vid, port_index)</td>
+	<td class="summary">Get port internals into a Lua table.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:get_portstate">bridge:get_portstate</a>&nbsp;(vid, portno)</td>
+	<td class="summary">Get Port state.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:get_stpm">bridge:get_stpm</a>&nbsp;(vid)</td>
+	<td class="summary">Get spanning tree internals into a Lua table.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:get_stpstate">bridge:get_stpstate</a>&nbsp;(vid)</td>
+	<td class="summary">Get STP state.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:init">bridge:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor of class 'bridge'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:inspect">bridge:inspect</a>&nbsp;(what, ...)</td>
+	<td class="summary">Iterator which delivers information of the bridge.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:linkDown">bridge:linkDown</a>&nbsp;(portno)</td>
+	<td class="summary">Notification Link DOWN.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:linkUp">bridge:linkUp</a>&nbsp;(portno)</td>
+	<td class="summary">Notification Link UP.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:luaearly">bridge:luaearly</a>&nbsp;(ev)</td>
+	<td class="summary">Early event handler.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:lualate">bridge:lualate</a>&nbsp;(ev)</td>
+	<td class="summary">Late event handler.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:luarec">bridge:luarec</a>&nbsp;(pd, idx)</td>
+	<td class="summary">Receive a data item.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:plug_in">bridge:plug_in</a>&nbsp;(portno, dir)</td>
+	<td class="summary">Plug-in a bridge port.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:plug_out">bridge:plug_out</a>&nbsp;(portno, dir)</td>
+	<td class="summary">Plug-out a bridge port.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:portPduLog">bridge:portPduLog</a>&nbsp;(dir, portlist, enadis)</td>
+	<td class="summary">Control BPDU logging on a port.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:portTrace">bridge:portTrace</a>&nbsp;(name, vid, port_index, enadis)</td>
+	<td class="summary">Control state machine tracing on a port.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:setCallback">bridge:setCallback</a>&nbsp;(cblist)</td>
+	<td class="summary">Define user event callback functions.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:show_port">bridge:show_port</a>&nbsp;(vid, port_index)</td>
+	<td class="summary">Show port info in shell.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:show_stp">bridge:show_stp</a>&nbsp;(vid)</td>
+	<td class="summary">Show STP state machine info in shell.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:shutdown">bridge:shutdown</a>&nbsp;()</td>
+	<td class="summary">Shutdown the bridge.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:speed">bridge:speed</a>&nbsp;(portno, speed)</td>
+	<td class="summary">Modify link speed of a port.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:start">bridge:start</a>&nbsp;()</td>
+	<td class="summary">Start the bridge.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:stateLog">bridge:stateLog</a>&nbsp;(portlist, enadis)</td>
+	<td class="summary">Control state logging on a port.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:stpmTrace">bridge:stpmTrace</a>&nbsp;(vid, enadis)</td>
+	<td class="summary">Control STP Tracing.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bridge:vidLog">bridge:vidLog</a>&nbsp;(vidlist, enadis)</td>
+	<td class="summary">Control VLAN logging.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sprint_brid">sprint_brid</a>&nbsp;(id)</td>
+	<td class="summary">Convert a bridge id to printable strings </td>
+	</tr>
+
+</table>
+
+
+
+
+<h2>Tables</h2>
+<table class="table_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#port_cfg_fields">port_cfg_fields</a></td>
+	<td class="summary">Configuration items (names) for port configuration.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#stp_cfg_fields">stp_cfg_fields</a></td>
+	<td class="summary">Configuration items (names) for STP configuration.</td>
+	</tr>
+
+</table>
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="bridge.cb_flush_fdb"></a><strong>bridge.cb_flush_fdb</strong>&nbsp;(rstp, portno, vid, typ, reason, ena)</dt>
+<dd>
+Callback from RSTP. Start to forward data - influences the bridge's ingress and egress processing path.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rstp: userdata Reference to bridge instance.
+	</li>
+	
+	<li>
+	  portno: number The port for which this callback is valid.
+	</li>
+	
+	<li>
+	  vid: number The VLAN ID for which this callback is valid (STP instance).
+	</li>
+	
+	<li>
+	  typ: 
+	</li>
+	
+	<li>
+	  reason: 
+	</li>
+	
+	<li>
+	  ena: boolean True/false means: forwarding on/off.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge.cb_forwarding"></a><strong>bridge.cb_forwarding</strong>&nbsp;(rstp, portno, vid, ena)</dt>
+<dd>
+Callback from RSTP. Start to forward data - influences the bridge's ingress and egress processing path.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rstp: userdata Reference to bridge instance.
+	</li>
+	
+	<li>
+	  portno: number The port for which this callback is valid.
+	</li>
+	
+	<li>
+	  vid: number The VLAN ID for which this callback is valid (STP instance).
+	</li>
+	
+	<li>
+	  ena: boolean True/false means: forwarding on/off.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge.cb_hardware_mode"></a><strong>bridge.cb_hardware_mode</strong>&nbsp;(rstp, vid, mode)</dt>
+<dd>
+Callback from RSTP. Enable/disable STP - indicates to hardware, whether STP was enabled or disabled.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rstp: userdata Reference to bridge instance.
+	</li>
+	
+	<li>
+	  vid: number The VLAN ID for which this callback is valid (STP instance).
+	</li>
+	
+	<li>
+	  mode: number The mode adjusted - 0=disable, 1 = enable.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge.cb_learning"></a><strong>bridge.cb_learning</strong>&nbsp;(rstp, portno, vid, ena)</dt>
+<dd>
+Callback from RSTP. Start learning addresses - influences the bridge's ingress processing path.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rstp: userdata Reference to bridge instance.
+	</li>
+	
+	<li>
+	  portno: number The port for which this callback is valid.
+	</li>
+	
+	<li>
+	  vid: number The VLAN ID for which this callback is valid (STP instance).
+	</li>
+	
+	<li>
+	  ena: boolean True/false means learning on/off.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge.cb_portstate"></a><strong>bridge.cb_portstate</strong>&nbsp;(rstp, portno, vid, state)</dt>
+<dd>
+Callback from RSTP. Indicates change in the port state.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rstp: userdata Reference to bridge instance.
+	</li>
+	
+	<li>
+	  portno: number The port for which this callback is valid.
+	</li>
+	
+	<li>
+	  vid: number The VLAN ID for which this callback is valid (STP instance).
+	</li>
+	
+	<li>
+	  state: Indicates the state set by STP protocol instance.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge.cb_tx_bpdu"></a><strong>bridge.cb_tx_bpdu</strong>&nbsp;(rstp, portno, vid, bpdu, len, state)</dt>
+<dd>
+Callback from RSTP. Transmit a BPDU - sends a BPDU from STP protocol instance to the data plane.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rstp: userdata Reference to bridge instance.
+	</li>
+	
+	<li>
+	  portno: number The port for which this callback is valid.
+	</li>
+	
+	<li>
+	  vid: number The VLAN ID for which this callback is valid (STP instance).
+	</li>
+	
+	<li>
+	  bpdu: 
+	</li>
+	
+	<li>
+	  len: 
+	</li>
+	
+	<li>
+	  state: Indicates the state set by STP protocol instance.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:Trace"></a><strong>bridge:Trace</strong>&nbsp;(enadis)</dt>
+<dd>
+Control bridge Tracing.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  enadis: boolean - Trace level: 0,false:off, 1,true: normal, 2: extended.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to bridge.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:config_port"></a><strong>bridge:config_port</strong>&nbsp;(vid, portlist, what, val)</dt>
+<dd>
+Configure Spanning Tree port FSMs.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vid: 
+	</li>
+	
+	<li>
+	  portlist: table List of ports to configure in the form: {1, 4, 2, etc}.
+	</li>
+	
+	<li>
+	  what: string Parameter name.
+	</li>
+	
+	<li>
+	  val: any Parameter value.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Error code and error message
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:config_stp"></a><strong>bridge:config_stp</strong>&nbsp;(vid, what, val)</dt>
+<dd>
+Configure Spanning Tree FSM.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vid: number Indicates the STP instance (with per VLAN STP).
+	</li>
+	
+	<li>
+	  what: string Parameter name.
+	</li>
+	
+	<li>
+	  val: any Parameter value.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+error code.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:disable_port"></a><strong>bridge:disable_port</strong>&nbsp;(portno)</dt>
+<dd>
+Disable a bridge port. Notify spanning trees of a non-functional port.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  portno: number Bridge port to disable.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:enable_port"></a><strong>bridge:enable_port</strong>&nbsp;(portno)</dt>
+<dd>
+Enable a bridge port. Notify spanning trees of a functional port.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  portno: number Bridge port to enable.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:get_port"></a><strong>bridge:get_port</strong>&nbsp;(vid, port_index)</dt>
+<dd>
+Get port internals into a Lua table.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vid: number - VLAN id.
+	</li>
+	
+	<li>
+	  port_index: number - Port number.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table with port internals.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:get_portstate"></a><strong>bridge:get_portstate</strong>&nbsp;(vid, portno)</dt>
+<dd>
+Get Port state.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vid: number Indicates the STP instance (with per VLAN STP).
+	</li>
+	
+	<li>
+	  portno: number Indicates the port.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Table with port state for the STP instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:get_stpm"></a><strong>bridge:get_stpm</strong>&nbsp;(vid)</dt>
+<dd>
+Get spanning tree internals into a Lua table.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vid: number - VLAN id.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table with spanning tree internals.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:get_stpstate"></a><strong>bridge:get_stpstate</strong>&nbsp;(vid)</dt>
+<dd>
+Get STP state.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vid: number Indicates the STP instance (with per VLAN STP).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Table with STP state.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:init"></a><strong>bridge:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor of class 'bridge'. Instantiates state machines for the RSTP protocol.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table Parameter table <ul> <li>name (optional)<br> Name of the bridge. Default: "objNN". <li>nport<br> Number of ports. <li>basemac<br> Base MAC address of the bridge given as Lua string. Embedded zeros are allowed. e.g. string.char(1,2,0,0,0,0). <li>start_delay (optional)<br> Start delay in slots for the protocol. Default 1 tick. <li>process_speed (optional)<br> Processing speed in seconds for BPDU handling. Default: 1 ms tick. <li>priorities (optional)<br> Bridge priorities for different VLANs.Default: [0] = 32768. <li>memberset (optional)<br> Defines the VLAN port membersets in the following form:<br> {[VID] = PORTMASK, VID = PORTMASK}, where PORTMASK is a table {p1, p2, p3, ..., pn} representing the port BITMASK. A bit set to 1 enables the port in the port memberset, a 0 disables the port. <li>rxlog (optional)<br> A list of ports for BPDU receive logging. Default: empty = no logging. <li>txlog (optional)<br> A list of ports for BPDU transmit logging. Default: empty = no logging. <li>statelog (optional)<br> A list of ports for state change logging. Default: empty = no logging. <li>vidlog (optional)<br> A list of vlan ids for logging. Default: all. <li>callback (optional)<br> A list of user defined event callback functions. Default: empty = no callback. <li>out<br> Connection to successor. Format: {"name-of-successor", "input-pin-of-successor"}. </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+userdata Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:inspect"></a><strong>bridge:inspect</strong>&nbsp;(what, ...)</dt>
+<dd>
+Iterator which delivers information of the bridge. Besides per bridge info, the iterator also returns more iterators describing the ports of the bridge.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  what: string - What to inspect: *n = name, *d = data.
+	</li>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+iterator.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:linkDown"></a><strong>bridge:linkDown</strong>&nbsp;(portno)</dt>
+<dd>
+Notification Link DOWN.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  portno: number Bridge port with link up event.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:linkUp"></a><strong>bridge:linkUp</strong>&nbsp;(portno)</dt>
+<dd>
+Notification Link UP.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  portno: number Bridge port with link up event.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:luaearly"></a><strong>bridge:luaearly</strong>&nbsp;(ev)</dt>
+<dd>
+Early event handler. Must not be called by user scripts.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ev: userdata Event that caused the callback.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:lualate"></a><strong>bridge:lualate</strong>&nbsp;(ev)</dt>
+<dd>
+Late event handler. Must not be called by user scripts.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ev: userdata Event that caused the callback.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:luarec"></a><strong>bridge:luarec</strong>&nbsp;(pd, idx)</dt>
+<dd>
+Receive a data item. Note, that each port can reside on a shared LAN segment. Hence we may receive more BPDU's than inputs during a single time slot. Must not be called by user scripts.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  pd: userdata Data item, that carries the actual payload.
+	</li>
+	
+	<li>
+	  idx: number Input port number.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:plug_in"></a><strong>bridge:plug_in</strong>&nbsp;(portno, dir)</dt>
+<dd>
+Plug-in a bridge port.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  portno: number Bridge port to plug-in again, starting from 1.
+	</li>
+	
+	<li>
+	  dir: string Direction: t=transmit, r=receive, a | rt = bidir. If omitted, bidirectional is assumed.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:plug_out"></a><strong>bridge:plug_out</strong>&nbsp;(portno, dir)</dt>
+<dd>
+Plug-out a bridge port. Once plugged out, the STP doesn't send nor receive any BPDU any more.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  portno: number Bridge port to plug-out, starting from 1.
+	</li>
+	
+	<li>
+	  dir: string Direction: t=transmit, r=receive, a | rt = bidir. If omitted, bidirectional is assumed.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:portPduLog"></a><strong>bridge:portPduLog</strong>&nbsp;(dir, portlist, enadis)</dt>
+<dd>
+Control BPDU logging on a port.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  dir: string - 'r'=receive, 't'=transmit, 'rt'= both.
+	</li>
+	
+	<li>
+	  portlist: table - List of ports to control.
+	</li>
+	
+	<li>
+	  enadis: boolean - true or false.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to bridge.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:portTrace"></a><strong>bridge:portTrace</strong>&nbsp;(name, vid, port_index, enadis)</dt>
+<dd>
+Control state machine tracing on a port. Valid state machine names: "topoch", "migrate", "p2p", "pcost", "info", "roletrns", "sttrans", "transmit", "portrec", "brdec", "rolesel", "all".
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: string - Name of state machine.
+	</li>
+	
+	<li>
+	  vid: number - VLAN id.
+	</li>
+	
+	<li>
+	  port_index: number - Port number.
+	</li>
+	
+	<li>
+	  enadis: number - Enable (1) or disable (0).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to bridge.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:setCallback"></a><strong>bridge:setCallback</strong>&nbsp;(cblist)</dt>
+<dd>
+Define user event callback functions. Using this function it is possible to have a user defined function called in case of certain STP events. The callback receives a table with values from the simulator. The following values are always present: <code>node, port, vid, tick, time</code>
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  cblist: table - List of callback functions for the following events <ul> <li>rxbpdu - Reception of BPDU (when leaving the input queue). Additional params: <code>sender, receiver, senderport, receiverport, bpdu</code>. <li>txbpdu - Transmission of a BPDU (when entering the output queue). Additional params: <code>sender, receiver, senderport, receiverport, bpdu</code>. <li>portstate - State of a port changes. Additional params: <code>state and state_n</code>. <li>flush - Fdb is flushed. Additional params: <code>typ, typ_n, reason</code>. </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to bridge.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:show_port"></a><strong>bridge:show_port</strong>&nbsp;(vid, port_index)</dt>
+<dd>
+Show port info in shell.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vid: number - Spanning tree instance.
+	</li>
+	
+	<li>
+	  port_index: number - Port number to show.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:show_stp"></a><strong>bridge:show_stp</strong>&nbsp;(vid)</dt>
+<dd>
+Show STP state machine info in shell.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vid: number - Spanning tree instance.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:shutdown"></a><strong>bridge:shutdown</strong>&nbsp;()</dt>
+<dd>
+Shutdown the bridge.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:speed"></a><strong>bridge:speed</strong>&nbsp;(portno, speed)</dt>
+<dd>
+Modify link speed of a port.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  portno: number Bridge port with modified link speed.
+	</li>
+	
+	<li>
+	  speed: number Speed in Mbit/s
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:start"></a><strong>bridge:start</strong>&nbsp;()</dt>
+<dd>
+Start the bridge. This routine initialises the RSTP protocoland starts a per bridge one second timer. In this way each bridge instance has it's own notion of time.
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:stateLog"></a><strong>bridge:stateLog</strong>&nbsp;(portlist, enadis)</dt>
+<dd>
+Control state logging on a port.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  portlist: table - List of ports to control.
+	</li>
+	
+	<li>
+	  enadis: boolean - Trace level: 0,false:off, 1,true: normal, 2: extended.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to bridge.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:stpmTrace"></a><strong>bridge:stpmTrace</strong>&nbsp;(vid, enadis)</dt>
+<dd>
+Control STP Tracing.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vid: number - VLAN ID.
+	</li>
+	
+	<li>
+	  enadis: boolean - Trace level: 0,false:off, 1,true: normal, 2: extended.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to bridge.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bridge:vidLog"></a><strong>bridge:vidLog</strong>&nbsp;(vidlist, enadis)</dt>
+<dd>
+Control VLAN logging.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vidlist: table - List of vlans to control.
+	</li>
+	
+	<li>
+	  enadis: boolean - Trace level: 0,false: off, 1,true: normal, 2:extended.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to the bridge.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sprint_brid"></a><strong>sprint_brid</strong>&nbsp;(id)</dt>
+<dd>
+Convert a bridge id to printable strings
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  id: userdata - Reference to a bridge id.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+prio and hex presentation of mac address (base mac).
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+<h2><a name="tables"></a>Tables</h2>
+<dl class="table">
+
+<dt><a name="port_cfg_fields"></a><strong>port_cfg_fields</strong></dt>
+<dd>Configuration items (names) for port configuration.
+
+
+<em>Fields</em>
+<ul>
+	
+	<li>
+	  1: "admin_port_path_cost" (type: number)
+	</li>
+	
+	<li>
+	  2: "port_priority" (type: number)
+	</li>
+	
+	<li>
+	  3: "admin_point2point" (type: number: 1 or 0)
+	</li>
+	
+	<li>
+	  4: "admin_edge" (type: number 1 or 0)
+	</li>
+	
+	<li>
+	  5: "migrate_check" (no value)
+	</li>
+	
+	<li>
+	  6: "admin_non_stp" (type: number 1 or 0)
+	</li>
+	
+</ul>
+
+
+</dd>
+
+
+<dt><a name="stp_cfg_fields"></a><strong>stp_cfg_fields</strong></dt>
+<dd>Configuration items (names) for STP configuration. The following fields for parameter <code>what</code> can be used in <code>yats.bridge:config_stp(vid, what, val)</code>.
+
+
+<em>Fields</em>
+<ul>
+	
+	<li>
+	  1: "stp_disable" (type: number 0(disable) or 1(enable))
+	</li>
+	
+	<li>
+	  2: "bridge_priority" (type: number 0 to 32768)
+	</li>
+	
+	<li>
+	  3: "max_age" - (type: number = time in s)
+	</li>
+	
+	<li>
+	  4: "hello_time" - (type: number = time in s)
+	</li>
+	
+	<li>
+	  5: "forward_delay" (type: number = time in s)
+	</li>
+	
+	<li>
+	  6: "force_version" (type:  string)
+	</li>
+	
+	<li>
+	  7: "hold_count" - (type: number = time in s, range: 1 to 10)
+	</li>
+	
+</ul>
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

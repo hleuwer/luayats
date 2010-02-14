@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb"><head><meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
+<meta name="generator" content="HTML Tidy for Linux/x86 (vers 1 September 2005), see www.w3.org" />
+
+<title>Luayats - Miscellanous Classes and Objects</title><link media="screen" href="style.css" rel="stylesheet" type="text/css" />
+<link media="print" rel="stylesheet" href="styleprint.css" type="text/css" /></head>
+<body>
+<div style="top: 12px; height: 129px; left: 0px; text-align: center; width: 925px;" id="logo"><a name="home2" id="home2"></a><a href="http://www.lua.org"><img style="border: 0px solid ; left: 0px; top: 6px; width: 115px; height: 118px; float: left;" id="lualogo" alt="www.lua.org" src="luayats.png" name="lualogo" hspace="20" /></a></div>
+<div id="header">
+<h1 style="height: 120px; margin-left: 0px; width: 928px;">
+<big><big><a name="home" id="home"></a><br />
+Luayats - User Manual</big></big><br />Network Simulation with YATS and Lua</h1>
+</div>
+<div id="leftnavigation">
+<ul>
+<li style="margin-left: 0px; width: 185px;"><a class="current" href="index.html">Home</a></li>
+<li><a href="index.html#license">License</a></li>
+<li><a href="index.html#features">Features</a></li>
+<li><a href="index.html#download">Download</a></li>
+<li><a href="index.html#installation">Installation</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="usermanual.html">User Manual</a><br /><ul><li><a href="introduction.html#introduction">Introduction</a></li><li><a href="introduction.html#inputfile">Example Input File</a></li><li><a href="usermanual.html#running">Running Luayats</a></li><li><a href="usermanual.html#environment">Environment Variables</a></li><li><a href="usermanual.html#configuration">Configuration File</a></li><li><a href="usermanual.html#modules">Modules</a></li><li>
+
+
+        <a href="usermanual.html#logging">Logging Facilities</a></li><li><a href="netobjects.html#home">Network Objects</a></li><li><a href="dispobjects.html">Instruments and Displays</a></li><li><a href="protobjects.html">Protocol Simulation</a></li><li><a href="statobjects.html">Statistics</a></li><li><a href="#home">Miscellanous</a>&nbsp;</li></ul><a href="progmanual.html">Programmer's Manual</a>
+
+
+  </li><li><a href="index.html#whatsnew">What's New</a></li>
+<li><a href="index.html#credits">Credits</a></li>
+<li><a href="index.html#links">Links</a></li>
+<li><a href="index.html#todo">ToDo</a></li>
+</ul>
+</div>
+<div id="content">
+<h2><a name="switch"></a>Switches and Bridges</h2><table style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1"><tbody><tr><td style="font-weight: bold; width: 235px;">Network
+Object</td><td style="font-weight: bold; width: 123px;">Class</td><td style="font-weight: bold; width: 512px;">Notes</td></tr><tr><td>Ethernet Bridge</td><td><a href="lua/files/yats/user.html#ethbridge:init">yats.ethbridge</a></td><td>This object emulates the behavior of a transparent ethernet bridge according to IEEE 802.1D. <br /><br />Forwarding:<br />The source address of incoming frames is learned in the filtering<br />database
+which has a configurable size. The whole MAC table is divided into a
+configurable number of independent databases. The database used is
+determined by the input port. The FdB can be populated by the user.<br /><br />Queuing:<br />Each
+port has a set of nprios output queues which are scheduled in strict
+priority fashion. The queue is selected using either the vlanPriority
+field of the incoming frame or by the default priority of the input
+port. <br /></td></tr><tr><td>Switch</td><td><a href="lua/files/yats/switch.html#switch:init">yats.switch</a></td><td>This example object is assembled from yats.mux and yats.demux objects using the Luayats block metaobject.<br />Only educational use.</td></tr></tbody></table><h2><a name="misc"></a>Miscellanous Classes</h2><br /><table style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1"><tbody><tr><td style="font-weight: bold; width: 235px;">Network
+Object</td><td style="font-weight: bold; width: 123px;">Class</td><td style="font-weight: bold; width: 512px;">Notes</td></tr><tr><td>Block Structure</td><td><a href="lua/files/yats/block.html#block:init">yats.block</a></td><td>This is a metaobject for assembling new net objects from already available ones without recompiling Luayats.<br />An
+object constructed using blocks looks like any other net object, it can
+be instantiated, has inputs and output, can be connected and can
+receive and send data items. <br />Block metaobjects can be used recursive within other block objects.</td></tr><tr><td>Simulation Control</td><td><a href="lua/files/yats/core.html#luacontrol:init">yats.luacontrol</a></td><td>This
+object provides means to perform user defined actions during a
+simulation run. The object executes arbitrary Lua code defined in a
+file or as parameters at specific simulation times. The actions are
+executed as single shot event or cyclically.</td></tr><tr><td>Tracer</td><td><a href="lua/files/yats/user.html#tracer:init">yats.tracer</a></td><td>This
+device sets the trace pointer of a data object.&nbsp;In each incoming
+data object, the pointer traceOrigPtr is set to the&nbsp;name of the
+trace object. Additionally, the trace sequence number is copied into
+the data object and incremented.<br />All subsequent network objects will generate trace messages for the marked&nbsp;objects.<br /><br />NOTE: Only works if DATA_OBJECT_TRACE has been defined in src/kernel/defs.h. Otherwise no action is performed.<br /></td></tr><tr><td>Operating System Emulation</td><td><a href="lua/files/yats/user.html#tickctrl:init">yats.tickctrl</a></td><td>This
+object emulates the behaviour of an operating system, where a defined
+number of processes contend for processing time in a round robin
+fashion. <br />The active time interval of the object is probed from a distribution <br />function,
+which is defined externally using one of the available distribution
+objects (for instance geometrical or binominal distribution).<br /><br />The length of the actual active time interval for the object is then calculated considering the contending other processes: <br />&nbsp; &nbsp; &nbsp; <br /><span style="font-style: italic;">&nbsp; &nbsp; &nbsp; next_time =&nbsp; '(contproc + 1) * tick_from_distribution + 1. </span><br /><br />Input
+data is always enqueued at arrival, also during inactive state. Queue
+overflow is avoided using the start/stop protocol, which is activated
+at a given threshold 'xoff'. <br />Once the buffer filling decreases
+below the limit 'xon' a start message is sent to the predecessor, which
+results in new data arriving. <br /><br />If the system becomes empty
+during the active time interval it tries to restarts it's feeding node.
+Data items that arrive are served at the beginning of the next time
+interval.<br /></td></tr></tbody></table></div>
+<div id="footer"><small>(c) 2003-2009 Herbert Leuwer, April 2009&nbsp;&nbsp;
+&nbsp;<a href="mailto:herbert.leuwer@t-online.de">Contact</a></small></div>
+</body></html>

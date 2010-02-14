@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb"><head>
+<meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
+<meta name="generator" content="HTML Tidy for Linux/x86 (vers 1 September 2005), see www.w3.org" /><title>Luayats - User Manual</title>
+
+<link media="screen" href="style.css" rel="stylesheet" type="text/css" />
+<link media="print" rel="stylesheet" href="styleprint.css" type="text/css" /></head><body>
+<div style="top: 12px; height: 129px; left: 0px; text-align: center; width: 925px;" id="logo"><a name="home2" id="home2" /><a href="http://www.lua.org"><img style="border: 0px solid ; left: 0px; top: 6px; width: 115px; height: 118px; float: left;" id="lualogo" alt="www.lua.org" src="luayats.png" name="lualogo" hspace="20" /></a></div>
+<div id="header">
+<h1 style="height: 120px; margin-left: 0px; width: 928px;">
+<big><big><a name="home" id="home" /><br />
+Luayats - User Manual</big></big><br />Network Simulation with YATS and Lua</h1>
+</div>
+<div id="leftnavigation">
+<ul>
+<li style="margin-left: 0px; width: 185px;"><a class="current" href="index.html">Home</a></li>
+<li><a href="index.html#license">License</a></li>
+<li><a href="index.html#features">Features</a></li>
+<li><a href="index.html#download">Download</a></li>
+<li><a href="index.html#installation">Installation</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="usermanual.html">User Manual</a><br /><ul><li><a href="introduction.html#introduction">Introduction</a></li><li><a href="introduction.html#apiref">API Reference</a></li><li><a href="introduction.html#inputfile">Example Input File</a></li><li><a href="#running">Running Luayats</a></li><li><a href="usermanual.html#environment">Environment Variables</a></li><li><a href="usermanual.html#configuration">Configuration File</a></li><li><a href="usermanual.html#modules">Modules</a></li><li><a href="usermanual.html#logging">Logging Facilities</a></li><li><a href="netobjects.html">Network Objects</a></li><li><a href="dispobjects.html">Instruments and Displays</a></li><li><a href="protobjects.html">Protocol Simulation</a></li><li><a href="statobjects.html">Statistics</a></li><li><a href="miscobjects.html">Miscellanous</a>&nbsp;</li></ul><a href="refindex.html">API Reference Index</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="progmanual.html">Programmers Manual</a></li></ul><ul><li><a href="index.html#whatsnew">What's New</a></li>
+<li><a href="index.html#credits">Credits</a></li>
+<li><a href="index.html#links">Links</a></li>
+<li><a href="index.html#todo">ToDo</a></li>
+</ul>
+</div>
+<div id="content">
+<h2><a name="running" />Running Luayats</h2><p>
+Invoke Luayats with the following syntax. Be sure to set the the
+environment variable LUAYATSHOME to the top level directory of the
+Luayats tree.</p>
+
+<pre>luayats&nbsp;OPTIONS&nbsp;input-files</pre>
+
+<p>
+The following options are recognized:<br />
+
+</p>
+
+<pre><span style="font-family: monospace;">usage: luayats [options] [testscripts]</span><br style="font-family: monospace;" /><br /><span style="font-family: monospace;">Available options are:</span><br style="font-family: monospace;" /><span style="font-family: monospace;">&nbsp;-D, --default-opts&nbsp;&nbsp;&nbsp;&nbsp; load default options instead of rc file.</span><br style="font-family: monospace;" /><span style="font-family: monospace;">&nbsp;-L, --gui-log-level=LEVEL&nbsp; set GUI log level to LEVEL</span><br style="font-family: monospace;" /><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (DEBUG, INFO, WARN, ERROR, FATAL)</span><br style="font-family: monospace;" /><span style="font-family: monospace;">&nbsp;-H, --help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print this help text</span><br style="font-family: monospace;" /><span style="font-family: monospace;">&nbsp;-n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do not start the GUI</span><br style="font-family: monospace;" /><span style="font-family: monospace;">&nbsp;-r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Run last loaded test in GUI mode</span><br style="font-family: monospace;" /><span style="font-family: monospace;">&nbsp;-v, --version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; show Luayats version.</span><br style="font-family: monospace;" /><span style="font-family: monospace;">&nbsp;-i, --info=WHAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; show Luayats binding info. WHAT defines what to show</span><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /> 			n,b,s: numeric,bool,string constants<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; f: functions <br style="font-family: monospace;" /></span><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		c: classes</span><span style="font-family: monospace;"><br />			a: all</span></pre>
+
+<p><span style="font-family: monospace;" /><span style="font-weight: bold;">Notes:</span></p>
+
+<ul><li>
+    <p>&nbsp;When running in non-GUI mode, hit
+&lt;ctrl-C&gt; twice to stop execution.</p>
+
+  </li></ul>
+
+<ul><li>
+    <p>&nbsp;The simulator is NOT reset in non-GUI mode.</p>
+
+  </li></ul><h2><a name="environment" /> Environment Variables</h2><p>
+Luayats recognizes the following environment variables:<br />
+
+</p>
+
+<p style="font-weight: bold;">LUAYATSHOME (mandatory)</p>
+
+<p style="margin-left: 40px;">Must point to the root of
+the Luayats install tree.</p>
+
+<p><span style="font-weight: bold;">LUAYATSRC
+(optional)</span></p>
+
+<p style="margin-left: 40px;">Defines an alternative path
+for Luayats preferences. See <a href="#configuration">Preferences</a>
+for details.<span style="font-weight: bold;" /></p>
+
+<p><span style="font-weight: bold;">LUAYATS_SIMLOG
+(optional)</span><span style="font-weight: bold;" /></p>
+
+<p><span style="font-weight: bold;">
+LUAYATS_KNLLOG (optional)</span><span style="font-weight: bold;" /></p>
+
+<p><span style="font-weight: bold;">
+LUAYATS_GUILOG (optional)</span></p>
+
+<p><span style="font-weight: bold;">
+LUAYATSTESTMODE (optional)</span></p>
+
+<p style="margin-left: 40px;"><span style="font-weight: bold;" />Defines whether
+regression test
+examples/test-all.lua shall write (set to 'w') or test (set to 't',
+default) the results. Default is testmode 't'.<span style="font-weight: bold;" /><br />
+
+</p>
+
+<p>From a Lua point of view Luayats is nothing else than a
+standalone Lua
+interpreter with a couple of libraries. It recognizes the same
+environment variables as the standard Lua executable. If the standalone
+Lua interpreter is installed, these variables are typically already
+set.
+<span style="font-weight: bold;" /></p>
+
+<p><span style="font-weight: bold;">
+LUA_INIT (optional)</span></p>
+
+<p>In order to make full usage of all Lua facilities including packages
+installed via luarocks, it is recommendet to set this variable as
+follows:</p>
+
+<pre>LUA_INIT="require 'luarocks.require'</pre>
+
+
+
+
+
+<p><span style="font-weight: bold;" /><span style="font-weight: bold;">LUA_PATH (optional)</span></p>
+
+<p>This is an alternative search path for Lua files. Same as for standard Lua.&nbsp;Here is an
+example setting:<br />
+
+</p>
+
+<pre><span style="font-family: monospace;">LUA_PATH=./?.lua;./?/?.lua;/usr/local/share/lua/5.1/?.lua;/usr/local/share/lua/5.1/?/?.lua;/usr/local/share/lua/5.1/?/init.lua<br /></span></pre>
+
+<p>If not set Luayats will search Lua files only here:
+$LUAYATSHOME/yats/?.lua only</p>
+
+<span style="font-weight: bold;">
+
+</span>
+<p><span style="font-weight: bold;">LUA_CPATH
+(mandatory)</span></p>
+
+<p>This is the search path for dynamic libraries loaded by
+Luayats during runtime. Same as for standard Lua.</p><h2><a name="configuration" />Configuration File</h2><p>
+Luayats reads a preference file <span style="font-family: monospace; font-style: italic;">luayatsrc</span>
+during startup. The file is a lua executable scriptfile returning a
+table with preference values. See <a href="../yats/config-default.lua">here</a>
+for an example.</p><p>The preference file is read from one of the following locations:</p>
+
+<ol><li>
+    <p>File luayatsrc in the current directory</p>
+
+  </li><li>
+    <p>File named in $LUAYATSRC environment variable</p>
+
+  </li><li>
+    <p>File luayatsrc in $LUAYATSHOME</p>
+
+  </li><li>
+    <p>File luayatsrc in the user's home directory $HOME</p>
+
+  </li></ol>
+
+
+
+<p>
+If none of the above trials succeed Luayats loads the default
+configuration.</p><p>Look at documentation for the module <a href="lua/files/yats/config.html">config</a> for it's usage.</p><h2><a name="modules" />Modules (Lua Environments)</h2><p>Luayats is divided in different Lua modules. The main module with all the C++ level bindings is the <span style="font-weight: bold;">"yats"</span> module. It contains the Luayats API and the simulator object&nbsp;<a href="lua/files/yats/core.html#sim:connect"><span style="font-weight: bold;">yats.sim</span></a>. Simulation control scripts run automatically in the&nbsp;module <span style="font-weight: bold;">"user"</span> in order to unburdon the user from avoiding name clashes.&nbsp;</p><p>The following modules are used within Luayats:</p><p><span style="font-weight: bold;">yats._M or simply yats</span></p>
+
+<p style="margin-left: 40px;"><span style="font-weight: bold;" />Luayats
+kernel namespace. All bindings
+of C++ classes and the bindings of a couple of functions are contained
+in this module, e.g.&nbsp;<a href="lua/files/yats/core.html#sim:connect"><span style="font-weight: bold;">yats.sim</span></a> is the simulator object.</p>
+
+<p><span style="font-weight: bold;">yats.ieeebridge</span></p>
+
+<p style="margin-left: 40px;"><span style="font-weight: bold;" />This is a submodule
+of Luayats providing&nbsp;spanning tree related bindings. The user should normally not have to care about this namespace.<span style="font-weight: bold;" /></p><p><span style="font-weight: bold;">gui</span></p>
+
+<p style="margin-left: 40px;"><span style="font-weight: bold;" />The "gui"
+environment is used by the
+GUI. &nbsp;The user does normally not need to care about functions
+hidden in this namespace. For informational purposes see&nbsp;<a href="lua/files/yats/console.html">here</a>.</p>
+
+<p><span style="font-weight: bold;">cfg</span></p>
+
+<p style="margin-left: 40px;"><span style="font-weight: bold;">T</span>he "cfg"
+environment contains Luayats
+configuration function.&nbsp;The user does normally not need to
+care
+about functions hidden in this namespace. For informational purposes
+see&nbsp;<a href="lua/files/yats/config.html">here</a>.</p>
+
+<p><span style="font-weight: bold;" /><span style="font-weight: bold;">user</span></p>
+
+<p style="margin-left: 40px;"><span style="font-weight: bold;" />This
+is the user's environment or module. All global definitions within testscripts
+are stored in this environment rather than in Lua's global environment. It is never necessary to mention the
+user environment in declarations or references.&nbsp;All Lua facilities are available to the user.</p>
+
+<p style="font-weight: bold;">_G</p>
+
+<p style="margin-left: 40px;">This
+is Lua's global environment which also contains all the Lua submoduls
+like math, table, debug etc. The user has only read access to this
+environment. <br />
+
+</p>
+
+<h2><a name="logging" />Logging Facilities</h2><h3>Logging Objects
+</h3>
+
+<p>
+NOTE: Lua loggers is a slightly modified version of lualogger from the <a href="http://www.keplerproject.org/">Kepler Project</a>.</p>
+
+<p>Lua loggers are objects that log user defined message
+respecting a logging level: FATAL, ERROR, WARN, INFO, DEBUG.</p>
+
+<pre>require "logging/console"<br />local mylogger = logging.console("SIM %level %simtime (%realtime) %message\n")<br /><br />local mylogger:setLevel("WARN")</pre>
+
+<p>
+Once created the user may produce logging output by calling one of the
+following methods of mylogger:</p>
+
+<ul><li>
+    <p><span style="font-style: italic;">mylogger:fatal(fmt,
+...)</span></p>
+
+  </li><li>
+    <p><span style="font-style: italic;" /><span style="font-style: italic;">mylogger:error(fmt, ...)</span></p>
+
+  </li><li>
+    <p><span style="font-style: italic;" /><span style="font-style: italic;">mylogger:warn(fmt...)</span></p>
+
+  </li><li>
+    <p><span style="font-style: italic;" /><span style="font-style: italic;">mylogger:info(fmt,...)</span></p>
+
+  </li><li>
+    <p><span style="font-style: italic;" /><span style="font-style: italic;">mylogger:debug(fmt, ...)</span></p>
+
+  </li></ul>
+
+
+
+<p>
+All methods use the syntax of the Lua string library function <span style="font-family: monospace;">string.format(fmt, ...), </span>which
+is similar to the <span style="font-family: monospace;">printf(fmt,
+...).&nbsp;</span><span style="font-family: Helvetica,Arial,sans-serif;" /> </p>
+
+<p> function in C. Output is only generated if the level has been
+set appropriately, e.g.<span style="font-family: Helvetica,Arial,sans-serif;">For instance </span><span style="font-family: monospace;">mylogger:warn(fmt,
+...)</span> will only produce output if the level has been set to
+either "WARN", "ERROR" or "FATAL". </p>
+
+<p><span style="font-family: monospace;" />The
+folloging appenders (logging methods) are&nbsp;supported:</p>
+
+<ul><li>
+    <p>CONSOLE: Prints output to the console; <br />
+
+    <span style="font-family: monospace;">logging.console(logpattern)</span></p>
+
+  </li></ul>
+
+<ul><li>
+    <p><span style="font-family: monospace;" />FILE:
+Writes output to a logging file.<br />
+
+    <span style="font-family: monospace;">logging.file(filename,
+datepattern, logpattern)</span></p>
+
+  </li><li>
+    <p><span style="font-family: monospace;" /><span style="font-family: monospace;" /><span style="font-family: monospace;" /> SOCKET: Sends
+output to a TCP socket.<br />
+
+    <span style="font-family: monospace;">logging.socket(address,
+port, logpattern)</span></p>
+
+  </li></ul>
+
+
+
+
+
+
+
+<p>
+The parameter <span style="font-family: monospace; font-weight: bold;">logpattern</span>
+defines the format of the output. The pattern <span style="font-family: monospace; font-weight: bold;">%level</span>
+is replaced by the logging level, e.g. "DEBUG". The pattern <span style="font-family: monospace; font-weight: bold;">%simtime</span>
+is replaced by the actual slot time during simulation (global variable <span style="font-family: monospace;">yats.SimTime</span>).
+The pattern <span style="font-family: monospace; font-weight: bold;">%realtime
+</span>is replaced by the translated realtime (global variable
+yats.SimTimeReal) and the pattern&nbsp;<span style="font-family: monospace; font-weight: bold;">%message</span><span style="font-weight: bold;"> </span>is replaced by the
+formatted message.</p>
+
+<p>
+The parameter pattern <span style="font-weight: bold; font-family: monospace;">filename</span>
+produces the filename to be used in a file logger. The pattern
+datepattern is used for generating the actual filename. With&nbsp;</p>
+
+<pre>local mylogger.file("mylogfile-%s.log", "%Y-%m-%d", "MYLOG %level %simtime (%realtime) %message")</pre>
+
+<p><span style="font-family: Courier New,Courier,monospace;" />
+the call&nbsp;</p>
+
+<pre>mylogger:warn("This is a message %s with value %d", "'hello'", 17+4) </pre>
+
+<p><span style="font-family: Courier New,Courier,monospace;" />
+at slot time 1234 with 1 ms per slot will write it's output to the file
+<span style="font-family: monospace; font-weight: bold;">mylogfile-2005-12-31.log</span>
+and the lines will look similar to this:</p>
+
+<pre>MLOG WARN 1234 (1.234 s) This is the message 'hello' with value 21</pre>
+
+<span style="font-family: monospace; font-style: italic;" />
+<p>Finally, the parameters <span style="font-family: monospace; font-weight: bold;">address</span>
+and <span style="font-family: monospace; font-weight: bold;">port</span>
+are the IP address and port number for a socket connection. The
+following small <a href="../../luayats-2.0/util/logsrv.lua">utility
+</a>shows an example server to receive the logging messages on a
+different computer or in a different terminal.</p>
+
+<h3><a name="predefined_loggers" />Predefined
+Loggers</h3>
+
+<p>
+Luayats provides a set of predefined loggers:</p><p><span style="font-weight: bold;">User Logger
+"SIM"&nbsp;</span></p>
+
+<p style="margin-left: 40px;"><span style="font-weight: bold;" />This logger is
+intedended to be used in simulation scripts by the user. It can be
+accessed via&nbsp;<span style="font-family: monospace;"><span style="font-weight: bold;">yats.log</span>.</span></p>
+
+<p><span style="font-family: monospace;" /><span style="font-weight: bold;">Kernel Logger "KNL"</span></p>
+
+<p style="margin-left: 40px;">The kernel logger
+shows Luayats internal information. By default it's level is set to
+WARN. it can be accessed via the the <span style="font-family: Courier New,Courier,monospace; font-weight: bold;">yats.kernel_log</span></p>
+
+<p><span style="font-weight: bold;">Graphics Logger
+"GRA"</span></p>
+
+<p style="margin-left: 40px;"><span style="font-weight: bold;" />The graphics logger
+shows internal information concerning graphical displays. By default
+it's level is set to WARN. It is not acessible by the user.</p>
+
+<p><span style="font-weight: bold;">C Logger "CPP"</span></p>
+
+<p style="margin-left: 40px;"><span style="font-weight: bold;" />see <a href="#c_logger">C logger</a></p>
+
+<p><span style="font-weight: bold;">GUI logger "GUI"</span></p>
+
+<p style="margin-left: 40px;"><span style="font-weight: bold;" />The GUI logger shows
+internal information concerning the graphical user interface. By
+default it's level is set to WARN. It is accessible via <span style="font-weight: bold;">gui.log.&nbsp;</span></p>
+
+<p><span style="font-weight: bold;">Configuration
+logger "CFG"</span></p>
+
+<p style="margin-left: 40px;"><span style="font-weight: bold;" />The configuration
+logger shows internal information concerning configuration of Luayats.
+By default it's level is set to WARN. It is not accessible by user scripts.</p>
+
+<h3><a name="c_logger" />C Logger</h3>
+
+<p>
+The C Logger is a predefined Lua logger object <span style="font-family: monospace; font-weight: bold;">yats.clog</span>
+that can be used from C programs using on of the following macros:</p>
+
+<ul><li>
+    <p><span style="font-style: italic;">fatal(fmt,
+...)</span></p>
+
+  </li><li>
+    <p><span style="font-style: italic;">error(fmt,
+...)</span></p>
+
+  </li><li>
+    <p><span style="font-style: italic;">warn(fmt...)</span></p>
+
+  </li><li>
+    <p><span style="font-style: italic;">info(fmt,...)</span></p>
+
+  </li><li>
+    <p><span style="font-style: italic;">debug(fmt,
+...)</span> </p>
+
+  </li></ul>
+
+<div style="margin-left: 40px;">
+
+
+
+
+
+
+
+
+</div>
+
+<p>
+Since C Logger is a normal Lua logger it can also be used from Lua. The
+level can only be set from Lua. By default it's level is set to WARN.</p>
+
+<p>
+<span style="font-weight: bold;">NOTE:</span> There
+is considerable overhead associated when utilising C logger
+from C code. If the programmer wants to print debug information very
+frequently, e.g. each time a data object is received, the much more
+lightweigted <a href="../../luayats-2.0/doc/html/en/logging.html#dprintf"><span style="font-family: monospace;">dprintf</span> </a>macro
+is recommended.
+</p>
+
+<h3><a name="dprintf" />Debug Print via
+dprintf</h3>
+
+<p>
+This is a very lightweigted method to produce debug output. The actual
+print code is only executed when the global variable <span style="font-family: monospace;">yats.debug</span> is
+set to <span style="font-family: monospace;">true</span>.</p>
+
+<p>It is used in the same way as printf with the same formatting
+possiblities.</p></div>
+<div id="footer"><small>(c) 2003-2009 Herbert Leuwer, April 2009&nbsp;&nbsp;
+&nbsp;<a href="mailto:herbert.leuwer@t-online.de">Contact</a></small></div>
+</body></html>

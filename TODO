@@ -1,0 +1,19 @@
+TODO
+
+* Untested
+lb
+measframe
+gmdpstop
+data2frs
+lbframe
+
+* Binding available, but missing Lua and untested
+muxpacket
+
+* Binding missing
+several
+
+* Cleanup work
+tcpipsend, tcpiprec, meas2, shap2: C-code, restrict bindings
+meas2: C-Code, restrict bindings
+

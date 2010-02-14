@@ -1,0 +1,401 @@
+README for Luayats
+==================
+
+* Author
+
+- Yats was originally written at the University of Technology in
+  Dresden by Matthias Baumann.
+
+- It is now maintained by 
+  Herbert Leuwer, herbert.leuwer@marconi.com
+
+
+* License
+
+Luayats is licensed under GPL due to the original Yats 
+license. See COPYING.
+
+
+* Documentation
+
+The original Yats documentation is still valid and provided with
+Luayats, although the Yats proprietary script language has been
+replaced by Lua. Object instantiation has been kept as close as
+possible to the original one.
+
+However, this wasn't possible at all places. See *Syntax for more
+details and please take a look at the new Luayats documentation (not
+many text but description of functions) for details. The example
+directory also provides some good guidance on how to write simulator
+scripts.
+
+
+* Simulation Kernel
+
+The simulation kernel of yats is unchanged. Objects are connected
+using C object references. No loss of speed.
+
+
+* Yats interpreter
+
+The yats interpreter is no longer used. All access to C objects is done
+using Lua.  Object names are maintained in a Lua table
+`yats.sim.objectlist' with an appropriate programming interface (see
+yats.html). Variables are now normal Lua variables. 
+
+
+* Macros
+
+Macros are gone. Use Lua functions instead.
+
+
+* Object Names and References
+
+In yats object names and references have been the same. This
+changed. Each object needs now a unique name (this is checked). Object
+references are kept in the global symbol table or in any other Lua
+variable, because objects are now Lua tables.
+
+
+* Syntax 
+
+I have tried to keep the syntax as similar as possible to current yats
+scripts. However, due to the different (and fixed) language syntax of
+Lua I needed to adopt a few things:
+
+- Object parameters: Naming parameters in a configuration script was a
+  nice yats feature to make the setup much more readable. This is now
+  provided by putting constructor parameters into a Lua table with
+  named indices.
+
+- Parameter scanning: In yats parameter scanning could be handed over
+  to derived objects. With Lua this method can easily be emulated with
+  the parameter table, from which each class hierarchy can pick it's
+  parameter.
+
+- Pin naming templates: They are gone. Instead use Lua methods to
+  provide pin tables. Using Lua string functions it is simple to
+  provide your own templates.
+
+
+* Connection Management 
+
+Connection management between objects is done in Lua using input and
+output tables for each object. The Lua root class provides a generic
+'connect()' and 'handle()' routine for connection signalling. The yats
+internal connection management has been disabled and will completely
+vanish over time.
+ 
+In the application's config Lua script use
+
+    yats.sim:connect() 
+
+to initiate connection management.
+
+After this the netlist can be traversed using the method
+
+	<obj_instance>:get_suc(index), 
+
+which returns a reference to the successor at output 'index'. The
+successor's input handle can be retrieved using
+
+	<obj_instance>:get_shand(index)
+
+
+* Classes, Inheritance and Class Hierarchy
+
+There are two types of classes: 
+
+- The yats C classes and their representative classes in Lua
+
+The binding tool 'tolua++' allows Lua code to follow the class
+hierarchy given by the C++.
+
+In order to provide a more convenient interface for object
+instantiation the original constructor 'new(...)' is hidden into a
+Lua-defined initialisation routine
+
+  yats.<class>:init(parameter-table),
+
+which also reads as 
+
+  yats.<class>.init(classref, parameter-table)
+
+This allows the user to instantiate objects using a table as
+parameters, where each parameter is given by both - it's name and it's
+value, which makes object instantiation much more user-friendly and
+simplifies default value handling considerably.
+
+The whole process is a bit tricky and works as follows (we use the
+object 'mux' as an example).
+
+1. A binding `yats.mux' is created via tolua++ binding. `yats.mux' is
+a normal Lua table, which is used as the metatable template for the
+object instance.
+
+2. The original class yats.mux is now hidden by renaming it into
+	   yats._mux = yats.mux.
+
+3. The hidden class yats._mux becomes the baseclass of new Lua class
+	   yats.mux = class(yats._mux)
+
+4. A new constructor yats.mux:init(param) is created. This constructor
+receives all parameters in a table. Additionally we use the __call`
+metamethod of the class in order to avoid calling the init method
+explicitly. We now can instantiate an object simply by saying:
+
+	aMux = yats.mux{param_1 = value_1, param_2 = value_2, ...}
+
+Note, that the object instance is of type "userdata", which is created
+inside the `init()' constructor using `yats._mux:new(params). A hidden
+table created by tolua++ binding code serves as the proxy (metatable).
+Within the init() function (actually at any time) additional values
+can be stored in the object instance. This is provided by the way
+tolua++ manages C++ classes. Those fields become fields of the hidden
+proxy table. 
+
+NOTE: There is no visible reference to this proxy table. Hence, fields
+added during runtime CANNOT be retrieved by simply traversing a table
+with an iterator. This requires changes in the tolua++ binding tool.
+
+5. Additional Lua methods can be added to the class in the same way as
+described above. Hence, the class has now both C++ defined and Lua
+defined methods. Following the inheritance chain of C++ the user can
+access both C++ defined and Lua defined members and methods of base
+classes.
+
+
+* Class hierarchy (incomplete): 
+
+All class names below require the prefix `yats'.
+
+Class			User visible
+--------------------------------------------------------------
+sim			yes 
+root 			yes, via user instantiated object
+  ino    		yes, via user instantiated object
+    in1out 		yes, via user instantiated object, n in, 1 out
+      mux 		yes
+        muxEPD 		yes, derived from mux
+      line 		yes
+      cbrsrc 		yes
+      lua1out   	yes, via user instantiated object, n in, 1 out
+		        This is the baseclass required for network 
+			objects written in Lua.
+	luacontrol 	yes
+			This class allows actions during the
+			simulation.
+      ...	
+    inxout 		yes, via user instantiated object, n in, x out
+      demux 		yes
+      luaxout   	yes, via user instantiated object, n in, x out
+		        This is the baseclass required for network objects 
+		        written in Lua.
+        bridge  	yes
+        ...
+
+ieeebridge.rstp_bridge 	yes, via bridge object, which holds an instance of 
+	    	        rstp_bridge.
+ieeebridge.<others>	yes. The new namespace ieeebridge holds a couple
+			of classes to handle RSTP protocol.
+
+You can use the tool `info.lua' to get an online list of all currently
+C++-level objects, methods, variables and constants exposed to
+Lua. Type
+
+	bin/luayats util/info --help
+
+to get a short help for options.
+
+There is also a binding browser in the GUI's help menu.
+
+
+* Writing Lua Object Classes
+
+Here are some important points to consider when writing Lua object
+clases that provide a mapping to their yats C class representatives:
+
+- Inputs should deliver handles (during connect()) counting from 0,
+even if their names are indexed beginning with 1. This allows a direct
+mapping of the handle to internal C arrays.  For example: A
+multiplexer has inputs named in1, in2, ... . They should deliver
+handles 0, 1, ... .
+
+- Each Lua class must provide a reference to a C-level object.
+
+- The original `yats' init() methods of C-level classes are replaced
+by the Lua constructor `init()'. However, in some places additional
+C-level initialisation code is necessary. For this reason a method
+act() must be declared for C-class to complete initialisation in
+C++. The root object's act() method can be overridden for this
+purpose.
+
+
+* Namespaces and References
+
+Luayats has different Lua namespaces. The most important one is the
+namespace `yats'. Luayats does define any global symbol.
+
+yats			Simulation kernel
+gui			The GUI
+cfg			The configuration 
+yats.ieeebridge		IEEE802 bridging stuff.	
+user			Environment of user scripts, dies when the 
+			simulation run finally exits.
+
+
+* Missing
+
+- Documentation of course.
+
+- Need to wrap more models to Lua.
+
+- Need to provide clean constructors and destructors for the C++ objects.
+  This has now been done for all classes available to Lua and ongoing as 
+  classes are made available.
+
+- Better editor in the GUI.
+
+- and much more ...
+
+
+* INSTALLING Luayats
+
+You need the following:
+
+  - Luayats version 0.4-3.0 or later - This package.
+
+  - Lua version 5.1.4 or later. Download from 
+	http://www.lua.org
+    Use/build dynamic libraries.
+
+  - tolua++-1.0.92 or later for Lua 5.1. Download from
+	http://www.codenix.com/~tolua
+    Use/build dynamic libraries.
+
+  - IUP library version 2.7. Download from
+	http://www.tecgraf.puc-rio.br/iup
+    Use/build dynamic libraries. IUP runs on Windows using the Windows
+    native libraries  and on Linux using the Motif library.
+	
+  - Canvas draw library (CD) version 5.1. Download from
+	http://www.tecgraf.puc-rio.br/cd
+    Use/build dynamic libraries.
+
+  - IM library version 3.4. Download from
+	http://www.tecgraf.puc-rio.br/im
+    Use/build dynamic libraries.
+
+  - On Linux and Cygwin you need the following additional libraries:
+	readline and history
+	ncurses
+
+  - On Linux you need the following additional libraries:
+	Motif
+
+  - The following Lua modules
+    	readline - A simple Lua binding to readline
+	toluaex - An extension for tolua++
+
+Unpack the archive
+
+	gtar -xvzf luayats-<version>.tar.gz
+
+Building is done in the installation source directory,
+e.g. luayats-<version>:
+
+Edit the file config to customize a few things.
+
+Type: 	make 
+
+This will build the following:
+	- The Lua binding in src/lua directory
+	- A couple of static libraries in lib directory
+	- luayats executable in bin directory.
+
+If you wish you can also generate documentation:
+
+- Luayats HTML docs:
+	make doc
+
+
+* Environment variables
+
+Before running yats you need to set the following environment
+variables for Lua:
+
+	LUA_PATH="./?.lua;./lua/?.lua;./lualib/?.lua"
+	
+LUA_PATH provides paths to search in 'require "package" statement Note
+the semicolons instead of double periods :-)
+
+  in Linux:
+	LUA_PATHLIB="./lib?.so;/usr/local/lib/lua/lib?.so;./lib?.so"
+
+  in Cygwin
+	LUA_PATHLIB="./lib?.dll;/usr/local/lib/lua/lib?.dll;./lib?.dll"
+
+LUA_PATHLIB defines the search path for dynamic library loading.
+
+You have to set the LUAYATSHOME environment variable, which points to
+the Luayats installation (or building) directory. Make sure that the
+path named in LUAYATSHOME is not too long. Otherwise the GUI is not
+able to find bitmap files. You may achieve this by providing
+appropriate symbolic links.
+
+You may want to keep your preferences in a separate location. The
+environment variable LUAYATSRC can point to this location.
+
+If you run the regression test 'examples/test-all.lua' you may want to
+set the environment variable LUAYATSTESTMODE to 'w' for writing the
+test result to files as reference for later tests.  Setting this
+variable to 't' compares the test result with the reference stored in
+the test result files.
+
+* Running Luayats
+
+There are multiple ways to run the simulator:
+
+1. Simply run the binary.
+
+The luayats executable is a standalone Lua interpreter, with the same
+functionality as the one, that comes with the Lua language. Call it by
+
+	bin/luayats-bin [options] [scripts ...]
+
+The script can be any Lua script. Typically this will be a test script
+containing object instantiation and simulator control statements. See
+in directory 'examples' for a couple of them.
+
+You can even do the following
+
+	bin/luayats-bin script -i
+
+This runs the script and provides an interactive CLI afterwards, which
+allows you to observe simulation and object internals.
+
+2. Using the luayats.lua command script
+
+The script luayats.lua provides a more convenient interface.
+    	
+	luayats OPTIONS ARGS
+
+3. Interactively using the Graphical User Interface (GUI).
+
+A more convenient interface is the GUI. Start it by
+
+	luayats [options] [scripts ...]
+
+The scripts will be loaded into editors and the last script can optionally
+being run using the option '-r'. 
+
+
+3. Non-interactively without the GUI
+
+	luayats.lua -n scripts
+
+Last update: May, 2009
+
+Have fun.
+
+

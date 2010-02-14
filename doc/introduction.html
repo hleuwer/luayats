@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb"><head><meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
+<meta name="generator" content="HTML Tidy for Linux/x86 (vers 1 September 2005), see www.w3.org" />
+
+<title>Luayats - Introduction</title><link media="screen" href="style.css" rel="stylesheet" type="text/css" />
+<link media="print" rel="stylesheet" href="styleprint.css" type="text/css" /></head>
+<body><a href="http://www.lua.org"><img style="border: 0px solid ; left: 0px; top: 6px; width: 115px; height: 118px; float: left;" id="lualogo" alt="www.lua.org" src="luayats.png" name="lualogo" hspace="20" /></a>
+<div id="header">
+<h1 style="height: 120px; margin-left: 0px; width: 928px;">
+<big><big><a name="home" id="home"></a><br />
+Luayats - User Manual</big></big><br />Network Simulation with YATS and Lua</h1>
+</div>
+<div id="leftnavigation">
+<ul>
+<li style="margin-left: 0px; width: 185px;"><a class="current" href="index.html">Home</a></li>
+<li><a href="index.html#license">License</a></li>
+<li><a href="index.html#features">Features</a></li>
+<li><a href="index.html#download">Download</a></li>
+<li><a href="index.html#installation">Installation</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="#home">User Manual</a><br /><ul><li><a href="#introduction">Introduction</a></li><li><a href="#apiref">API Reference</a></li><li><a href="#inputfile">Example Input File</a></li><li><a href="usermanual.html#running">Running Luayats</a></li><li><a href="usermanual.html#environment">Environment Variables</a></li><li><a href="usermanual.html#configuration">Configuration File</a></li><li><a href="usermanual.html#modules">Modules</a></li><li>
+
+
+        <a href="usermanual.html#logging">Logging Facilities</a></li><li><a href="netobjects.html">Network Objects</a></li><li><a href="dispobjects.html">Instruments and Displays</a></li><li><a href="protobjects.html">Protocol Simulation</a></li><li><a href="statobjects.html">Statistics</a></li><li><a href="miscobjects.html">Miscellanous</a>&nbsp;</li></ul><a href="refindex.html">API Reference Index</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="progmanual.html">Programmer's Manual</a>
+
+
+  </li><li><a href="index.html#whatsnew">What's New</a></li>
+<li><a href="index.html#credits">Credits</a></li>
+<li><a href="index.html#links">Links</a></li>
+<li><a href="index.html#todo">ToDo</a></li>
+</ul>
+</div>
+<div id="content">
+<h2><a name="introduction"></a>Introduction</h2><p>YATS is a small discrete-time simulation tool tailored for
+investigations of ATM and packet networks. The tool is "grown up"
+during 1995 / 1996 at the chair for telecommunications, Dresden
+University of Technology. The development was partly supported by the
+ACTS project AC 049 EXPERT. From&nbsp;2002 YATS was used to
+simulate
+ethernet transport switches and&nbsp;the old YATS-specific macro
+language was replace by the scripting language&nbsp; <a href="http://www.lua.org/">Lua</a>. During this work a
+graphical&nbsp;user interface was added as well, using the GUI toolkit&nbsp;<a href="http://www.tecgraf.puc-rio.br/iup/">IUP</a>.
+Graphical displays are now drawn using the canvas draw library&nbsp;<a href="http://www.tecgraf.puc-rio.br/cd/">CD</a> and
+the image processing&nbsp;library&nbsp;<a href="http://www.tecgraf.puc-rio.br/im/">IM</a>.
+Because of the extensive usage of Lua the product was renamed in
+LUAYATS. The original YATS version 0.4 can be found&nbsp;<a href="http://www.ifn.et.tu-dresden.de/tk/Resources/Software/YATS/yats.html">here</a>.</p>
+
+
+
+
+
+<p>
+
+
+
+
+An event scheduler, network elements, data objects and&nbsp; <a href="http://www.lua.org/">Lua</a>
+&nbsp;constitute the kernel of the system. Basic network elements
+like
+different source types, (de)multiplexers, delay lines, measurement
+devices and graphical online-displays are provided.</p>
+<p>
+
+
+
+
+Lua is used as configuration&nbsp;
+language for the problem description. The simulator itself is written
+in C++. Lua bindings for all objects are generated automatically from
+header files using the binding tool <a href="http://www.codenix.com/%7Etolua/">tolua++</a>.
+Means are provided for programming network elements in Lua. This allows
+rapid prototyping without the need for re-compilation.</p>
+
+
+
+
+
+<p>The program expects the name of an input file:</p><pre>luayats OPTIONS input-files</pre><p>
+
+
+
+
+The input file is a standard Lua script. It contains a description of
+the model configuration and commands to the simulation kernel (like:
+simulate 1 million time slots) and to the model objects (like: return
+losses in a multiplexer). Model description, simulation control and
+result analysis are eased by utilising a standard script language as
+additional librariese can dynamically be loaded and the user has full
+access to the widgets of the GUI. </p>
+<p>Objects communicate with other ones and with the simulation kernel by
+unified methods.</p><h2><a name="apiref"></a>API Reference and Documentation</h2><p>In
+order to minimize the maintenance effort for Luayats documentation, the
+Luayats API&nbsp;is documented in the source files, on C++ and on Lua
+level. <a style="font-weight: bold;" href="cpp/html/index.html">C++ level documentation</a> is generated using <a href="http://www.stack.nl/%7Edimitri/doxygen/index.html">doxygen</a> and the&nbsp;<a href="lua/index.html"><span style="font-weight: bold;">Lua level documentation</span></a> is generated using <a href="http://luadoc.luaforge.net/">luadoc</a>.</p><p>Note, that not all function and members implemented of C++&nbsp;classes are part of the Lua binding.</p><p>There is an <a href="refindex.html"><span style="font-weight: bold;">API Reference Index</span></a>, which lists all modules, functions, variables constants and
+classes with their C and Lua based members and methods. This index
+provides links to <a href="lua/index.html"><span style="font-weight: bold;">Lua level documentation</span></a> and the&nbsp;<a style="font-weight: bold;" href="cpp/html/index.html">C++ level documentation.</a></p><p>The
+API Reference Index can be created after doxygen has run
+and&nbsp;created the required external tag file. Both steps are also
+available via make.</p><pre><span style="font-family: monospace;">luayats -d doc/cpp/luayats.tags</span></pre><p>The info file can be generated via</p><pre><span style="font-family: monospace;">luayats -i &lt;WHAT&gt; &gt; INFO</span></pre><p>The parameter &lt;WHAT&gt; specifies what type of information is created. Using <span style="font-family: monospace;">-i all </span>creates a structured list of all values in the Luayats binding.</p><p>Within the GUI the menu item <span style="font-family: monospace;">Help -&gt; Bindings<span style="font-family: Arial,Helvetica,sans-serif;"> opens a tree view on the INFO file.&nbsp;</span></span></p><h2><a name="inputfile"></a>Example Input File</h2><p>
+
+
+
+
+The input file contains a series of statements which can represent
+network object declarations and commands. Each network objects requires
+a unique name. Luayats keeps track of the object names and issues a
+warning if the user tries to assign an already defined name to an
+object. The constructor of the object class returns a reference to the
+object, which can be stored in any kind of Lua variable (global or
+local) for later usage. Note, that the simulation script always runs in
+it's own environment avoiding name conflicts with other Lua variables.</p>
+
+
+
+
+
+<p>
+
+
+
+
+All parameters are are collected in a parameter table. Each parameter
+is given with name and value. For classes with outputs, the names of
+the succeeding objects and their pins are given in the statement. The
+name can be stated either directly or can be taken from
+the&nbsp;member&nbsp;<span style="font-family: monospace;">name</span>
+of a previously defined object. Defining the successors&nbsp;
+defines the network structure.</p>
+<p>
+
+
+
+
+Simulation control and result analysis are realized by member variables
+and methods calls to the defined objects. </p>
+
+
+
+
+
+<p>The object&nbsp;<a href="lua/files/yats/core.html#sim:connect">yats.sim</a>
+is the predefined simulation kernel object, whicih provides a number of
+general purpose methods. </p>
+
+
+
+
+
+<p>Additionally, measurement devices with graphical online displays can be
+defined. Such a&nbsp;measurement device&nbsp;asks another
+network
+objects for exported addresses of variables and evaluates them, e.g.
+into a histogram. The display associated with the measurement
+instrument will then display the result in a graphical window.</p>
+
+
+
+
+
+<p>This type of layering ensures that the complexity of network objects is
+independent of the possibilities for measurement and online display.
+The direct access of exported objects also minimises the overhead of
+communication between network objects resulting in a very fast display
+operation.</p>
+
+
+
+
+
+<p>Here is a simple <a href="examples/sample_1.lua">Example</a>:
+&nbsp;</p><pre>--<br />-- Example input file<br />--<br />require "yats.src"<br /><br />-- Set the following expression to true, in order to control random<br />-- number generation<br />if false then<br />  yats.sim:setRand(1)<br />end<br /><br />-- Some predefined values<br />nsrc, load  = 10, 0.95<br />source = {}<br /><br />--A number of Bernoulli sources:<br />for i = 1, nsrc do<br />  source[i] = yats.geosrc{<br />    "bernoulli"..i,<br />    ed = nsrc/load,<br />    vci = i,<br />    out = {"multiplexer", "in"..i}<br />  }<br />end<br /><br />--A multiplexer with buffer size 20<br />mux = yats.mux{<br />  "multiplexer",<br />  ninp = nsrc,<br />  buff = 20,<br />  out = {"sink","sink"}<br />}<br /><br />--A sink which "eats" the data<br />sink = yats.sink{"sink"}<br /><br />--simulate 100000 time slots<br />yats.sim:run(100000)<br /><br />-- print results<br />sent, received = 0, 0;<br /><br />for i = 1, nsrc do<br />  sent = sent + source[i]:getCounter()<br />end<br />received = sink:getCounter()<br /><br />-- Print (use string concatenation)<br />print("cells sent: " .. sent)<br />print("cells received: " .. received)<br /><br />-- Print (use c-like format expression)<br />print(string.format("CLR in mux: %.3f percent",<br />                    mux:getLosses(1, nsrc) *100 / sent))<br /><br />-- end of example</pre><p></p>
+
+</div>
+<div id="footer"><small>(c) 2003-2009 Herbert Leuwer, April 2009&nbsp;&nbsp;
+&nbsp;<a href="mailto:herbert.leuwer@t-online.de">Contact</a></small></div>
+</body></html>

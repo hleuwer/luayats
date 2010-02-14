@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li><strong>yats/getopt.lua</strong></li>
+	
+	<li>
+		<a href="../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/getopt.lua</code></h1>
+
+
+<p>Luayats - Command line option parsing for Lua 5 <br> <br><b>module: getopt</b><br> <br> This module provides a single function 'getopt'. It allows command line option parsing in Lua. Both short and long options are supported similar to the GNU 'getopt' library. </p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;Herbert Leuwer, 2003.</p>
+
+
+<p><small><b>Release:</b> 3.0 $Id: getopt.lua 222 2009-06-06 05:51:35Z leuwer $</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#getopt">getopt</a>&nbsp;(arg, options, long_options, ignore_err)</td>
+	<td class="summary">Parse command line options.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="getopt"></a><strong>getopt</strong>&nbsp;(arg, options, long_options, ignore_err)</dt>
+<dd>
+Parse command line options. ~ Long options are described in a table of the following format: <pre> longopts = {<br> {"all",     "o", "a", foo},<br> {"verbose", "n", "v"},<br> {"output",  "r", "?"}<br> } </pre> The function returns 2 tables: 'opts' is an option descriptor of the form <code>opts = {opt, arg, sopt}</code>, where 'opt' contains the options string, 'arg' contains an eventual argument and 'sopt' contains a short option equivalent. <ul> <li> The first (mandatory) entry contains the name of the long option. <li> The second (mandatory) entry contains a flag that mark whether an argument to the options is 'o'=optional, 'n'=not required or 'r'=required. <li> The third (mandatory) entry defines a short option equivalent, that is afterwards found in 'opt.sopt'. <li> The fourth (optional) entry defines a function that is called when an option is found. This can be used to act directly on options, e.g. to set a program flag. The function receives the option descriptor as argument. </ul>
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  arg: table - Table with arguments from command line.
+	</li>
+	
+	<li>
+	  options: string - Short options descriptor.
+	</li>
+	
+	<li>
+	  long_options: table - Table describing long options.
+	</li>
+	
+	<li>
+	  ignore_err: Error handling flag.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+opts, args, err: Option descriptor table, argument table and error message.
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

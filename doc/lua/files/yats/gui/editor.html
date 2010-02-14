@@ -1,0 +1,3204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li><strong>yats/gui/editor.lua</strong></li>
+	
+	<li>
+		<a href="../../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/gui/editor.lua</code></h1>
+
+
+<p>Luayats - Main GUI element - Notebook. <br> <br><b>module: gui</b><br> <br> This module implements a multi-window text editor and provides GUI elements for editing and simulation. </p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;Herbert Leuwer, 2009.</p>
+
+
+<p><small><b>Release:</b> 4.0 $Id$</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#apply">apply</a>&nbsp;(self, state)</td>
+	<td class="summary">Apply state to a buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#basename">basename</a>&nbsp;(path)</td>
+	<td class="summary">Basename of file given by fullpath  </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#cancel">cancel</a>&nbsp;(self)</td>
+	<td class="summary">Cancel given timer </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#catch">catch</a>&nbsp;(self)</td>
+	<td class="summary">Catch the state of a buffer (for undo/redo).</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#destroy">destroy</a>&nbsp;(self)</td>
+	<td class="summary">Destroy given timer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#destroy">destroy</a>&nbsp;(self)</td>
+	<td class="summary">Destroy given timer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#editor">editor</a>&nbsp;(title, icon, ...)</td>
+	<td class="summary">The editor.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#finder">finder</a>&nbsp;()</td>
+	<td class="summary">Find Dialog constructor.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#getcaret">getcaret</a>&nbsp;(self)</td>
+	<td class="summary">Get the cursor position in a buffer (row and col).</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#getcursor">getcursor</a>&nbsp;(self)</td>
+	<td class="summary">Retrieve cursor position in buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#getselection">getselection</a>&nbsp;(self)</td>
+	<td class="summary">Retrieve coordinates of selection in a buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#gotoline">gotoline</a>&nbsp;()</td>
+	<td class="summary">Gotoline constructor Constructor.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#highlight">highlight</a>&nbsp;(self, tok)</td>
+	<td class="summary">Perform a syntax highlighting step in a buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#incrementalfinder">incrementalfinder</a>&nbsp;()</td>
+	<td class="summary">Incremental Finder Constructor.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.about">notebook.about</a>&nbsp;(self)</td>
+	<td class="summary">Display an information dialog.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.addrecent">notebook.addrecent</a>&nbsp;(self, fname)</td>
+	<td class="summary">Add file to notebook's recent file list.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.append">notebook.append</a>&nbsp;(self, title, content, tip, protected)</td>
+	<td class="summary">Create and append a new buffer </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.bindings">notebook.bindings</a>&nbsp;(self)</td>
+	<td class="summary">Show a dialog with Luayats bindings.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.buffer">notebook.buffer</a>&nbsp;(this, content, self)</td>
+	<td class="summary">Create a text buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.check">notebook.check</a>&nbsp;(self)</td>
+	<td class="summary">Syntax check the current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.checkbuf">notebook.checkbuf</a>&nbsp;(self, buf)</td>
+	<td class="summary">Syntax check (Lua) the given buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.clearlog">notebook.clearlog</a>&nbsp;(self)</td>
+	<td class="summary">Clear logging buffer and logging ringbuffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.close">notebook.close</a>&nbsp;(self, Notebook)</td>
+	<td class="summary">Closes (and saves if necessary) the  current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.closeall">notebook.closeall</a>&nbsp;(self)</td>
+	<td class="summary">Close and save all buffers.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.closeopt">notebook.closeopt</a>&nbsp;(self, save, none.)</td>
+	<td class="summary">Close the configuration edit buffer w/o saveing.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.copy">notebook.copy</a>&nbsp;(self)</td>
+	<td class="summary">Copy selection in current buffer to clipboard.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.cut">notebook.cut</a>&nbsp;(self)</td>
+	<td class="summary">Cut selection in current buffer to clipboard.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.defaultopt">notebook.defaultopt</a>&nbsp;(self, none.)</td>
+	<td class="summary">Revert configuration edit buffer content to default.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.deffont">notebook.deffont</a>&nbsp;(self)</td>
+	<td class="summary">Define font for buffer contents.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.dialog">notebook.dialog</a>&nbsp;(self)</td>
+	<td class="summary">Return notebook's dialog handle.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.editopt">notebook.editopt</a>&nbsp;(self)</td>
+	<td class="summary">Edit configuration in a text buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.exit">notebook.exit</a>&nbsp;(self, none.)</td>
+	<td class="summary">Exit Luayats.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.find">notebook.find</a>&nbsp;(self)</td>
+	<td class="summary">Find text using find dialog.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.findincremental">notebook.findincremental</a>&nbsp;(self, forceoff)</td>
+	<td class="summary">Incremental find in current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.findnext">notebook.findnext</a>&nbsp;(self)</td>
+	<td class="summary">Find iternator - next match.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.gc">notebook.gc</a>&nbsp;(self)</td>
+	<td class="summary">Perform a Luayats garbage collection (complete).</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.getbuf">notebook.getbuf</a>&nbsp;(self)</td>
+	<td class="summary">Retrieve handle of current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.gettitle">notebook.gettitle</a>&nbsp;(self)</td>
+	<td class="summary">Retrieve title of current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.goto">notebook.goto</a>&nbsp;(self, forceoff)</td>
+	<td class="summary">Set cursor and scroll to line.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.help">notebook.help</a>&nbsp;(self)</td>
+	<td class="summary">Show Luayats help in the system's default browser.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.highlight">notebook.highlight</a>&nbsp;(self)</td>
+	<td class="summary">Syntax highlight current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.highlightall">notebook.highlightall</a>&nbsp;(self)</td>
+	<td class="summary">Syntax highlight the current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.mark">notebook.mark</a>&nbsp;(self, value)</td>
+	<td class="summary">Mark current buffer changed/unchanged.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.message">notebook.message</a>&nbsp;(self, msg, time)</td>
+	<td class="summary">Display a message for some time in statusbar.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.next">notebook.next</a>&nbsp;(self)</td>
+	<td class="summary">Move to next buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.objectbrowser">notebook.objectbrowser</a>&nbsp;(self, onoff)</td>
+	<td class="summary">Open or close the object browser.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.open">notebook.open</a>&nbsp;(self, filename, addrecent, addrescent)</td>
+	<td class="summary">Open a file using file dialog into a buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.optdialog">notebook.optdialog</a>&nbsp;(self)</td>
+	<td class="summary">Opens the configuration settings dialog.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.paste">notebook.paste</a>&nbsp;(self)</td>
+	<td class="summary">Paste clipboard content into current buffer at cursor.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.prev">notebook.prev</a>&nbsp;(self)</td>
+	<td class="summary">Move to previous buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.remove">notebook.remove</a>&nbsp;(self)</td>
+	<td class="summary">Remove current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.removebuf">notebook.removebuf</a>&nbsp;(self, buf)</td>
+	<td class="summary">Remove given buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.rename">notebook.rename</a>&nbsp;(self, title)</td>
+	<td class="summary">Rename the current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.replace">notebook.replace</a>&nbsp;(self)</td>
+	<td class="summary">Replace text using replace dialog.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.reuse">notebook.reuse</a>&nbsp;(self, title, content, tip)</td>
+	<td class="summary">Reuse current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.save">notebook.save</a>&nbsp;(self)</td>
+	<td class="summary">Save the current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.saveall">notebook.saveall</a>&nbsp;(self)</td>
+	<td class="summary">Save all unsaved buffers.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.saveas">notebook.saveas</a>&nbsp;(self)</td>
+	<td class="summary">Save current buffer unconditionally in file.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.savelog">notebook.savelog</a>&nbsp;(self)</td>
+	<td class="summary">Save logging ring into 'luayats.log'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.saveopt">notebook.saveopt</a>&nbsp;(self)</td>
+	<td class="summary">Save opened configuration into $HOME/.luayatsrc.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.select">notebook.select</a>&nbsp;(self, buf)</td>
+	<td class="summary">Select a buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.setfont">notebook.setfont</a>&nbsp;(self, font, flag, command)</td>
+	<td class="summary">Set buffer font.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.settitle">notebook.settitle</a>&nbsp;(self, s, marked)</td>
+	<td class="summary">Set title of current buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.showlog">notebook.showlog</a>&nbsp;(self)</td>
+	<td class="summary">Shows logging in new buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.simtime">notebook.simtime</a>&nbsp;(self, func)</td>
+	<td class="summary">Display the simulation state and time in the statusbar.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.statuswindow">notebook.statuswindow</a>&nbsp;(self, onoff, text)</td>
+	<td class="summary">Show/Hide the status window.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.timer">notebook.timer</a>&nbsp;(self, time, action, cyclic, ...)</td>
+	<td class="summary">Creates a timer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.version">notebook.version</a>&nbsp;(self)</td>
+	<td class="summary">Display a deeper information dialog.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#notebook.warn">notebook.warn</a>&nbsp;(self, what)</td>
+	<td class="summary">Warning dialog.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#objectbrowser">objectbrowser</a>&nbsp;(treetab)</td>
+	<td class="summary">Create an objectbrowser box.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#read">read</a>&nbsp;(self, fname)</td>
+	<td class="summary">Read file into buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#redo">redo</a>&nbsp;(self)</td>
+	<td class="summary">Redo a previously undone action in a buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#replacer">replacer</a>&nbsp;()</td>
+	<td class="summary">Replace Dialog Constructor.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#scroll">scroll</a>&nbsp;(self, row, col)</td>
+	<td class="summary">Scroll to the given position.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#search">search</a>&nbsp;(self, pattern, word, case, backwards, wrap, plain)</td>
+	<td class="summary">Search for a text pattern in a buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#setcaret">setcaret</a>&nbsp;(self, row, col)</td>
+	<td class="summary">Set the cursor position in a buffer (row and col).</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#setcursor">setcursor</a>&nbsp;(self, pos)</td>
+	<td class="summary">Set the cursor position in a buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#setselection">setselection</a>&nbsp;(self, posbeg, posend)</td>
+	<td class="summary">Select text in a buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#splitname">splitname</a>&nbsp;(path)</td>
+	<td class="summary">Dirname and filename of a file given by fullpath  </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#start">start</a>&nbsp;(self)</td>
+	<td class="summary">Start given timer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#statuswindow">statuswindow</a>&nbsp;()</td>
+	<td class="summary">Statuswindow Constructor.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#undo">undo</a>&nbsp;(self)</td>
+	<td class="summary">Undo an action in a buffer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#write">write</a>&nbsp;(self, fname)</td>
+	<td class="summary">Write buffer content to file.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="apply"></a><strong>apply</strong>&nbsp;(self, state)</dt>
+<dd>
+Apply state to a buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+	<li>
+	  state: State catched via buf:catch().
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="basename"></a><strong>basename</strong>&nbsp;(path)</dt>
+<dd>
+Basename of file given by fullpath 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  path: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="cancel"></a><strong>cancel</strong>&nbsp;(self)</dt>
+<dd>
+Cancel given timer
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Timer handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="catch"></a><strong>catch</strong>&nbsp;(self)</dt>
+<dd>
+Catch the state of a buffer (for undo/redo). The state can be used to restore a buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Catched state.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="destroy"></a><strong>destroy</strong>&nbsp;(self)</dt>
+<dd>
+Destroy given timer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Timer handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="destroy"></a><strong>destroy</strong>&nbsp;(self)</dt>
+<dd>
+Destroy given timer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Timer handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="editor"></a><strong>editor</strong>&nbsp;(title, icon, ...)</dt>
+<dd>
+The editor. Opens the GUI.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  title: Dialog title.
+	</li>
+	
+	<li>
+	  icon: Dialog icon to use.
+	</li>
+	
+	<li>
+	  ...: File list.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Dialog handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="finder"></a><strong>finder</strong>&nbsp;()</dt>
+<dd>
+Find Dialog constructor.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+Dialog handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="getcaret"></a><strong>getcaret</strong>&nbsp;(self)</dt>
+<dd>
+Get the cursor position in a buffer (row and col).
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Cursor position row, col.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="getcursor"></a><strong>getcursor</strong>&nbsp;(self)</dt>
+<dd>
+Retrieve cursor position in buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Cursor position (characters).
+
+
+
+</dd>
+
+
+
+
+<dt><a name="getselection"></a><strong>getselection</strong>&nbsp;(self)</dt>
+<dd>
+Retrieve coordinates of selection in a buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Start and End of selection (characters).
+
+
+
+</dd>
+
+
+
+
+<dt><a name="gotoline"></a><strong>gotoline</strong>&nbsp;()</dt>
+<dd>
+Gotoline constructor Constructor.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+Status box handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="highlight"></a><strong>highlight</strong>&nbsp;(self, tok)</dt>
+<dd>
+Perform a syntax highlighting step in a buffer. The given lexer token function is used to find a token in the buffer and highlight it according highlighting rules.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+	<li>
+	  tok: Lexer token function.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Found token ('keyword', 'comment', 'string', 'iden') and end position of the token.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="incrementalfinder"></a><strong>incrementalfinder</strong>&nbsp;()</dt>
+<dd>
+Incremental Finder Constructor.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+Searchbox handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.about"></a><strong>notebook.about</strong>&nbsp;(self)</dt>
+<dd>
+Display an information dialog.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.addrecent"></a><strong>notebook.addrecent</strong>&nbsp;(self, fname)</dt>
+<dd>
+Add file to notebook's recent file list.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  fname: Filename.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.append"></a><strong>notebook.append</strong>&nbsp;(self, title, content, tip, protected)</dt>
+<dd>
+Create and append a new buffer
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  title: Title of the buffer's tab.
+	</li>
+	
+	<li>
+	  content: Content string.
+	</li>
+	
+	<li>
+	  tip: Tip to show when mouse enters the buffer canvas.
+	</li>
+	
+	<li>
+	  protected: Buffer is protected (true) not (nil, false).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to the buffer. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.bindings"></a><strong>notebook.bindings</strong>&nbsp;(self)</dt>
+<dd>
+Show a dialog with Luayats bindings.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.buffer"></a><strong>notebook.buffer</strong>&nbsp;(this, content, self)</dt>
+<dd>
+Create a text buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  this: 
+	</li>
+	
+	<li>
+	  content: New content.
+	</li>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to the buffer. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.check"></a><strong>notebook.check</strong>&nbsp;(self)</dt>
+<dd>
+Syntax check the current buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.checkbuf"></a><strong>notebook.checkbuf</strong>&nbsp;(self, buf)</dt>
+<dd>
+Syntax check (Lua) the given buffer. Uses the status window and text selection to direct the user to syntax problems.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  buf: Buffer handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.clearlog"></a><strong>notebook.clearlog</strong>&nbsp;(self)</dt>
+<dd>
+Clear logging buffer and logging ringbuffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.close"></a><strong>notebook.close</strong>&nbsp;(self, Notebook)</dt>
+<dd>
+Closes (and saves if necessary) the  current buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: 
+	</li>
+	
+	<li>
+	  Notebook: handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+true on success, nil + error on failure. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.closeall"></a><strong>notebook.closeall</strong>&nbsp;(self)</dt>
+<dd>
+Close and save all buffers.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+true on success, nil + error on failure. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.closeopt"></a><strong>notebook.closeopt</strong>&nbsp;(self, save, none.)</dt>
+<dd>
+Close the configuration edit buffer w/o saveing.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  save: 
+	</li>
+	
+	<li>
+	  none.: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.copy"></a><strong>notebook.copy</strong>&nbsp;(self)</dt>
+<dd>
+Copy selection in current buffer to clipboard.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+selected text. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.cut"></a><strong>notebook.cut</strong>&nbsp;(self)</dt>
+<dd>
+Cut selection in current buffer to clipboard.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+selected text. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.defaultopt"></a><strong>notebook.defaultopt</strong>&nbsp;(self, none.)</dt>
+<dd>
+Revert configuration edit buffer content to default.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  none.: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.deffont"></a><strong>notebook.deffont</strong>&nbsp;(self)</dt>
+<dd>
+Define font for buffer contents.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Font in host OS representation. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.dialog"></a><strong>notebook.dialog</strong>&nbsp;(self)</dt>
+<dd>
+Return notebook's dialog handle.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Dialog handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.editopt"></a><strong>notebook.editopt</strong>&nbsp;(self)</dt>
+<dd>
+Edit configuration in a text buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.exit"></a><strong>notebook.exit</strong>&nbsp;(self, none.)</dt>
+<dd>
+Exit Luayats.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  none.: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.find"></a><strong>notebook.find</strong>&nbsp;(self)</dt>
+<dd>
+Find text using find dialog. Found text is selected.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.findincremental"></a><strong>notebook.findincremental</strong>&nbsp;(self, forceoff)</dt>
+<dd>
+Incremental find in current buffer. Found text is selected. Closes dialog element if forceoff is set.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  forceoff: End incremental find.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.findnext"></a><strong>notebook.findnext</strong>&nbsp;(self)</dt>
+<dd>
+Find iternator - next match. Found text is selected.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.gc"></a><strong>notebook.gc</strong>&nbsp;(self)</dt>
+<dd>
+Perform a Luayats garbage collection (complete).
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.getbuf"></a><strong>notebook.getbuf</strong>&nbsp;(self)</dt>
+<dd>
+Retrieve handle of current buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Handle of buffer. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.gettitle"></a><strong>notebook.gettitle</strong>&nbsp;(self)</dt>
+<dd>
+Retrieve title of current buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Title of current buffer. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.goto"></a><strong>notebook.goto</strong>&nbsp;(self, forceoff)</dt>
+<dd>
+Set cursor and scroll to line.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  forceoff: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.help"></a><strong>notebook.help</strong>&nbsp;(self)</dt>
+<dd>
+Show Luayats help in the system's default browser.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.highlight"></a><strong>notebook.highlight</strong>&nbsp;(self)</dt>
+<dd>
+Syntax highlight current buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.highlightall"></a><strong>notebook.highlightall</strong>&nbsp;(self)</dt>
+<dd>
+Syntax highlight the current buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.mark"></a><strong>notebook.mark</strong>&nbsp;(self, value)</dt>
+<dd>
+Mark current buffer changed/unchanged.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  value: Change flag (true/false).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.message"></a><strong>notebook.message</strong>&nbsp;(self, msg, time)</dt>
+<dd>
+Display a message for some time in statusbar.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  msg: 
+	</li>
+	
+	<li>
+	  time: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.next"></a><strong>notebook.next</strong>&nbsp;(self)</dt>
+<dd>
+Move to next buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Next buffer handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.objectbrowser"></a><strong>notebook.objectbrowser</strong>&nbsp;(self, onoff)</dt>
+<dd>
+Open or close the object browser.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  onoff: Show/Hide object browser.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.open"></a><strong>notebook.open</strong>&nbsp;(self, filename, addrecent, addrescent)</dt>
+<dd>
+Open a file using file dialog into a buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  filename: Filename.
+	</li>
+	
+	<li>
+	  addrecent: 
+	</li>
+	
+	<li>
+	  addrescent: Flags (boolean) to add file to recent list.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Buffer content. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.optdialog"></a><strong>notebook.optdialog</strong>&nbsp;(self)</dt>
+<dd>
+Opens the configuration settings dialog.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.paste"></a><strong>notebook.paste</strong>&nbsp;(self)</dt>
+<dd>
+Paste clipboard content into current buffer at cursor.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+selected text. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.prev"></a><strong>notebook.prev</strong>&nbsp;(self)</dt>
+<dd>
+Move to previous buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Previous buffer handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.remove"></a><strong>notebook.remove</strong>&nbsp;(self)</dt>
+<dd>
+Remove current buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle. The buffer is not destroyed.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Handle of removed buffer. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.removebuf"></a><strong>notebook.removebuf</strong>&nbsp;(self, buf)</dt>
+<dd>
+Remove given buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle. The buffer is not destroyed.
+	</li>
+	
+	<li>
+	  buf: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Handle of removed buffer. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.rename"></a><strong>notebook.rename</strong>&nbsp;(self, title)</dt>
+<dd>
+Rename the current buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  title: New title.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.replace"></a><strong>notebook.replace</strong>&nbsp;(self)</dt>
+<dd>
+Replace text using replace dialog.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.reuse"></a><strong>notebook.reuse</strong>&nbsp;(self, title, content, tip)</dt>
+<dd>
+Reuse current buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  title: Title for this buffer.
+	</li>
+	
+	<li>
+	  content: Content string.
+	</li>
+	
+	<li>
+	  tip: Tip to show when the mouse enters the buffer's canvas.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reused buffer. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.save"></a><strong>notebook.save</strong>&nbsp;(self)</dt>
+<dd>
+Save the current buffer. Asks for a filename if not already saved.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+true on success, nil + error on failure. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.saveall"></a><strong>notebook.saveall</strong>&nbsp;(self)</dt>
+<dd>
+Save all unsaved buffers.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+true on success, nil + error on failure. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.saveas"></a><strong>notebook.saveas</strong>&nbsp;(self)</dt>
+<dd>
+Save current buffer unconditionally in file. Asks for a filename.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+true on success, nil + error on failure. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.savelog"></a><strong>notebook.savelog</strong>&nbsp;(self)</dt>
+<dd>
+Save logging ring into 'luayats.log'.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.saveopt"></a><strong>notebook.saveopt</strong>&nbsp;(self)</dt>
+<dd>
+Save opened configuration into $HOME/.luayatsrc.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.select"></a><strong>notebook.select</strong>&nbsp;(self, buf)</dt>
+<dd>
+Select a buffer. Selects a specific buffer as active buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  buf: Handle to new active buffer.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.setfont"></a><strong>notebook.setfont</strong>&nbsp;(self, font, flag, command)</dt>
+<dd>
+Set buffer font.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  font: Font to apply.
+	</li>
+	
+	<li>
+	  flag: 
+	</li>
+	
+	<li>
+	  command: 'all': all buffers, 'current': current buffer.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.settitle"></a><strong>notebook.settitle</strong>&nbsp;(self, s, marked)</dt>
+<dd>
+Set title of current buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  s: New Title for the buffer.
+	</li>
+	
+	<li>
+	  marked: Set the change mark '*' in the title.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.showlog"></a><strong>notebook.showlog</strong>&nbsp;(self)</dt>
+<dd>
+Shows logging in new buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.simtime"></a><strong>notebook.simtime</strong>&nbsp;(self, func)</dt>
+<dd>
+Display the simulation state and time in the statusbar.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  func: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.statuswindow"></a><strong>notebook.statuswindow</strong>&nbsp;(self, onoff, text)</dt>
+<dd>
+Show/Hide the status window.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  onoff: Show or hide (true or false).
+	</li>
+	
+	<li>
+	  text: Text to show.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.timer"></a><strong>notebook.timer</strong>&nbsp;(self, time, action, cyclic, ...)</dt>
+<dd>
+Creates a timer. Timer must be started programmatically.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  time: Time in ms.
+	</li>
+	
+	<li>
+	  action: Function with action to perform on timeout.
+	</li>
+	
+	<li>
+	  cyclic: Time shoots cyclically (true) or not (false or nil).
+	</li>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+timer handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.version"></a><strong>notebook.version</strong>&nbsp;(self)</dt>
+<dd>
+Display a deeper information dialog.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="notebook.warn"></a><strong>notebook.warn</strong>&nbsp;(self, what)</dt>
+<dd>
+Warning dialog.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Notebook handle.
+	</li>
+	
+	<li>
+	  what: Type of warning: 'close', 'find'.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+'yes', 'no', 'cancel' depending on buttons. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="objectbrowser"></a><strong>objectbrowser</strong>&nbsp;(treetab)</dt>
+<dd>
+Create an objectbrowser box.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  treetab: Table representation of tree to show.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to browser box. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="read"></a><strong>read</strong>&nbsp;(self, fname)</dt>
+<dd>
+Read file into buffer. If no filename is given the buffer path property is used.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+	<li>
+	  fname: Filename.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="redo"></a><strong>redo</strong>&nbsp;(self)</dt>
+<dd>
+Redo a previously undone action in a buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="replacer"></a><strong>replacer</strong>&nbsp;()</dt>
+<dd>
+Replace Dialog Constructor.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+Dialog handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="scroll"></a><strong>scroll</strong>&nbsp;(self, row, col)</dt>
+<dd>
+Scroll to the given position.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+	<li>
+	  row: Row to scroll to.
+	</li>
+	
+	<li>
+	  col: Column to scroll to.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="search"></a><strong>search</strong>&nbsp;(self, pattern, word, case, backwards, wrap, plain)</dt>
+<dd>
+Search for a text pattern in a buffer. Lua pattern matching rules apply.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+	<li>
+	  pattern: Search pattern (Lua style)
+	</li>
+	
+	<li>
+	  word: Search whole word ('on' or 'off').
+	</li>
+	
+	<li>
+	  case: Search case sensitive ('on' or 'off').
+	</li>
+	
+	<li>
+	  backwards: Search backwards ('on' or 'off').
+	</li>
+	
+	<li>
+	  wrap: Wrap to start/end when end/start is reached.
+	</li>
+	
+	<li>
+	  plain: Do a plain search w/o pattern matching.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+true if pattern found, false otherwise.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="setcaret"></a><strong>setcaret</strong>&nbsp;(self, row, col)</dt>
+<dd>
+Set the cursor position in a buffer (row and col).
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+	<li>
+	  row: Row of new cursor position.
+	</li>
+	
+	<li>
+	  col: Column of new cursor position.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="setcursor"></a><strong>setcursor</strong>&nbsp;(self, pos)</dt>
+<dd>
+Set the cursor position in a buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle
+	</li>
+	
+	<li>
+	  pos: New cursor position (characters).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="setselection"></a><strong>setselection</strong>&nbsp;(self, posbeg, posend)</dt>
+<dd>
+Select text in a buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+	<li>
+	  posbeg: Start of selection (characters).
+	</li>
+	
+	<li>
+	  posend: End of selection (characters).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="splitname"></a><strong>splitname</strong>&nbsp;(path)</dt>
+<dd>
+Dirname and filename of a file given by fullpath 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  path: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="start"></a><strong>start</strong>&nbsp;(self)</dt>
+<dd>
+Start given timer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Timer handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="statuswindow"></a><strong>statuswindow</strong>&nbsp;()</dt>
+<dd>
+Statuswindow Constructor.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+Status box handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="undo"></a><strong>undo</strong>&nbsp;(self)</dt>
+<dd>
+Undo an action in a buffer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="write"></a><strong>write</strong>&nbsp;(self, fname)</dt>
+<dd>
+Write buffer content to file. If no filename is given the buffer path property is used. The path property is set.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: Buffer handle.
+	</li>
+	
+	<li>
+	  fname: Filename (full path).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

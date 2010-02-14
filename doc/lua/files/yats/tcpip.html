@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li><strong>yats/tcpip.lua</strong></li>
+	
+	<li>
+		<a href="../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/tcpip.lua</code></h1>
+
+
+<p>Luayats - TCPIP classes. <br> <br><b>module: yats</b><br> <br> Lua classes for TCP/IP simulation. </p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer, Backnang.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;GNU Public License.</p>
+
+
+<p><small><b>Release:</b> 3.0 $Id: tcpip.lua 222 2009-06-06 05:51:35Z leuwer $</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#cbrframe:init">cbrframe:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'cbrframe'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#tcpiprec:init">tcpiprec:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'tcpiprecv'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#tcpipsend:init">tcpipsend:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'tcpipsend'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#termStartStop:init">termStartStop:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'termStartStop'.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="cbrframe:init"></a><strong>cbrframe:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'cbrframe'.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN". <li>delta<br> Gap in ticks between frames. <li>len<br> Length of the frames. <li>start_time (optional)<br> Start time in ticks. Default: self.delta. <li>end_time (optional)<br> End time in ticks. Default: -self.delta (never). <li>bytes (optional)<br> Bytes to send. Default: -self.len (unlimited). <li>connid<br> A generic connection id. <li>out<br> Connection to successor; Format: {"name-of-successor", "input-pin-of-successor"}. </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="tcpiprec:init"></a><strong>tcpiprec:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'tcpiprecv'. The tcpiprecv object implements a TCPIP receiver. It operates in cooperation with the object tcpipsend. It advertises it's window size during connection setup to the sender. <br> The object implements the start/stop prototol at the output. The successor may stop the receiver which results in a closing window towards the tcpip sender. If a data object is received at the tcpip's 'start' input it resumes data transfer to the successor. <br> The node has 2 inputs and 2 outputs. The input 'data' receives the TCP frames. Input 'start' receives  messages to resume data transfer to the successor. <br> Output 0 forwards the data and output 1 sends acknowledge packets to the TCPIP sender.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN". <li>wnd<br> Receive window size. <li>ackdel (optional)<br> Delay of delayed ACKs in ms. Default: 200 ms. <li>phef (optional)<br> Phase effect compensation on/off (proctim). Default: false (off). <li>iackdel (optional)<br> Delay of immediate ACKs in s. Default: same as proctim. <li>proctim (optional)<br> Processing time in s. Default: 0.3 ms. <li>keepalive (optional)<br> Keepalive timer in s. Default: no timer. <li>out<br> Connection to successor. Format: {{"name-of-data-successor", "input-pin-of-data-successor"} {"name-of-tcpisend", "InpAck"}}. </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="tcpipsend:init"></a><strong>tcpipsend:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'tcpipsend'. Data received at the input is sent via TCP protocol to a receiving object of class 'tcpiprecv'. The object tcpipsend implements the start/stop protocol and implements the following TCP algorithms: <br> - Slow start and congestion avoidance. <br>  - Silly window avoidance (RFC1122, section 4.2.3.4). <br>  - Nagle's algorithm (can be turned off, default: on) (RFC1122, section 4.2.3.4). <br>  - Karn's algorithm (no RTT measurement during retransmission). <br>  - Fast retransmission and recovery (can be turned off, default: on). <br>  - RTT measurement with TS option according to RFC 1323 (can be turned off, <br>    default: on) <br>. Per packet sent, a processing delay of PROCTIM is included. The exact value is a random value between PROCTIM and 1.1 times PROCTIM. This avoids synchronisation effects between different TCP connections. <br> Timer for zero window probe: if the ACK opening the window again is lost, then the connection falls asleep forever. <br> The node has 2 inputs and 1 output. Input 0 receive the data and input 1 provides a restart input for the start/stop protocol. The output carries the TCP packets.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the object. Default: "objNN". <li>buf<br> Upper bound of send buffer in bytes. <li>bstart (optional)<br> Lower bound for start/stop protocol in bytes. Default is 4096 bytes below upper bound or 0 if upper bound is < 4096 bytes. <li>mtu (optional)<br> Maximum transmission unit in bytes. Default: 1500 bytes. <li>ts (optional)<br> Timestamp option RFC1323 on/off. Default: true (on). <li>nagle (optional)<br> Nagle algorithm on/off. Default: true (on). <li>phef (optional)<br> Phase effect compensation on/off (proctim). Default: false (off). <li>fretr (optional)<br> Fast retransmit/recover on/off. Default: true (on). <li>bitrate (optional, deprecated)<br> Transmission bitrate in bit/s. Default: 149.76 Mbit/s (STM-1). <li>proctim (optional)<br> Processing time in s. Default: 0.3 ms. <li>tick (optional)<br> Time of TCP tick in s. Default: 500 ms. <li>rtomin (optional)<br> Minimum duration of retransmission timer in s. Default: 1.5 s. <li>oqwm (optional)<br> Output queue watermark for new data. The watermark  defines the threshold of the output buffer below which no new data is taken from the input buffer any more. Default: 2 packets. <li>logretr (optional)<br> Logging of retransmission to STDOUT on/off. Default: false (off). <li>rec<br> Name of TCP receiver instance. <li>out<br> Connection to successor. Format: {"name-of-successor", "input-pin-of-successor"}. </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="termStartStop:init"></a><strong>termStartStop:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'termStartStop'. The termStartStop object simply forwards data and terminates the start/stop protocol of Luayats. If the node has been stopped by its successor, but the node at the input continues to send, a buffer overflow occurs. Data transmission resumes, when a data object is received on input 'start'.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN". <li>nbuf<br> Buffer size. Default is 100. <li>out<br> Connection to successor. Format: {"name-of-successor", "input-pin-of-successor"}. </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object instance.
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

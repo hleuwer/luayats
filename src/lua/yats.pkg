@@ -1,0 +1,246 @@
+// ==========================================================================
+// Luayats Package File
+// $Id: yats.pkg 222 2009-06-06 05:51:35Z leuwer $
+// ==========================================================================
+
+//$#include "defs.h"
+$#include "sim.h"
+
+// Some tolua specials
+$#define _nvals self->nvals
+// ==========================================================================
+// Module yats
+// ==========================================================================
+module yats {
+   $[
+     yats.__magic__ = "module"
+   $]
+
+   // -----------------------------------------------------------------------------
+   // from defs.h
+   // -----------------------------------------------------------------------------
+   typedef unsigned int tim_typ; 
+   typedef int size_t;
+
+   #define TIME_LEN 100000
+   #define NILVCI  (-1)
+   #define RAND_MODULO (16384)
+
+   void alarme(event *, tim_typ);
+   void alarml(event *, tim_typ);
+   void eache(event *);
+   void eachl(event *);
+   void unalarme(event *);
+   void unalarml(event *);
+   class root {
+      void root(void);
+      virtual ~root();
+      virtual int act(void);
+      rec_typ rec(data *, int);
+      virtual void early(event *);
+      virtual void late(event *);
+      void restim(void);
+      char *name;
+   };
+
+   class event {
+   public:
+      //	forbid uninitialized events
+      event(root *o, int k);
+  
+      root	*obj;		// the object to activate
+      tim_typ time;		// the time of activation
+      int	key;		// tell different timers from each other
+      int stat;
+      int dyn;
+      event *next;		// for the event lists
+      ~event();
+      //int used;		// TRUE: event is currently used by the scheduler
+   };
+
+   tim_typ SimTime;
+   double SlotLength;
+   double SimTimeReal;
+   int TimeType;
+
+   void	errm0(char *);
+   void	errm1s(char *, char *);
+   void	errm2s(char *, char *, char *);
+   void	errm3s(char *, char *, char *, char *);
+   void	errm4s(char *, char *, char *, char *, char *);
+   void	errm5s(char *, char *, char *, char *, char *, char *);
+   void	errm1d(char *, int);
+   void	errm2d(char *, int, int);
+   void	errm1s1d(char *, char *, int);
+   void	errm1d1s(char *, int, char *);
+   void	errm1s2d(char *, char *, int, int);
+   void	errm2s1d(char *, char *, char *, int);
+   void	errm2s2d(char *, char *, char *, int, int);
+
+   int	get_geo1_handler @ getGeo1Handler(double);
+   tim_typ *get_geo1_table @ getGeo1Table(int);
+   int geo1_rand(int);
+	
+   // -----------------------------------------------------------------------------
+   // from sim.c and sim.h
+   // -----------------------------------------------------------------------------
+   bool cdebug;   
+   sim _sim;
+   event *eventse[TIME_LEN];
+   event *eventsl[TIME_LEN];
+   int flushevents(int);
+
+   class sim {
+      //  int cmd(char *);
+      void connect(void);
+      int run(int);
+      int run(int, int);
+      void stop(void);
+      void reset(int);
+      void SetRand(int);
+      int GetRand(void);
+      void ResetTime_(void);
+      void SetSlotLength(double);
+   };
+   
+   // -----------------------------------------------------------------------------
+   // from: geo1.c
+   // -----------------------------------------------------------------------------
+   //   void my_randomize(void);
+
+   // -----------------------------------------------------------------------------
+   // from: deriv.c
+   // -----------------------------------------------------------------------------
+   //   void fill_type_check_table(void);
+
+   // -----------------------------------------------------------------------------
+   // from: read headers
+   // -----------------------------------------------------------------------------
+   $cfile "../kernel/data.h"
+   $cfile "../kernel/ino.h"
+   $cfile "../kernel/in1out.h"
+   $cfile "../kernel/inxout.h"
+
+   // -----------------------------------------------------------------------------
+   // Specials: mux.h muxBase.h
+   // Note (2009-01-02): we better remove this special handling and access
+   // dynamic created arrays via methods!
+   // -----------------------------------------------------------------------------
+   $#define tol_ninp self->ninp
+   $#define tol_max_vci self->max_vci
+   class mux: public	in1out {
+     unsigned int lost[tol_ninp];
+     unsigned int lostVCI[tol_max_vci];
+     unsigned int lossTot;
+   };
+   class muxBase: public in1out {
+     unsigned int lost[tol_ninp];
+     unsigned int lostVCI[tol_max_vci];
+     unsigned int lossTot;
+   };
+
+   // -----------------------------------------------------------------------------
+   // Special: Agere TM
+   // Note (2009-01-02): we better remove this special handling and access
+   // dynamic created arrays via methods!
+   // -----------------------------------------------------------------------------
+   $#define tol_nTrafficQueue (self->nTrafficQueue+1)
+   $#define tol_nPolicer (self->nPolicer+1)
+   $#define tol_maxconn (self->maxconn+1)
+   class AgereTm: public inxout {
+     AgereTmTrafficQueue *TrafficQueue[tol_nTrafficQueue];	// the traffic queues
+     AgereTmConnParam *connpar[tol_maxconn];		// the connection parameters
+     DualLeakyBucket *policer[tol_nPolicer];      	// the leaky buckets
+     SdwrrScheduler *scheduler; 		// the scheduler
+   };
+      
+   // -----------------------------------------------------------------------------
+   // from: read headers
+   // -----------------------------------------------------------------------------
+
+   $cfile "../kernel/queue.h"
+   $cfile "../kernel/oqueue.h"
+   $cfile "../kernel/special.h"
+   $cfile "../lua/yats.h"
+   $cfile "../lua/version.h"
+   $cfile "../misc/dummy.h"
+   $cfile "../misc/line.h"
+   $cfile "../misc/sink.h"
+   $cfile "../misc/meas.h"
+   $cfile "../misc/meas2.h"
+   $cfile "../misc/meas3.h"
+   $cfile "../misc/distrib.h"
+   $cfile "../src/cbr.h"
+   $cfile "../src/geosrc.h"
+   $cfile "../src/bssrc.h"  
+   $cfile "../src/listsrc.h"
+   $cfile "../src/distsrc.h"
+   $cfile "../src/mmbp.h"
+   $cfile "../src/gmdp.h"
+   $cfile "../src/gmdpstop.h"
+   $cfile "../tcpip/dat2fram.h"
+   $cfile "../tcpip/cbrframe.h"
+   $cfile "../tcpip/tcpiprec.h"
+   $cfile "../tcpip/tcpipsend.h"
+   $cfile "../tcpip/termstrtstp.h"
+   $cfile "../win/winobj.h"
+   $cfile "../win/histo.h"
+   $cfile "../win/meter.h"
+   $cfile "../polshap/leakyb.h"
+   $cfile "../polshap/shap2.h"
+   $cfile "../user/data2frs.h"
+   $cfile "../user/marker.h"
+   $cfile "../user/framemarker.h"
+   $cfile "../user/lbframe.h"
+   $cfile "../user/measframe.h"
+   $cfile "../user/muxpacket.h"
+   $cfile "../user/leakybucket.h"
+   $cfile "../user/agere_tm.h"
+   $cfile "../user/setTrace.h"
+   $cfile "../user/fork.h"
+   $cfile "../user/tickctrl.h"
+   $cfile "../statist/confid.h"
+   $cfile "../muxdmx/demux.h"
+   $cfile "../muxdmx/mux.h"
+   $cfile "../muxdmx/muxdf.h"
+   $cfile "../muxdmx/muxaf.h"
+   $cfile "../muxdmx/muxdist.h"
+   $cfile "../muxdmx/wfqmux.h"
+   $cfile "../muxevt/muxBase.h"
+   $cfile "../muxevt/muxPrio.h" 
+   $cfile "../muxevt/muxFrmPrio.h"
+   $cfile "../user/ethbridge.h"
+
+   //   $pfile "../lua/cd.pkg"
+   //======================================================
+   // Transparent Ethernet Bridge
+   //======================================================
+   // - Bridge instance
+   module ieeebridge {
+     $#include "base.h"
+       $#include "bitmap.h"
+       $#include "stp_bpdu.h"
+       // need this to handle unsigned char arrays
+       $#define strncpy(a,b,n) memcpy(a,b,n)
+       $#define lua_Object int
+       $cfile "../rstp/uid_stp.h"
+       $cfile "../rstp/stp_in.h"
+       $hfile "../rstp/rstp_bridge.h"
+       // need this for array parameters
+       $#ifdef _nports
+       $#undef _nports
+       $#define _nports nports
+       $#endif
+       }	
+   // -----------------------------------------------------------------------------
+   // embedded Lua code
+   $[
+     function yats_errorhandler(s)
+       io.stderr:write(string.format("%s\n", debug.traceback(s)))
+     end
+   $]
+      
+   $[
+       yats.ieeebridge.__magic__ = "module"
+   $]
+ }

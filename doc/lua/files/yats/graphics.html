@@ -1,0 +1,1066 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li><strong>yats/graphics.lua</strong></li>
+	
+	<li>
+		<a href="../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/graphics.lua</code></h1>
+
+
+<p>LuaYats - Graphic Objects. <br> <br><b>module: yats</b><br> <br> <b>Overview</b><br> This module provides two types of graphical displays: a dialog with a single display called <i>display</i> and a dialog with an array of displays called <i>bigdisplay</i> Each single display is associated with an measurement instrument.<br> Displays are very fast due the fact that the display has direct access to measurement data via internal pointers.<br><br> <b>Attributes</b><br> The appearence of all graphical displays can be controlled via attributes. Assuming an instance of an instrument <i>instr</i> with an associated C-level object <i>cinstr</i> in your Lua simulation script, the appearance of the graphical display can be controlled using attributes, which affects either text, graphics or the windows background. <pre> instr.display:setattrib("textcolor", yats.CD_BLUE)<br> or directly:<br> instr.display.cinstr.textcolor = yats.CD_BLUE, </pre> Attributes can be retrieved via <pre> var = instr.display:getattrib("textcolor")<br> or directly:<br> var = instr.display.cinstr.textcolor </pre> Note, that color related attributes take only effect, if the <i>linecolor</i> attribute for the instrument is not set (left to default).<br> <br> The following attributes are defined:<br><br>  <b>Window background attributes:</b> <ul> <li>bgcolor - Color of window background: see <i>Colors</i> below.<br> <li>bgopacity - Opacity of the window: CD_TRANSPARENT (default), CD_OPAQUE.<br> </ul> <b>Text attributes:</b> <ul> <li>textcolor - Text color: see Colors below. <li>texttype  - Text font: see CD library documentation. <li>textface  - Text face: see CD library documentation. <li>textsize - Text size in pixel: see CD library documentation. <li>textoper - Text drawing operation: see CD library documentation. </ul> <b>Graphics attributes:</b> <ul> <li>drawcolor - Color of lines: see CD documentation. <li>drawstyle - Style of lines: see CD documentation. <li>drawwidth - Width of lines: a number indicating the width of lines in pixel. <li>drawoper - Drawing operation for graphics: see see CD documentation. <li>usepoly  - 0=Draw bars, 1=Draw vertexes of a polygon (default). <li>polytype - Interpolation: CD.OPEN_LINES (default), CD.BEZIER. <li>polystep - Step Mode: <ul> <li>             0=linear connection of vertices <li>             1=stepwise (horizontal first) connection of vertices, <li>            -1=stepwise (vertical first) connection of vertices.</ul> <li>canvastype - Type of drawing canvas:<ul> <li>             CDTYPE_IUP draws directly into the canvas.<br> <li>             CDTYPE_DBUFFER uses a double buffer.<br> <li>             CDTYPE_SERVERIMG (default, most flickerfree) draws into a background server image and copies the image into the visible canvas. It cannot be zoomed.</ul> </ul> <b>Colors:</b><br> see CD library documentation for valid color values.<br> <br> The attribute table does not need to be complete. Missing values are automatically replaced by their default values.<br> <br> <b>Printing, Plotting and Snapshots</b><br> A graphical display provides means to print, plot and save it's contents. <br> Data can be saved via snapshot. Right click on the display opens a menu for printing, plotting and saving snapshots. The simulation will halt as long as the menu is open.<br><br> <b>References</b><br> <a href="http://www.tecgraf.puc-rio.br/cd">CD Canvas Draw - 2D graphics library</a></p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer, Backnang.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;GNU Public License.</p>
+
+
+<p><small><b>Release:</b> 3.0 $Id: graphics.lua 268 2009-08-04 19:19:52Z leuwer $</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#bigdisplay:attach">bigdisplay:attach</a>&nbsp;(instr, row, col)</td>
+	<td class="summary">Attach an instrument to a bigdisplay canvas.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bigdisplay:destroy">bigdisplay:destroy</a>&nbsp;()</td>
+	<td class="summary">Delete a big display.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bigdisplay:detach">bigdisplay:detach</a>&nbsp;(row, col)</td>
+	<td class="summary">Detach instrument from position (row, col).</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bigdisplay:getAttribute">bigdisplay:getAttribute</a>&nbsp;(attrib, row, col, val)</td>
+	<td class="summary">Set graphics attributes for a single display in a big display.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bigdisplay:hide">bigdisplay:hide</a>&nbsp;()</td>
+	<td class="summary">Hide a big display.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bigdisplay:init">bigdisplay:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'bigdisplay'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bigdisplay:print">bigdisplay:print</a>&nbsp;(paper, layout, margin, res, filetype, filename)</td>
+	<td class="summary">Print a bigdisplay.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bigdisplay:redraw">bigdisplay:redraw</a>&nbsp;()</td>
+	<td class="summary">Redraw all bigdisplay instruments.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bigdisplay:setAttribute">bigdisplay:setAttribute</a>&nbsp;(attrib, val, row, col)</td>
+	<td class="summary">Set graphics attributes for a single display in a big display.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bigdisplay:show">bigdisplay:show</a>&nbsp;()</td>
+	<td class="summary">Show the big display.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#bigdisplay:showxy">bigdisplay:showxy</a>&nbsp;(x, y)</td>
+	<td class="summary">Show a big display at position (x,y).</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#defaultattributes">defaultattributes</a>&nbsp;()</td>
+	<td class="summary">Get graphic default attributes.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:attach">display:attach</a>&nbsp;(instr, attrib, title)</td>
+	<td class="summary">Attach an instrument to a display.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:destroy">display:destroy</a>&nbsp;()</td>
+	<td class="summary">Destroy a display.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:detach">display:detach</a>&nbsp;()</td>
+	<td class="summary">Detach an instrument from a display </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:getAttribute">display:getAttribute</a>&nbsp;(attr)</td>
+	<td class="summary">Get value of a displays drawing attribute.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:hide">display:hide</a>&nbsp;()</td>
+	<td class="summary">Hide the display.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:init">display:init</a>&nbsp;(param)</td>
+	<td class="summary">Create a display class instance.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:setAttribute">display:setAttribute</a>&nbsp;(attr, val)</td>
+	<td class="summary">Set a drawing attribute for the display.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:show">display:show</a>&nbsp;()</td>
+	<td class="summary">Show the display.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:showxy">display:showxy</a>&nbsp;(x, y)</td>
+	<td class="summary">Show the display.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#histo2:init">histo2:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'histo2'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#histo:init">histo:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'histo'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#meter:init">meter:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'meter'.</td>
+	</tr>
+
+</table>
+
+
+
+
+<h2>Tables</h2>
+<table class="table_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#defaultattrib">defaultattrib</a></td>
+	<td class="summary">Default attributes </td>
+	</tr>
+
+</table>
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="bigdisplay:attach"></a><strong>bigdisplay:attach</strong>&nbsp;(instr, row, col)</dt>
+<dd>
+Attach an instrument to a bigdisplay canvas. The attach method can be used to map an instruments output to an empty canvas or to change the instrument associated with the canvas in the given (row,col) position.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  instr: table - Reference to an instrument (Lua ref to histogram or meter).
+	</li>
+	
+	<li>
+	  row: number - Row within the big display.
+	</li>
+	
+	<li>
+	  col: number - Column within the big display.
+	</li>
+	
+</ul>
+
+
+
+
+<h3>Usage:</h3>
+yats.bigdisplay:attach()
+
+
+
+<h3>Return value:</h3>
+Reference to previously attached instrument or nil if none was attached.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bigdisplay:destroy"></a><strong>bigdisplay:destroy</strong>&nbsp;()</dt>
+<dd>
+Delete a big display.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bigdisplay:detach"></a><strong>bigdisplay:detach</strong>&nbsp;(row, col)</dt>
+<dd>
+Detach instrument from position (row, col).
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  row: number - row.
+	</li>
+	
+	<li>
+	  col: number - column.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to the instrument.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bigdisplay:getAttribute"></a><strong>bigdisplay:getAttribute</strong>&nbsp;(attrib, row, col, val)</dt>
+<dd>
+Set graphics attributes for a single display in a big display.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  attrib: string - Graphic attribute name.
+	</li>
+	
+	<li>
+	  row: number - Row of the display (optional).
+	</li>
+	
+	<li>
+	  col: number - Column of the display (optional).
+	</li>
+	
+	<li>
+	  val: any - Graphic attribute value.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Previous value.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bigdisplay:hide"></a><strong>bigdisplay:hide</strong>&nbsp;()</dt>
+<dd>
+Hide a big display.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bigdisplay:init"></a><strong>bigdisplay:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'bigdisplay'. A big display displays a number of graphic outputs in a single window. Once measurements instruments are created, an instrument can be assigned to a canvas in a big display. It is possible to create an empty display and afterwards attach instruments to the big display using the <b>attach()</b> method.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table Parameter table. <ul><li> name (optional)<br> Name of the display. Default: "objNN". <li> title (optional)<br> Title of the display. Default: "class-name:unknown". <li> nrow, ncol<br> Number of rows and columns. <li> width, height (optional)<br> Size of the display. Default: see description. <li> xpos, ypos (optional)<br> Position on screen. Default: see description. <li> attrib (optional)<br> Drawing attributes. Default: as return by yats.defaultattrib(). <li> instruments<br> Table with references to instruments previously defined. The table is organised in the same way as the display. Optional, an empty display is created in case of nil value. </ul>
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to bigdisplay object.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bigdisplay:print"></a><strong>bigdisplay:print</strong>&nbsp;(paper, layout, margin, res, filetype, filename)</dt>
+<dd>
+Print a bigdisplay. The instruments are printed with the given resolution. Multiple pages may be printed. The layout is slightly different from the screen layout for better readability.<br> NOTE: Currently only  "ps" mode (postscript file) and layout = "portrait" are supported.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  paper: string - Type of paper: "A4", A3".
+	</li>
+	
+	<li>
+	  layout: string - Layout: "portrait", "landscape".
+	</li>
+	
+	<li>
+	  margin: table - <code>{left=<n>, right=<n>, top=<n>, bottom=<n>}</code>.
+	</li>
+	
+	<li>
+	  res: number - Resolution in pixel / inch.
+	</li>
+	
+	<li>
+	  filetype: - Type of printfile: "ps" or "pdf" or "printer".
+	</li>
+	
+	<li>
+	  filename: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bigdisplay:redraw"></a><strong>bigdisplay:redraw</strong>&nbsp;()</dt>
+<dd>
+Redraw all bigdisplay instruments.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bigdisplay:setAttribute"></a><strong>bigdisplay:setAttribute</strong>&nbsp;(attrib, val, row, col)</dt>
+<dd>
+Set graphics attributes for a single display in a big display.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  attrib: string - Graphic attribute name.
+	</li>
+	
+	<li>
+	  val: any - Graphic attribute value.
+	</li>
+	
+	<li>
+	  row: number - Row of the display (optional).
+	</li>
+	
+	<li>
+	  col: number - Column of the display (optional).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Previous value.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bigdisplay:show"></a><strong>bigdisplay:show</strong>&nbsp;()</dt>
+<dd>
+Show the big display.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+self - reference to object.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="bigdisplay:showxy"></a><strong>bigdisplay:showxy</strong>&nbsp;(x, y)</dt>
+<dd>
+Show a big display at position (x,y).
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: number - Horizontal position.
+	</li>
+	
+	<li>
+	  y: number - Vertical position.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+self - reference to object.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="defaultattributes"></a><strong>defaultattributes</strong>&nbsp;()</dt>
+<dd>
+Get graphic default attributes.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+Default attributes as table.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:attach"></a><strong>display:attach</strong>&nbsp;(instr, attrib, title)</dt>
+<dd>
+Attach an instrument to a display.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  instr: table -  Reference to instrument (Lua ref to histogram or meter).
+	</li>
+	
+	<li>
+	  attrib: table -  Optionally use given attributes.
+	</li>
+	
+	<li>
+	  title: string - Optionally set title.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to previous attached instrument or nil, if none was attached.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:destroy"></a><strong>display:destroy</strong>&nbsp;()</dt>
+<dd>
+Destroy a display. This function is automatically called when the associated instrument is is deleted during simulation script reset.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:detach"></a><strong>display:detach</strong>&nbsp;()</dt>
+<dd>
+Detach an instrument from a display
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to previous attached instrument and to the canvas associated with the display.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:getAttribute"></a><strong>display:getAttribute</strong>&nbsp;(attr)</dt>
+<dd>
+Get value of a displays drawing attribute.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  attr: string - Name of the drawing attribute.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Value of this drawing attribute.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:hide"></a><strong>display:hide</strong>&nbsp;()</dt>
+<dd>
+Hide the display. This function can be used to hide a display from the simulation script.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:init"></a><strong>display:init</strong>&nbsp;(param)</dt>
+<dd>
+Create a display class instance. Creates a graphical display and optionally associates an instrument to it. The display is automatically shown on the screen.<br> Note, that by default all instruments automatically also create a display implicitly. The method <b>attach()</b> can be used to attach a measurement instrument to a display.<br> Title, size, and position are handled in the following precedence:<br> (1) parameter value, (2) associated instrument, (3) some reasonable default.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: Parameter table. <ul> <li> name (optional)<br> Name of the display. Default: `objNN'. <li> title (optional)<br> Title of the display. Default: see description. <li> width, height (optional)<br> Size of the display. Default: see description. <li> xpos, ypos (optional)<br> Position on screen. Default: see description. <li> attrib (optional)<br> Drawing attributes. Default: values as returned by yats.defaultattrib(). <li> instrument (optional)<br> A reference to an instrument previously defined. A nil value creates an empty display. </ul>
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to display instance.
+
+
+
+<h3>See also:</h3>
+<ul>
+	
+	<li><a href="">
+		yats.bigdisplay:init
+	</a>
+	
+</ul>
+
+</dd>
+
+
+
+
+<dt><a name="display:setAttribute"></a><strong>display:setAttribute</strong>&nbsp;(attr, val)</dt>
+<dd>
+Set a drawing attribute for the display.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  attr: string - Name of the attribute.
+	</li>
+	
+	<li>
+	  val: any - Value of the attribute.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:show"></a><strong>display:show</strong>&nbsp;()</dt>
+<dd>
+Show the display. This function is automatically called when the instrument is instantiated and can be used to re-show the display after hiding it via script.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:showxy"></a><strong>display:showxy</strong>&nbsp;(x, y)</dt>
+<dd>
+Show the display. This function is automatically called when the instrument is instantiated and can be used to re-show the display after hiding it via script.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: number - Horizontal position on the screen.
+	</li>
+	
+	<li>
+	  y: number - Vertical position on the screeen.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="histo2:init"></a><strong>histo2:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'histo2'. Displays a histogram of the frequency of certain events, e.g. the number of times a certain queue length is reached. # y-axis: frequency - normalised to a given value or to 1.25 of the maximum measured value. # x-axis: values.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - parameter values <<pre>> # name (optional) Name of the display. Default: "objNN" # title (optional) Title of the display. Default: "class-name:unknown" # val Table with references to exported values of another object Format: { object-reference, "variable-name" [, index]} # val Reference to a scalar or to a one/two dimensional array of  measurement values, which must be exported by another object Format: {objref, "varname", index1 [, index2]} # nvals Number of values to plot # maxfreq (optional) Normalisation. `maxfreq' corresponds to the window height Default: autoscale to 1.25 * largest frequency # delta Drawing interval between two samples (in ticks). Default: 100 # attrib (optional) Drawing attributes. Default: see default attributes # win (optional) Window geometry. Format: {xpos, ypos, width, height} # update (optional) Redraw period. Display is updated every `update-th' sample # display Create a display if set to true <</pre>>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table reference to object instance
+
+
+
+<h3>See also:</h3>
+<ul>
+	
+	<li><a href="">
+		yats.histo:init
+	</a>
+	
+</ul>
+
+</dd>
+
+
+
+
+<dt><a name="histo:init"></a><strong>histo:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'histo'. Displays a histogram of a distribution, e.g. the number of times a certain queue length is reached.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - parameter values <ul> <li>name (optional) Name of the display. Default: "objNN" # title (optional) Title of the display. Default: "class-name:unknown" # val Table with references to exported values of another object. Format: { object-reference, "variable-name" [, index]} # win Table with window geometry. Format: {xpos, ypos, width, height} # maxfreq (optional) Normalisation. `maxfreq' corresponds to the window height Default: autoscale to 1.25 * largest frequency # delta (optional) Drawing interval between two samples (in ticks). Default: 100 # attrib (optional) Drawing attributes. Optional - default: see default attributes # display (optional) Create a display if set to true <</pre>>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="meter:init"></a><strong>meter:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'meter'. Sliding time history of a value. The meter is updated during the late slot phase. Thus, variabls manipulating during the late phase cannot be displayed exactly with a resolution of 1 tick, because the processing order between variable manipulation and display is undefined.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter table <<pre>> # name (optional) Name of the display. Default: "objNN" # title (optional) Title of the display. Default: "class-name:unknown" # val Value to be displayed # win (optional) Window geometry. Format: {xpos, ypos, width, height} # nvals Number of values to plot # maxval Normalisation. `maxval' corresponds to window height # delta Drawing interval between two samples (in ticks). Default: 100 # update (optional) Redraw period. Display is updated every `update-th' sample # mode yats.AbsMode: display the sample value itself yats.DiffMode: display difference between subsequent samples # linemode (optional) 0: draw points; 1: draw lines. Default: 1 # linecolor (optional) Color of lines. 1: black(default), 2: red, 3: green, 4: yellow # drawmode (optional) bit0: drawing, ~   bit1: last y-value, ~   bit2: description of last value, ~   bit3: full y-value, bit4: x-value ~   Default: all bits set = 31 # dodrawing (optional) 1: only value ~   2: only drawing ~   3: value and drawing ~   4: value (only y) and drawing # atttrib Drawing attributes. Default: see default attributes # display Create a display if set to true <</pre>>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object instance.
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+<h2><a name="tables"></a>Tables</h2>
+<dl class="table">
+
+<dt><a name="defaultattrib"></a><strong>defaultattrib</strong></dt>
+<dd>Default attributes
+
+
+<em>Fields</em>
+<ul>
+	
+	<li>
+	  drawoper: blabla 
+	</li>
+	
+</ul>
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

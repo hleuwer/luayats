@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li><strong>yats/src.lua</strong></li>
+	
+	<li>
+		<a href="../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/src.lua</code></h1>
+
+
+<p>LuaYats - Traffic source classes. <br> <br><b>module: yats</b><br> <br> Lua classes for traffic sources. </p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer, Backnang.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;GNU Public License.</p>
+
+
+<p><small><b>Release:</b> 3.0 $Id: src.lua 222 2009-06-06 05:51:35Z leuwer $</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#bssrc:init">bssrc:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'bssrc'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#cbrsrc:init">cbrsrc:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'cbrsrc'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#distsrc:init">distsrc:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'distsrc'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#geosrc:init">geosrc:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'geosrc'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#gmdpsrc:init">gmdpsrc:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'gmdpsrc'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#gmdpstop:init">gmdpstop:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'gmdpstop'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#listsrc:init">listsrc:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'listsrc'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#mmbpsrc:init">mmbpsrc:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'mmbpsrc'.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="bssrc:init"></a><strong>bssrc:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'bssrc'.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN" <li>ex<br> Mean number of cells per burst <li>es<br> Mean duration of OFF (silence) phase (in time slots) <li>delta<br> Cell distance in ON phase (in time slots) <li>vci<br> Virtual connection id for the cell <li>des<br> If set to 1, use "es" in a deterministic way instead of geomtrically distributing the duration of the OFF period <li>dex<br> If set to 1, use "ex" in a deterministic way instead of geomtrically distributing the duration of the ON period <li>out<br> Connection to successor Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table -  Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="cbrsrc:init"></a><strong>cbrsrc:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'cbrsrc'. Constant bit rate (CBR) source.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN" <li>delta<br> Cell rate in ticks <li>vci<br> Virtual connection id for the cell <li>out<br> Connection to successor Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table -  Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="distsrc:init"></a><strong>distsrc:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'distsrc'. Distribution (DIST) source.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN" <li>dist<br> Reference to distribution object <li>vci<br> Virtual connection id for the cell <li>out<br> Connection to successor Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table -  Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="geosrc:init"></a><strong>geosrc:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'geosrc'. Bernoulli Source.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN" <li>ed<br> Mean of geometrical distributed cell distance <li>vci<br> Virtual connection id for the cell <li>out<br> Connection to successor Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table -  Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="gmdpsrc:init"></a><strong>gmdpsrc:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'gmdpsrc'. Generally Modulated Determistic Process (GMDP) source. The GMDP source comes in two flavours: <br> a) with arbitrarily distributed phase durations. <br> b) with geometrically distributed phase durations
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN" <br> 1. Arbitrarily distributed phase durations <li>delta<br> List of cell spacings <li>dist<br> Distribution of the number of cells per state <li>trans<br> Transition probablities <br> 2. Geometrically distributed phase durations <li>nstat<br> Number of states <li>delta<br> List of cell spacings <li>ex<br> Mean number of cells per state <li>trans<br> Transition probabilities <li>vci<br> Virtual connection id for the cell <li>out<br> Connection to successor Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table -  Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="gmdpstop:init"></a><strong>gmdpstop:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'gmdpstop'. Generally Modulated Determistic Process (GMDP) start/stop source. The GMDP source comes in two flavours: <br> a) with arbitrarily distributed phase durations. <br> b) with geometrically distributed phase durations
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN" <br> 1. Arbitrarily distributed phase durations <li>delta<br> List of cell spacings <li>dist<br> Distribution of the number of cells per state <li>trans<br> Transition probablities <br> 2. Geometrically distributed phase durations <li>nstat<br> Number of states <li>delta<br> List of cell spacings <li>ex<br> Mean number of cells per state <li>trans<br> Transition probabilities <li>vci<br> Virtual connection id for the cell <li>out<br> Connection to successor Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table -  Reference to object instance.
+
+
+
+<h3>See also:</h3>
+<ul>
+	
+	<li><a href="../../files/yats/src.html#gmdpstop:init">
+		gmdpstop:init
+	</a>
+	
+</ul>
+
+</dd>
+
+
+
+
+<dt><a name="listsrc:init"></a><strong>listsrc:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'listsrc'.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN" <li>ntim<br> Number of entries in cell distance table <li>delta<br> Cell distance table (in time slots) <li>rep (optional)<br> Repeat (wrap) when end of table reached <li>vci<br> Virtual connection id for the cell <li>out<br> Connection to successor. Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table -  Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="mmbpsrc:init"></a><strong>mmbpsrc:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'mmbpsrc'. Marcov Modulated Bernoulli Process (MMBP) source.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN" <li>eb<br> Mean burst duration in slots <li>es<br> Mean silence duration in slots <li>ed<br> Mean cell distance inside the burst in slots <li>vci<br> Virtual connection id for the cell <li>out<br> Connection to successor Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table -  Reference to object instance.
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

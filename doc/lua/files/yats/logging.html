@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li><strong>yats/logging.lua</strong></li>
+	
+	<li>
+		<a href="../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/logging.lua</code></h1>
+
+
+<p></p>
+
+
+<p><b>Authors:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Danilo Tuler (tuler@ideais.com.br)</td></tr>
+
+	<tr><td class="name">Andre Carregal (info@keplerproject.org)</td></tr>
+
+	<tr><td class="name">Thiago Costa Ponte (thiago@ideais.com.br) </td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;2004-2007 Kepler Project</p>
+
+
+<p><small><b>Release:</b> $Id: logging.lua 222 2009-06-06 05:51:35Z leuwer $ </small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#new">new</a>&nbsp;(append)</td>
+	<td class="summary">Creates a new logger object </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#prepareLogMsg">prepareLogMsg</a>&nbsp;(pattern, dt, level, message, simtime, realtime)</td>
+	<td class="summary">Prepares the log message </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#tostring">tostring</a>&nbsp;(value)</td>
+	<td class="summary">Converts a Lua value to a string Converts Table fields in alphabetical order </td>
+	</tr>
+
+</table>
+
+
+
+
+<h2>Tables</h2>
+<table class="table_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#LEVEL">LEVEL</a></td>
+	<td class="summary"> </td>
+	</tr>
+
+</table>
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="new"></a><strong>new</strong>&nbsp;(append)</dt>
+<dd>
+Creates a new logger object
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  append: function - Function used by the logger to append a message with a log-level to the log stream.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Table representing the new logger object. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="prepareLogMsg"></a><strong>prepareLogMsg</strong>&nbsp;(pattern, dt, level, message, simtime, realtime)</dt>
+<dd>
+Prepares the log message
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  pattern: string - pattern for the log messages.
+	</li>
+	
+	<li>
+	  dt: string - date
+	</li>
+	
+	<li>
+	  level: string - log level
+	</li>
+	
+	<li>
+	  message: string - user's text
+	</li>
+	
+	<li>
+	  simtime: number - simulation time in ticks
+	</li>
+	
+	<li>
+	  realtime: number - simulation time in seconds.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Log message (string). 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="tostring"></a><strong>tostring</strong>&nbsp;(value)</dt>
+<dd>
+Converts a Lua value to a string Converts Table fields in alphabetical order
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  value: any - value to convert
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Value as string. 
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+<h2><a name="tables"></a>Tables</h2>
+<dl class="table">
+
+<dt><a name="LEVEL"></a><strong>LEVEL</strong></dt>
+<dd>
+
+
+<em>Fields</em>
+<ul>
+	
+	<li>
+	  DEBUG: debug output
+	</li>
+	
+	<li>
+	  INFO: informational output
+	</li>
+	
+	<li>
+	  WARN: warnings
+	</li>
+	
+	<li>
+	  ERROR: errors
+	</li>
+	
+	<li>
+	  FATAL: fatal errors The FATAL level designates very severe error events that will presumably lead the application to abort
+	</li>
+	
+</ul>
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

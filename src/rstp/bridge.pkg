@@ -1,0 +1,12 @@
+$#include "bitmap.h"
+$#include "uid_stp.h"
+$#include "stp_in.h"
+$#include "stp_bpdu.h"
+module yats {
+   module bridge {
+      $#define strncpy(a,b,n) memcpy(a,b,n)
+      $cfile "uid_stp.h"
+      $cfile "bitmap.h"
+      $cfile "stp_in.h"
+   }
+}

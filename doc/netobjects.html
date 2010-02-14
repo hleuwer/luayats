@@ -1,0 +1,936 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb"><head><meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" />
+<meta name="generator" content="HTML Tidy for Linux/x86 (vers 1 September 2005), see www.w3.org" />
+
+<title>Luayats - Networking Classes and Objects</title><link media="screen" href="style.css" rel="stylesheet" type="text/css" />
+<link media="print" rel="stylesheet" href="styleprint.css" type="text/css" /></head>
+<body>n
+<div style="top: 12px; height: 129px; left: 0px; text-align: center; width: 925px;" id="logo"><a name="home2" id="home2"></a><a href="http://www.lua.org"><img style="border: 0px solid ; left: 0px; top: 6px; width: 115px; height: 118px; float: left;" id="lualogo" alt="www.lua.org" src="luayats.png" name="lualogo" hspace="20" /></a></div>
+<div id="header">
+<h1 style="height: 120px; margin-left: 0px; width: 928px;">
+<big><big><a name="home" id="home"></a><br />
+Luayats - User Manual</big></big><br />Network Simulation with YATS and Lua</h1>
+</div>
+<div id="leftnavigation">
+<ul>
+<li style="margin-left: 0px; width: 185px;"><a class="current" href="index.html">Home</a></li>
+<li><a href="index.html#license">License</a></li>
+<li><a href="index.html#features">Features</a></li>
+<li><a href="index.html#download">Download</a></li>
+<li><a href="index.html#installation">Installation</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="running.html">User Manual</a><br /><ul><li><a href="introduction.html#introduction">Introduction</a></li><li><a href="introduction.html#inputfile">Example Input File</a></li><li><a href="introduction.html#running">Running Luayats</a></li><li><a href="introduction.html#environment">Environment Variables</a></li><li><a href="introduction.html#configuration">Configuration File</a></li><li><a href="usermanual.html#modules">Modules</a></li><li>
+
+
+        <a href="usermanual.html#logging">Logging Facilities</a></li><li><a rel="date" href="netobjects.html#home">Network Objects</a></li><ul><li><a href="#sources">Sources</a></li><li><a href="#sinks">Sinks, Connectors and Lines</a></li><li><a href="#distribution">Distribution</a></li><li><a href="#conversion">Data Conversion and Marker</a></li><li><a href="#mux">Multiplexer</a></li><li><a href="#demux">Demultiplexer</a></li><li><a href="#policer">Policers</a></li><li><a href="#shaper">Shapers</a></li><li><a href="#tcpip">TCP/IP</a></li></ul><ul><li><a href="#measure">Measurement</a></li></ul><li><a href="dispobjects.html#home">Instruments and Displays</a></li><li><a href="protobjects.html">Protocol Simulation</a></li><li><a href="statobjects.html">Statistics</a></li><li><a href="miscobjects.html">Miscellanous</a>&nbsp;</li></ul><a href="progmanual.html">Programmer's Manual</a>
+
+
+  </li><li><a href="index.html#whatsnew">What's New</a></li>
+<li><a href="index.html#credits">Credits</a></li>
+<li><a href="index.html#links">Links</a></li>
+<li><a href="index.html#todo">ToDo</a></li>
+</ul>
+</div>
+<div id="content">
+<h2><big><a name="netobjects"></a><span style="font-weight: normal;">Network Classes and Objects</span></big></h2><h2><a name="sources"></a>Sources</h2><p>Luayats files: <a href="lua/files/yats/src.html">src</a> and <a href="lua/files/yats/tcpip.html">tcpip</a></p><table style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1"><tbody><tr><td style="font-weight: bold; width: 235px;">Network
+Object</td>
+
+      <td style="font-weight: bold; width: 123px;">Class</td>
+
+      <td style="font-weight: bold; width: 512px;">Notes</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 235px;">Constant Bitrate Cell
+Source</td>
+
+      <td style="width: 123px;"><a href="lua/files/yats/src.html#cbrsrc:init">yats.cbrsrc</a></td>
+
+      <td style="width: 512px;">Inter-Arrival-Time (IAT)
+is a constant.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 235px;">Bernoulli Cell Source</td>
+
+      <td style="width: 123px;"><a href="lua/files/yats/src.html#geosrc:init">yats.geosrc</a></td>
+
+      <td style="width: 512px;">The IAT is geometrically
+distributed.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 235px;">Cell Source with
+Arbitrarily Distributed Cell Distances</td>
+
+      <td style="width: 123px;"><a href="lua/files/yats/src.html#distsrc:init">yats.distsrc</a></td>
+
+      <td style="width: 512px;">The IAT is defined by a
+configurable distribution provided via a previously defined <a href="#distribution">distribution object</a>.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 235px;">ON/OFF Cell Source with
+Geometrically Distributed Phase Durations</td>
+
+      <td style="width: 123px;"><a href="lua/files/yats/src.html#bssrc:init">yats.bssrc</a></td>
+
+      <td style="width: 512px;">ON/OFF times are
+geometrically or deterministically distributed.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 235px;">List Cell Source</td>
+
+      <td style="width: 123px;"><a href="lua/files/yats/src.html#listsrc:init">yats.listsrc</a></td>
+
+      <td style="width: 512px;">IAT is given&nbsp; by
+a list (Lua table). The list is processed either once or cyclically.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 235px;">Markov Modulated Bernoulli
+Process (MMBP) Cell Source</td>
+
+      <td style="width: 123px;"><a href="lua/files/yats/src.html#mmbpsrc:init">yats.mmbpsrc</a></td>
+
+      <td style="width: 512px;">Bust/Silence source with
+geometrically
+distributed sojourn times. The cell distance within the bursts is
+geometrically distributed.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 235px;">Generally Modulated
+Deterministic Process (GMDP) Cell Source</td>
+
+      <td style="width: 123px;"><a href="lua/files/yats/src.html#gmdpsrc:init">yats.gmdpsrc</a></td>
+
+      <td style="width: 512px;">Phase durations may be
+arbitrarily or geometrically distributed.</td>
+
+    </tr>
+
+    <tr>
+
+      <td>Generally Modulated Deterministic Process (GMDP)
+Start/Sto Cell Source</td>
+
+      <td><a href="lua/files/yats/src.html#gmdpstop:init">yats.gmdpstop</a></td>
+
+      <td>A GMDP source following the start/stop protocol. It
+provides
+an extra input 'start' that restarts transmission after the source has
+been stopped.</td>
+
+    </tr>
+
+    <tr>
+
+      <td>Constant Bitrate Frame source</td>
+
+      <td><a href="lua/files/yats/tcpip.html#cbrframe:init">yats.cbrframe</a></td>
+
+      <td>A simple constant bitrate frame source, which produces
+a
+burst of frames with a defined connection id. The frames
+are&nbsp;of
+fixed length and have a fixed interframe gap. The burstsize is either
+determined by time or data count. The source follows the start/stop
+protocol and has an extra start input&nbsp;"ctrl" input.</td>
+
+    </tr>
+
+    </tbody></table><h2 style="text-align: justify;"><a name="sinks"></a>Sinks , Connectors and Lines&nbsp;</h2><h3><small><a name="sink"></a></small>Data Sink</h3>
+
+<p>Luayats files: <a href="lua/files/yats/misc.html">misc</a><a href="../../luayats-2.0/doc/lua/misc.html"></a></p>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="font-weight: bold; width: 170px;">Network
+Object</td>
+
+      <td style="font-weight: bold; width: 100px;">Class</td>
+
+      <td style="font-weight: bold; width: 634px;">Description</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 170px;">Data sink</td>
+
+      <td style="width: 100px;"><a href="lua/files/yats/misc.html#sink:init">yats.sink</a></td>
+
+      <td style="width: 634px;">The data sink terminates
+data processing. The received data
+item is deleted. Received objects are counted. If you don't need
+particular access to the data sink, the function <span style="font-style: italic;">yats.nc()</span> provides
+a syntactic sugar for terminating data processing. The <span style="font-style: italic;">yats.nc() </span>function
+implements a "hidden" sink. Note, that function nc() is available in
+both the yats namespace and also in the global namespace.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<h3><a name="line"></a>Line&nbsp;</h3>
+
+<p>Luayats files: <a href="lua/files/yats/misc.html">misc</a><a href="../../luayats-2.0/doc/lua/misc.html"></a></p>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="font-weight: bold; width: 170px;">Network
+Object</td>
+
+      <td style="font-weight: bold; width: 100px;">Class</td>
+
+      <td style="font-weight: bold; width: 634px;">Description</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 170px;">Delay Line</td>
+
+      <td style="width: 100px;"><a href="lua/files/yats/misc.html#line:init">yats.line</a></td>
+
+      <td style="width: 634px;">A line with a user
+definable delay.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br />
+
+<h3><a name="connector"></a>Connector</h3>
+
+<p>Luayats files: <a href="lua/files/yats/misc.html">misc</a><a href="../../luayats-2.0/doc/lua/misc.html"></a></p>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="font-weight: bold; width: 170px;">Network
+Object</td>
+
+      <td style="font-weight: bold; width: 100px;">Class</td>
+
+      <td style="font-weight: bold; width: 634px;">Description</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 170px;">Connector</td>
+
+      <td style="width: 100px;"><a href="lua/files/yats/misc.html#dummy:init">yats.dummy</a></td>
+
+      <td style="width: 634px;">The dummy connector object
+simply forwards a data item to
+it's successor. Connectors are used in hierachical network objects. See
+also <a href="../../luayats-2.0/doc/html/en/blocks.html">Hierarchical Network Structures</a>.</td></tr></tbody></table><h2 style="text-align: justify;"><a name="distribution"></a>Distribution</h2><p>Luayats files: <a href="lua/files/yats/misc.html">misc</a></p><p>The distribution object class <a href="lua/files/yats/src.html#distrib:init">yats.dist</a>
+is a server object that provides a sequence of values to other network
+objects&nbsp;according to a specific distribution.&nbsp;A
+single
+instantiated distribution object can be used by multiple network
+objects. </p>
+
+<p>
+The following distributions are offered:</p>
+
+<p> <span style="font-weight: bold;">File</span>:
+The distribution is
+described by a Lua script file, which is executed in standard Lua
+manner as anonymous function.&nbsp; The chunk must&nbsp;must
+return a
+table where the probablitiy <span style="font-style: italic;">p(x)
+</span>is given for each <span style="font-style: italic;">x</span>.</p>
+
+<p> <span style="font-weight: bold;">Table</span>:
+The distribution is described by a table which contains
+the&nbsp;propability <span style="font-style: italic;">p(x)</span>
+for each <span style="font-style: italic;">x</span>.
+Values with <span style="font-style: italic;">p(x) = 0</span>
+can be omitted.</p>
+
+<p> <span style="font-weight: bold;">Predefined</span>:
+The distribution offers the following predefined distributions:</p>
+
+<ul><li> <span style="font-style: italic;">Exponential
+(geometric)</span> distribution with exponent 'e':</li></ul>
+
+<pre><span style="font-family: monospace;">param = {..., dist = yats.distrib.geometric, distargs= {e=EXPONENT}, ...}.</span></pre>
+
+<ul><li><span style="font-family: monospace;"></span>
+    <span style="font-style: italic;">Binomial</span>
+distribution with 'n' samples and probability 'p':</li></ul>
+
+<pre><span style="font-family: monospace;">param = {..., dist = yats.distrib.binomial; distargs = {n = NSAMPLES, p = PROBALITY}, ...}.</span></pre>
+
+
+
+
+
+
+
+
+
+<p>
+Example:&nbsp;&nbsp;<a href="../examples/test-12b.lua">test-12b.lua</a></p><h2 style="text-align: justify;"><a name="conversion"></a>Data
+Conversion&nbsp;</h2>
+
+<p>
+Most of the source network nodes generate cell data. In order to
+utilise their functionality to generate frame oriented data Luayats
+provides the following data conversion network objects:</p><p>Luayats file: <a href="lua/files/yats/user.html">user</a></p>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="font-weight: bold; width: 175px;">Network
+Object</td>
+
+      <td style="font-weight: bold; width: 110px;">Class</td>
+
+      <td style="font-weight: bold; width: 603px;">Notes</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 175px;">Data to Frame Conversion</td>
+
+      <td style="width: 110px;"><a href="lua/files/yats/user.html#dat2fram:init">yats.dat2fram</a></td>
+
+      <td style="width: 603px;">Receives cell data from a
+cell source and converts it to a
+frame. The frame has a constant frame length and will be marked with a
+connection id.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 175px;">Data to Frame Sequence
+Conversion</td>
+
+      <td style="width: 110px;"><a href="lua/files/yats/user.html#dat2frs:init">yats.dat2frs</a></td>
+
+      <td style="width: 603px;">Receives cell data from a
+cell source and converts it to&nbsp;frames with a sequence number.
+The
+frame has a constant frame length and&nbsp;will be marked with a
+connection
+id and a sequence number.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br />
+
+<h2 style="text-align: justify;"><a name="marker"></a>Marker Objects&nbsp;</h2>
+
+<p>
+Luyats offers objects that simply mark data objects with specific
+properties, such as a CLP bit for ATM cells or a VLAN tag for Ethernt
+frames.</p>
+
+<p>Luayats file: <a href="lua/files/yats/user.html">user</a></p><table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="font-weight: bold; width: 175px;">Network
+Object</td>
+
+      <td style="font-weight: bold; width: 111px;">Class</td>
+
+      <td style="font-weight: bold; width: 602px;">Notes</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 175px;">Cell Marker</td>
+
+      <td style="width: 111px;"><a href="lua/files/yats/user.html#marker:init">yats.marker</a></td>
+
+      <td style="width: 602px;">Mark a cell with Cell Loss
+Priority (CLP) = 1 or 0.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 175px;">Frame Marker</td>
+
+      <td style="width: 111px;"><a href="lua/files/yats/user.html#framemarker">yats.framemarker</a></td>
+
+      <td style="width: 602px;">Mark a frame with a VLAN
+tag, VLAN priority, External Drop
+Precedence or Internal Drop Precedence. It can also set the length of a
+frame. </td></tr></tbody></table><h2 style="text-align: justify;"><a name="muxdemux"></a>Multiplexer and Demultiplexer</h2>
+
+<h3><a name="mux"></a>Multiplexer</h3>
+
+<p>
+A multiplexer network objects receives data via a configurable number
+of inputs and multiplexes the data items into an output queue. The
+queue is serviced by an object specific server strategy in the
+scheduler. Data is received in the early slot phase. The server runs in
+the late slot phase and prepares a data item to be sent in the next
+early slot phase.</p>
+
+<p>
+Luayats file: <a href="lua/files/yats/muxdmx.html">muxdmx</a> and <a href="lua/files/yats/muxevt.html">muxevt</a><a href="lua/files/yats/muxdmx.html"><span style="color: rgb(0, 0, 0);"></span></a></p><table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="font-weight: bold;">Network Object</td>
+
+      <td style="font-weight: bold;">Class</td>
+
+      <td style="font-weight: bold;">Description</td>
+
+    </tr>
+
+    <tr>
+
+      <td>Simple&nbsp;Multiplexer with full output rate</td>
+
+      <td><a href="lua/files/yats/muxdmx.html#mux:init">yats.mux</a></td>
+
+      <td>The server strategy is: immediate (every timeslot)<br />
+
+      <br />
+
+Multiplexer with server strategy Arrival First. Inputs are served in
+random order. Losses are counted per input and per VC. The per-VC
+registration is only performed for cell-like data items and in the VCI
+range <span style="font-style: italic;">0 ... maxvci</span>.<br />
+
+      <span style="font-style: italic;"><br />
+
+Remark (Bug !):</span><br />
+
+The implementation is fast but the sojourn time in the mutliplexer is
+exactly one time slot too long. The network object class <a href="lua/files/yats/muxdmx.html#muxAF:init">muxAF</a>&nbsp;implements
+the correct sojourn time.</td>
+
+    </tr>
+
+    <tr>
+
+      <td>Simple&nbsp;Multiplexer with lower output rate:
+Arrival First</td>
+
+      <td><a href="lua/files/yats/muxdmx.html#muxAF:init">yats.muxAF</a></td>
+
+      <td>The server strategy is:&nbsp; Arrival First.<br />
+
+      <br />
+
+The model is simple: a queue comprises both the real queue places and
+the server place. A deomon at multiplexer output scans the queue during
+each <span style="font-style: italic;">'active'</span>-th
+timeslot, and sends a data item if available. Thus, some data may stay
+in the&nbsp;server for less then&nbsp;<span style="font-style: italic;">active</span> time slots.
+For more sophisticated models, see below:</td>
+
+    </tr>
+
+    <tr>
+
+      <td>Simple&nbsp;Multiplexer with lower output rate:
+Arrival First</td>
+
+      <td><a href="lua/files/yats/muxdmx.html#muxDF:init">yats.muxDF</a></td>
+
+      <td>The server stratey is: Departure First.<br />
+
+Multiplexer with server strategy Departure First. Inputs are served in
+random order. The output queue is served only during each ACTIVE-th
+time slot in case ACTIVE is given.<br />
+
+      <br />
+
+The model is simple: a queue comprises both the real queue places and
+the server place. A deomon at multiplexer output scans the queue during
+each ACTIVE-th timeslot, and sends a data item if available. Thus, some
+data may stay in the "server" for less then ACTIVE time slots. For more
+sophisticated models, see multiplexers, see below:</td>
+
+    </tr>
+
+    <tr>
+
+      <td>Multiplexer with weighted fair queuing scheduling
+strategy.</td>
+
+      <td><a href="lua/files/yats/muxdmx.html#muxWFQ:init">yats.muxWFQ</a></td>
+
+      <td>This multiplexer implements a weighted fair queuing
+strategy
+according to J.W.Roberts. &nbsp;Connections are added via a call of
+the
+multiplexers <a href="lua/files/yats/muxdmx.html#muxWFQ:addVCQ">addVCQ(param)</a>
+which takes the VCI, the bandwidth and the queue size as parameters.<br />
+
+      <br />
+
+An input queue is maintained per VC. A sort queue at the output manages
+the order in<br />
+
+which to serve cells from the VC queues. It holds the front cell from
+each VC queue<br />
+
+(provided there is one). The decision about serving order is made as
+follows. A global<br />
+
+variable &#8220;Spacing Time&#8221; &#8211; it is common
+for all VCs &#8211; always contains the &#8220;Virtual<br />
+
+Time&#8221; of the last cell which has left the multiplexer. This
+&#8220;Virtual Time&#8221; has been<br />
+
+assigned to the cell when it was entering the sort queue (the
+preceeding cell of this VC<br />
+
+just had been served, or the VC recently had not been present in the
+sort queue). The<br />
+
+&#8220;Virtual Time&#8221; is always set to the current
+&#8220;Spacing Time&#8221; plus the inverse mean cell<br />
+
+rate of the new cell&#8217;s connection registered at the
+multiplexer. The sort queue serves<br />
+
+cells in the order corresponding to their &#8220;Virtual
+Times&#8221;.<br />
+
+The effect of the algorithm is that a cell entering the sort queue can
+overtake other cells, if its inverse mean cell rate is low enough
+compared to the other connections already waiting in the queue.<br />
+
+In the current implementation, the sort queue does not really hold
+cells, but only refers to the corresponding VC queues. A cell is
+dequeued from a VC queue in the instance it has to be sent, and the
+&#8220;Virtual Time&#8221; is assigned to the whole associated
+VC queue.<br />
+
+Thus, possibly one additional buffer place might be needed in each VC
+queue (compared to the original algorithm).</td>
+
+    </tr>
+
+    <tr>
+
+      <td>Multiplexer with Arbitrarily Distributed Serving Time</td>
+
+      <td><a href="lua/files/yats/muxdmx.html#muxDist:init">yats.muxDist</a></td>
+
+      <td>The server strategy is: Departure First<br />
+
+      <br />
+
+Inputs are sampled in random order. The time spent in the server (or
+scheduler's) output queue is determined by a distribution object.</td>
+
+    </tr>
+
+    <tr>
+
+      <td>Base class for event driven multiplexer.</td>
+
+      <td><a href="lua/files/yats/muxdmx.html#muxBase:init">yats.muxBase</a></td>
+
+      <td>The multiplexer provides 'ninp' inputs with a single
+output
+queue with a given maximum length 'buff'. Incoming cells are enqueued
+by fair strategy (random choice).<br />
+
+The class is only used as a base class for other event driven
+multiplexers. It&nbsp;does not have a [[late()]] method for
+scheduling.</td>
+
+    </tr>
+
+    <tr>
+
+      <td>Strict Priority Multiplexer with n inputs and m strict
+priority queues.</td>
+
+      <td><a href="lua/files/yats/muxevt.html#muxPrio:init">yats.muxPrio</a></td>
+
+      <td>This multiplexer provides&nbsp;<span style="font-style: italic;">ninp</span> inputs and<span style="font-style: italic;"> nprio</span> queues. Each
+connection is assigned to&nbsp; a specific priority in the range 0
+to&nbsp;<span style="font-style: italic;">nprio-1</span>,
+where 0 is the lowest priority.<br />
+
+Incoming cells are enqueued by fair strategy (random choice). The
+service time is configurable.<br />
+
+The multiplexer operates either in work-conserving or non
+work-conserving manner. <br />
+
+      <ul><li>In work-conserving mode "async"&nbsp; a cell that
+hits an empty queue is transmitted immediately.</li></ul>
+
+      <ul><li>In non work-conserving mode "sync" the server process
+is activated strictly synchronous in fixed time intervals. </li></ul>
+
+The multiplexer maintains loss counters:<br />
+
+      <ol><li>for the queue in total and</li><li>on a per VCI level.</li></ol>
+
+      </td>
+
+    </tr><tr><td>Strict Priority Frame Multiplexer with n inputs and m strict priority queues.</td><td><a href="lua/files/yats/muxevt.html#muxFrmPrio:init">yats.muxFrmPrio</a></td><td>This
+mulitplexer is similar to the cell based priority mux yats.muxPrio. The
+difference is that priorities are assigned per priority code point
+(field prioCodePoint of a data object) rather than it's connection id
+or ATM vci.<br /><br />The output rate of the multiplexer can be
+specified in bits per slot for&nbsp;work-conserving operation (async
+mode). In non work-conserving operation the multiplexer operates at a
+fixed framerate.</td></tr>
+
+  </tbody>
+</table>
+
+<br />
+
+<p>
+Examples: see the file <a href="../examples/README">README</a>
+in the examples directory
+</p>
+
+<h3><a name="demux"></a>Demultiplexer</h3>
+
+<p>
+A demultiplexer network object receives data through <span style="font-style: italic;">n</span>&nbsp;inputs
+and distributes traffic to <span style="font-style: italic;">m</span>&nbsp;
+outputs. The forwarding process is controlled by a routing table with
+entries of the from ({inp}, from, to, outp), where <span style="font-style: italic;">inp</span> defines the
+input port, <span style="font-style: italic;">from</span>
+designates the incoming connection id (VCI), <span style="font-style: italic;">to </span>designates the
+outgoing connection id (VCI) and <span style="font-style: italic;">outp</span>
+the output port. &nbsp;The routing table can be changed or extended
+any time during a simulation.</p><p>Luayats file:&nbsp;<a href="lua/files/yats/muxdmx.html">muxdmx</a></p>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="font-weight: bold;">Network Object</td>
+
+      <td style="font-weight: bold;">Class</td>
+
+      <td style="font-weight: bold;">Description</td>
+
+    </tr>
+
+    <tr>
+
+      <td>Simple demultiplexer</td>
+
+      <td><a href="lua/files/yats/muxdmx.html#demux:init">yats.demux</a></td>
+
+      <td>The max. size of the routing table must be specified in
+advance.</td>
+
+    </tr>
+
+    
+
+  </tbody>
+</table>
+
+<br />
+
+<p>
+Examples: see the file <a href="../examples/README">README</a>
+in the examples directory
+</p><h2 style="text-align: justify;"><a name="polshap"></a>Policer and Shaper&nbsp;</h2>
+
+<h3><a name="policer"></a>Policer</h3>
+
+<p>
+Luayats file: <a href="lua/files/yats/polshap.html">polshap</a></p>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="font-weight: bold; width: 240px;">Network
+Object</td>
+
+      <td style="font-weight: bold; width: 140px;">Class</td>
+
+      <td style="font-weight: bold; width: 524px;">Notes</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 240px;">Leaky Bucket Policer</td>
+
+      <td style="width: 140px;"><a href="lua/files/yats/polshap.html#lb:init">yats.lb</a></td>
+
+      <td style="width: 524px;">With each time slot, the
+bucket size is decremented by DEC
+(until zero). Upon receipt of a cell, it is tested whether the
+increment would result in an overflow. If yes, then the cell is
+discarded (no bucket increment). If no, then the increment is
+performed, and the cell is passed. In case no VCI is given, all cells
+are subject to policing.<br />
+
+A histogram about bucket sizes seen by arriving
+&#8220;good&#8221;
+cells is maintained. It can be displayed and used in commands.</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+<br />
+
+<h3><a name="shaper"></a>Shaper</h3>
+
+<p>
+Luayats file: <a href="lua/files/yats/polshap.html">polshap</a></p>
+
+
+
+  
+
+    <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2"><tbody><tr>
+
+      <td style="font-weight: bold; width: 240px;">Network
+Object</td>
+
+      <td style="font-weight: bold; width: 140px;">Class</td>
+
+      <td style="font-weight: bold; width: 524px;">Notes</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="width: 240px;">Peak Rate Shaper with
+Arbitrary Cell Spacing</td>
+
+      <td style="width: 140px;"><a href="lua/files/yats/polshap.html#shap2:init">yats.shap2</a></td>
+
+      <td style="width: 524px;">The shaper works with 2
+spacing values. The ratio of both yields the effective cell rate.<br />
+
+In case of BUFF=0, a &#8220;hard&#8221; spacing is performed.</td></tr></tbody></table><h2 style="text-align: justify;"><a name="tcpip"></a>TCPIP&nbsp;</h2>
+
+<p>
+Luayats provides&nbsp;models to simulate the behavior of the
+traffic in &nbsp;a TCPIP connection. Two models are available: a
+sender
+class <a href="lua/files/yats/tcpip.html#tcpipsend:init">yats.tcpipsend</a>
+and a receiver class <a href="lua/files/yats/tcpip.html#tcpiprec:init">yats.tcpiprec</a>.</p>
+
+<p>
+An example can be found <a href="../examples/test-tcpip.lua">here</a>:</p>
+
+<p>Luayats file: <a href="lua/files/yats/tcpip.html">tcpip</a></p>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="font-weight: bold; width: 175px;">Network
+Object</td>
+
+      <td style="font-weight: bold; width: 120px;">Class</td>
+
+      <td style="font-weight: bold; width: 593px;">Notes</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top; width: 175px;">TCPIP
+Sender</td>
+
+      <td style="vertical-align: top; width: 120px;"><a href="../../luayats-2.0/doc/lua/tcpip.html#yats.tcpipsend:init">yats.tcpipsend</a></td>
+
+      <td style="width: 593px;">The object implements the
+TCP sender functionality. Only the IP
+part&nbsp; is reflected by 20 bytes IP overhead in each packet
+that is generated. On the input <span style="font-style: italic;">"Data"</span>,
+frames containing a length indicator are expected. On this input, a
+network object following the start-stop protocol is required: it is
+stopped in case the input buffer is full. The frames are segmented, and
+appropriate TCP/IP frames are generated.<br />
+
+The TCP sender can also be stopped by its succeeding network object
+(start/stop protocol, the start input is &nbsp;<span style="font-style: italic;">"Start"</span>). The input
+expecting the acknowledgment packets is <span style="font-style: italic;">"Ack"</span>.<br />
+
+The following algorithms are implemented by the object class:<br />
+
+      <ul><li>Slow start and congestion avoidance</li></ul>
+
+      <ul><li>Silly window syndrome (SWS) avoidance according to
+RFC
+1122, section 4.2.3.4. The implementation differs slightly: condition
+(3) in this section is not subject to Nagle&#8217;s algorithm, i.e.
+a
+segment of half of the receiver&#8217;s buffer size is sent always.</li></ul>
+
+      <ul><li>Nagle&#8217;s algorithm according to RFC 1122,
+section 4.2.3.4. See remarks to SWS.</li></ul>
+
+      <ul><li>Karn&#8217;s algorithm (no RTT measurement during
+retransmissions)</li></ul>
+
+      <ul><li>Fast retransmission and recovery</li></ul>
+
+      <ul><li>RTT measurement with time stamp option according to
+RFC 1323</li></ul>
+
+After connection setup, both TCP sender and receiver know the identity
+of the peer object. The identifiers are written in each frame sent
+(data and ACK frames). Thus checks can be performed, whether an
+arriving frame stems from the peer object or whether it has arrived due
+to erroneous routing (problem in large network configurations).<br />
+
+Error messages are launched in this case.<br />
+
+      <br />
+
+      <span style="font-weight: bold;">Remarks:</span><br style="font-weight: bold;" />
+
+The object DOES NOT YET IMPLEMENT the zero window probe: if an
+acknowledgment packet reopening the receiver window is lost, then the
+connection stops for ever.<br />
+
+To model the socket interface (input <span style="font-style: italic;">"Data"</span>)
+in a useful way, the sending object already has to split available data
+into pieces of e.g. 4096 bytes. This is necessary since the start-stop
+protocol does not (yet) allow a partial reject of a received data item.</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top; width: 175px;">TCPIP
+Receiver</td>
+
+      <td style="vertical-align: top; width: 120px;"><a href="lua/files/yats/tcpip.html#tcpiprec:init">yats.tcpiprec</a></td>
+
+      <td style="width: 593px;">The object implements the
+TCP receiver functionality. TCP/IP packets are expected at the input <span style="font-style: italic;">"Data"</span>.
+The object can be stopped by the succeeding network object which stops
+eventually the window update process of the receiver (start-stop
+protocol, input <span style="font-style: italic;">"Start"</span>).
+During connection setup, the object is informed by the peer sender
+about ATM bit rate (to translate seconds into slots), the time stamp
+option, and the maximum segment size. The sender, in turn, is provided
+with the maximum window size. In case turned on by the peer sender, the
+time stamp option according to RFC<br />
+
+1323 is supported.<br />
+
+A delayed acknowledgment is registered with every packet received
+in-sequence.<br />
+
+Immediate ACKs are sent<br />
+
+      <ul><li>if an out-of-sequence packet arrives,</li></ul>
+
+      <ul><li>if the receiver window closes to zero,</li></ul>
+
+      <ul><li>if a zero window probe is received, and</li></ul>
+
+      <ul><li>if the right window edge shifts by at least one
+maximum-sized segment or half of the total receiver buffer size.</li></ul>
+
+After connection setup, both TCP sender and receiver know the identity
+of the peer object. The identifiers are written in each frame sent
+(data and ACK frames). Thus checks can be performed, whether an
+arriving frame stems from the peer object or whether it has arrived due
+to erroneous routing (problem in large network configurations).<br />
+
+Error messages are launched in this case.<br />
+
+      <span style="font-weight: bold;"><br />
+
+Remark</span><br />
+
+RFC 1122, section 4.2.3.2 recommends to send an ACK for at least each
+second full sized segment. This currently is only realized indirectly
+via the immediate ACK launched by the subsequent window update. In case
+the receiver has been stopped by the successor, this algorithm will
+fail (no window update will occur as long as the receiver remains
+stopped).</td></tr><tr><td>Start/Stop Terminator</td><td><a href="lua/files/yats/tcpip.html#termStartStop:init">yats.termStartStop</a></td><td>This
+object terminates the Luayats start/stop protocol. The successor may
+stop the output of termStartStop with each item transmitted.
+Transmission resumes when the termStartStop object receives a data item
+at it's specialized "start" input.</td></tr></tbody></table><h2 style="text-align: justify;"><a name="measure"></a>Measurement&nbsp;&nbsp;</h2><p>Luayats
+provides measurement devices to measure cell or frame count, cell or
+frame latency (cell transfer delay) CTD and the inter-arrival time IAT of data items. The measurement
+device is placed into the link of interest. It does not manipulate the
+passing cell or frame. All data collected by the measurement devices is exported and can be displayed.</p><p>Luayats file: <a href="lua/files/yats/misc.html">misc.lua</a></p><table style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1"><tbody><tr><td style="font-weight: bold; width: 147px;">Network
+Object</td><td style="font-weight: bold; width: 121px;">Class</td><td style="font-weight: bold; width: 440px;">Notes</td></tr><tr><td style="width: 147px;">Simple Measurement</td><td style="width: 121px;"><a href="lua/files/yats/misc.html#meas:init">yats.meas</a></td><td style="width: 440px;">This
+object counts the number of passing/terminated cells &nbsp;and collects
+statistics of the cell transfer delay. It works only defined
+connections (vci of object and cell specified).<br /><br />If no output is given the data item is termintated (deleted).<br /><br />Note, that yats.meas is a bit outdated. Use <a href="lua/files/yats/misc.html#meas2:init">yats.meas2</a> or <a href="lua/files/yats/misc.html#meas3:init">yats.meas3</a> instead.</td></tr><tr><td style="width: 147px;">Advanced Measurement<br />and Statistics</td><td style="width: 121px;"><a href="lua/files/yats/misc.html#meas2:init">yats.meas2</a></td><td style="width: 440px;">The
+device collects statistics of&nbsp; the cell transfer delay (CTD) and the inter-arrival time
+(IAT) &nbsp;of all cells or per connection (vci of object and cell match).<br />The device also
+builds mean and max values.<br /><br />If no output is given the data item is termintated (deleted).</td></tr><tr><td style="width: 147px;">Advanced Measurement<br />and Statistics&nbsp;</td><td style="width: 121px;"><a href="lua/files/yats/misc.html#meas3:init">yats.meas3</a></td><td style="width: 440px;">This
+device operates on cells (vci given) or frames (connid given). The
+element collects statistics of CTD and IAT within a predefined range.
+During data collection the CTD and IAT distribution can be down-scaled
+to avoid overflow of the statistics buffer. The device measures over a
+range of connections.<br /><br />If no foutput is given the data item is terminated (deleted).<br /></td></tr><tr><td>Frame Goodput measurement</td><td><a href="lua/files/yats/user.html#measframe:init">yats.measframe</a></td><td>Measures
+the goodput (net throughput) of frame traffic. The goodput is defined
+by # of bytes divided by the latency. Hence, the goodput decreases with
+increasing latency, even if the physical throughput doesn't change.</td></tr></tbody></table><p></p></div>
+<div id="footer"><small>(c) 2003-2009 Herbert Leuwer, April 2009&nbsp;&nbsp;
+&nbsp;<a href="mailto:herbert.leuwer@t-online.de">Contact</a></small></div>
+</body></html>

@@ -1,0 +1,1006 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li><strong>yats/user.lua</strong></li>
+	
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/user.lua</code></h1>
+
+
+<p>Luayats - User Objects. <br> <br><b>module: yats</b><br> <br> User Lua classes. </p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer, Backnang.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;GNU Public License.</p>
+
+
+<p><small><b>Release:</b> 3.0 $Id: user.lua 222 2009-06-06 05:51:35Z leuwer $</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#dat2fram:init">dat2fram:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'dat2fram'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#data2frs:init">data2frs:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'data2frs'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:addmac">ethbridge:addmac</a>&nbsp;(db, mac, portvec, age, port)</td>
+	<td class="summary">Add a static unicast entry into FdB.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:flush">ethbridge:flush</a>&nbsp;(db)</td>
+	<td class="summary">Flush a complete database in the FdB.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:getDefaultPrio">ethbridge:getDefaultPrio</a>&nbsp;(port)</td>
+	<td class="summary">Get input ports default priority.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:getPriority">ethbridge:getPriority</a>&nbsp;(port, inprio)</td>
+	<td class="summary">Get in-to-out priority mapping.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:getQueueMax">ethbridge:getQueueMax</a>&nbsp;(port, prio)</td>
+	<td class="summary">Get queue maximum size.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:getServiceRate">ethbridge:getServiceRate</a>&nbsp;(port)</td>
+	<td class="summary">Get output ports interface speed.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:init">ethbridge:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor of 'ethbridge' object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:lookup">ethbridge:lookup</a>&nbsp;(db, mac)</td>
+	<td class="summary">Lookup an entry in the FdB.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:purgemac">ethbridge:purgemac</a>&nbsp;(db, mac)</td>
+	<td class="summary">Purge an entry in the FdB.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:setDefaultPrio">ethbridge:setDefaultPrio</a>&nbsp;(port, inprio)</td>
+	<td class="summary">Set input ports default priority.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:setPriority">ethbridge:setPriority</a>&nbsp;(port, inprio, prio)</td>
+	<td class="summary">Set in-to-out priority mapping.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:setQueueMax">ethbridge:setQueueMax</a>&nbsp;(port, prio, len)</td>
+	<td class="summary">Set queue maximum size.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ethbridge:setServiceRate">ethbridge:setServiceRate</a>&nbsp;(port, delta)</td>
+	<td class="summary">Set output ports interface speed.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#fork:init">fork:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor of 'fork' object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#framemarker:init">framemarker:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor of class 'framemarker'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#lbframe:init">lbframe:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor of 'lbframe' object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#marker:init">marker:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor of 'marker' object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#measframe:init">measframe:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'measframe'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#tickctrl:init">tickctrl:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor of 'tickctrl' object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#tracer:init">tracer:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor of class 'tracer'.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="dat2fram:init"></a><strong>dat2fram:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'dat2fram'. Receives a cell and uses this to send a new frame of len 'flen'. The cell is only used as trigger. Various data frame attributes can be set on the fly. Note that the object takes no care about inconsistent address settings. It simply copies the configured values into the frame.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter table <ul> <li> name (optional)<br> Name of the display. Default: "objNN" <li> flen<br> Frame length to produce <li> dmac<br> Destination MAC address <li> smac<br> Source MAC address <br> <li> connid (optional)<br> Connection id to identify the frame connection <li> pcp (optional)<br> Priority Code Point (generic priority, e.g. for internal usage) <li> vlanid (optional)<br> VLAN ID (only tag) <li> tpid (optional)<br> TPID for vlan tagged frames <li> vlanprio (optional)<br> VLAN priority <li> dscp (optional)<br> DiffServ service class <li> out<br> Connection to successor Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="data2frs:init"></a><strong>data2frs:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'data2frs'. Receives a cell and uses this to send a new frame of len 'framesize'. A sequence number is assigned to the frame. The cell is only used as trigger.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter table <ul> <li> name (optional)<br> Name of the display. Default: "objNN" <li> framesize<br> Frame length to produce <li> maxsnr<br> Maximum sequeunce number <li> out<br> Connection to successor Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:addmac"></a><strong>ethbridge:addmac</strong>&nbsp;(db, mac, portvec, age, port)</dt>
+<dd>
+Add a static unicast entry into FdB.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  db: number - Database index starting with 0.
+	</li>
+	
+	<li>
+	  mac: number - MAC address.
+	</li>
+	
+	<li>
+	  portvec: 
+	</li>
+	
+	<li>
+	  age: number - Age of this entry; -1 means locked (no ageing).
+	</li>
+	
+	<li>
+	  port: number - Port index starting with 1.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:flush"></a><strong>ethbridge:flush</strong>&nbsp;(db)</dt>
+<dd>
+Flush a complete database in the FdB.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  db: number - Database index starting with 0.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:getDefaultPrio"></a><strong>ethbridge:getDefaultPrio</strong>&nbsp;(port)</dt>
+<dd>
+Get input ports default priority.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  port: number - Port index starting with 1.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:getPriority"></a><strong>ethbridge:getPriority</strong>&nbsp;(port, inprio)</dt>
+<dd>
+Get in-to-out priority mapping. Input priority is mapped to output traffic class.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  port: number - Port index starting with 1.
+	</li>
+	
+	<li>
+	  inprio: number - Input priority.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+number - Output priority.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:getQueueMax"></a><strong>ethbridge:getQueueMax</strong>&nbsp;(port, prio)</dt>
+<dd>
+Get queue maximum size.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  port: number - Port index starting with 1.
+	</li>
+	
+	<li>
+	  prio: number - Output priority.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+number - Length of queue.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:getServiceRate"></a><strong>ethbridge:getServiceRate</strong>&nbsp;(port)</dt>
+<dd>
+Get output ports interface speed.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  port: number - Port index starting with 1.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+number - Output priority.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:init"></a><strong>ethbridge:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor of 'ethbridge' object. This object emulates the behavior of a transparent ethernet bridge according to IEEE 802.1D. <br> Forwarding: <br> The source address of incoming frames is learned in the filtering database which has a configurable size. The whole MAC table is divided into a configurable number of independent databases. The database used is determined by the input port. The FdB can be populated by the user using the function addMac(). <br> Queuing:<br> Each port has a set of nprios output queues which are scheduled in strict priority fashion. The queue is selected using either the vlanPriority field of the incoming frame or by the default priority of the input port. <br> <br>INPUTS: 'p1', 'p2', ..., 'pn' for n data ports <br>EXPORT: 'QLen', 'LossTot', 'Loss' per port, 'LossInp', LossINPRIO and 'Count'.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table Parameter table <ul> <li> name (optional)<br> Name of the display. Default: "objNN". <li> buf (optional)<br> Maximum size of the internal queues. <li> nports <br> Number of ports. <li> ndb (optional)<br> Number of databases in FdB (default = 1). <li> ninprio (optional)<br> Number input priorities (default = 8). <li> nprio (optional) <br> Number of strict priority output queues per port (default = 4). <li> agetime (optional)<br> Ageing time of FdB entries. <li> servicerate (mandatory)<br> Rate in bits per second  at which the queues of a single port are scheduled. By default all output ports have the same servicerate. <li> out<br> Connection to successor and predecessor. Format: <br>   {{"name-of-successor", "input-pin-of-successor"},<br> {"name-of-predecessor", "start-pin-of-predecessor"}}. </ul>
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to device.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:lookup"></a><strong>ethbridge:lookup</strong>&nbsp;(db, mac)</dt>
+<dd>
+Lookup an entry in the FdB.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  db: number - Database index starting with 0.
+	</li>
+	
+	<li>
+	  mac: number - MAC address.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:purgemac"></a><strong>ethbridge:purgemac</strong>&nbsp;(db, mac)</dt>
+<dd>
+Purge an entry in the FdB.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  db: number - Database index starting with 0.
+	</li>
+	
+	<li>
+	  mac: number - MAC address.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:setDefaultPrio"></a><strong>ethbridge:setDefaultPrio</strong>&nbsp;(port, inprio)</dt>
+<dd>
+Set input ports default priority.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  port: number - Port index starting with 1.
+	</li>
+	
+	<li>
+	  inprio: number - Input priority.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:setPriority"></a><strong>ethbridge:setPriority</strong>&nbsp;(port, inprio, prio)</dt>
+<dd>
+Set in-to-out priority mapping. Input priority is mapped to output traffic class.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  port: number - Port index starting with 1.
+	</li>
+	
+	<li>
+	  inprio: number - Input priority.
+	</li>
+	
+	<li>
+	  prio: number - Output priority.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:setQueueMax"></a><strong>ethbridge:setQueueMax</strong>&nbsp;(port, prio, len)</dt>
+<dd>
+Set queue maximum size.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  port: number - Port index starting with 1.
+	</li>
+	
+	<li>
+	  prio: number - Output priority.
+	</li>
+	
+	<li>
+	  len: number -  Length of the queue.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ethbridge:setServiceRate"></a><strong>ethbridge:setServiceRate</strong>&nbsp;(port, delta)</dt>
+<dd>
+Set output ports interface speed.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  port: number - Port index starting with 1.
+	</li>
+	
+	<li>
+	  delta: number - Port rate in bits per slot.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+number - Output priority.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="fork:init"></a><strong>fork:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor of 'fork' object. This object replicates an input data item to n outputs. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li> name (optional)<br> Name of the display. Default: "objNN". <li> nout Number of outputs <li> out<br> Table of successors. Format: <code>{<br> {"name-of-successor 1", "input-pin-of-successor 1"},<br> {"name-of-successor 2", "input-pin-of-successor 2"},<br> }</code> </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="framemarker:init"></a><strong>framemarker:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor of class 'framemarker'. Marks a frame according to given parameters.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li> name (optional)<br> Name of the display. Default: "objNN". <li> domark (optional)<br> Flag to enable marking. Default: true. <li> clp (optional)<br> Value to use in marking, either 0 or 1. Default: do not mark, if not given. <li> maxsize (optional)<br> Max. size of a frame in bytes. Default: 10000 bytes. <li> vlanid (optional)<br> VLAN ID of the frame to mark. Default: -1. <li> vlanpriority or vlanprio (optional)<br> VLAN priority field to set. Default: -1. <li> dropprecedence (optional)<br> Drop precedence (DiffServ) to set. Default: -1. <li> internaldropprecedence (optional)<br> Internal drop precedence to set. Default: -1. <li> out<br> Connection to successor. Format: {"name-of-successor", "input-pin-of-successor"}. </ul>
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="lbframe:init"></a><strong>lbframe:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor of 'lbframe' object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="marker:init"></a><strong>marker:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor of 'marker' object. Marks a received data object according to given parameters.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li> name (optional)<br> Name of the display. Default: "objNN". <li> domark (optional)<br> Flag to enable marking. Default: true. <li> clp (optional)<br> Value to use in marking, either 0 or 1. Default: do not mark, if not given. <li> out<br> Connection to successor. Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="measframe:init"></a><strong>measframe:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'measframe'. This object measures and calculates the mean "goodput" of traffic passing the element.<br> The goodput per packet is defined by the packet length divided by the packet's transmission time. For a constant linerate or (throughput), the mean goodput decreases with increasing delay of packets.<br> The inverse of goodput is also calculated.<br> <br> <i>EXPORT</i>: Goodput5, Goodput5Invers<br>
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter list <ul> <li> name (optional)<br> Name of the display. Default: "objNN". <li> out<br> Connection to successor. Format: {"name-of-successor", "input-pin-of-successor"} </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="tickctrl:init"></a><strong>tickctrl:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor of 'tickctrl' object. This object emulates the behaviour of an operating system, where a defined number of processes contend for processing time in a round robin fashion. The active time interval of the object is probed from a distribution function, which is defined externally using on of the available distribution objects (for instance geometrical or binominal distribution). The length of the actual active time interval for the object is then calculated considering the contending other processes: next_time =  '(contproc + 1) * tick_from_distribution + 1. <br> Input data is always enqueued at arrival, also during inactive state. Queue overflow is avoided using the start/stop protocol, which is activated at a given threshold 'xoff'. Once the buffer filling decreases below the limit 'xon' a start message is sent to the predecessor, which results in new data arriving.  If the system becomes empty during the active time interval it tries to restarts it's feeding node. Data items that arrive are served at the beginning of the next time interval. <br> The object also reacts upon start/stop initiated by it's successor. <br> <br>INPUTS: 'in' for data, 'start' for the start/stop protocol. <br>EXPORT: 'QLen' and 'Count'.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table Parameter table <ul> <li> name (optional)<br> Name of the display. Default: "objNN". <li> buf<br> Maximum size of the internal buffer. <li> bstart<br> Buffer threshold, when to wake up the predecessor (start/stop protocol). <li> offint<br> Time interval, in which 'going off' is detected. <li> contproc<br> Number of contending processes (round robin cycle). <li> phase<br> Phase to start processing (asynchronous behaviour of different objects). <li> out<br> Connection to successor and predecessor. Format: <br>   {{"name-of-successor", "input-pin-of-successor"}, {"name-of-predecessor", "start-pin-of-predecessor"}}. </ul>
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to device.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="tracer:init"></a><strong>tracer:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor of class 'tracer'. This device sets the trace pointer of a data object. In each incoming data object, the pointer traceOrigPtr is set to the name of the trace object. Additionally, the trace sequence number is copied into the data object and incremented. All subsequent network objects will generate trace messages for the marked objects. NOTE: Only works if DATA_OBJECT_TRACE has been defined in src/kernel/defs.h Otherwise no action is performed.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table Parameter table <ul> <li> name (optional)<br> Name of the display. Default: "objNN". <li> vci or connid<br> Connection identifier for cells (vci) or frames (connid). If not set All data objects are traced. <li> out<br> Connection to successor. Format: {"name-of-successor", "input-pin-of-successor"}. </ul>
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to device.
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

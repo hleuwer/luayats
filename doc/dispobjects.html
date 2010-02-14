@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb"><head><meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type" /><meta name="generator" content="HTML Tidy for Linux/x86 (vers 1 September 2005), see www.w3.org" /><title>Luayats - Display Classes and Objects</title><link media="screen" href="style.css" rel="stylesheet" type="text/css" /><link media="print" rel="stylesheet" href="styleprint.css" type="text/css" />
+
+
+
+</head>
+<body>
+<div style="top: 12px; height: 129px; left: 0px; text-align: center; width: 925px;" id="logo"><a name="home2" id="home2"></a><a href="http://www.lua.org"><img style="border: 0px solid ; left: 0px; top: 6px; width: 115px; height: 118px; float: left;" id="lualogo" alt="www.lua.org" src="luayats.png" name="lualogo" hspace="20" /></a></div>
+<div id="header">
+<h1 style="height: 120px; margin-left: 0px; width: 928px;">
+<big><big><a name="home" id="home"></a><br />
+Luayats - User Manual</big></big><br />Network Simulation with YATS and Lua</h1>
+</div>
+<div id="leftnavigation">
+<ul>
+<li style="margin-left: 0px; width: 185px;"><a class="current" href="index.html">Home</a></li>
+<li><a href="index.html#license">License</a></li>
+<li><a href="index.html#features">Features</a></li>
+<li><a href="index.html#download">Download</a></li>
+<li><a href="index.html#installation">Installation</a></li><li style="list-style-type: none; list-style-image: none; list-style-position: outside;"><a href="usermanual.html#home">User Manual</a><br /><ul><li><a href="introduction.html#introduction">Introduction</a></li><li><a href="introduction.html#inputfile">Example Input File</a></li><li><a href="usermanual.html#running">Running Luayats</a></li><li><a href="usermanual.html#environment">Environment Variables</a></li><li><a href="usermanual.html#configuration">Configuration File</a></li><li><a href="usermanual.html#modules">Modules</a></li><li>
+
+
+        <a href="usermanual.html#logging">Logging Facilities</a></li><li><a href="netobjects.html#home">Network Objects</a></li><li><a href="#home">Instruments and Displays</a></li><li><a href="protobjects.html#home">Protocol Simulation</a></li><li><a href="statobjects.html#home">Statistics</a></li><li><a href="miscobjects.html#home">Miscellanous</a>&nbsp;</li></ul><a href="progmanual.html#home">Programmer's Manual</a>
+
+
+  </li><li><a href="index.html#whatsnew">What's New</a></li>
+<li><a href="index.html#credits">Credits</a></li>
+<li><a href="index.html#links">Links</a></li>
+<li><a href="index.html#todo">ToDo</a></li>
+</ul>
+</div>
+<div id="content">
+<h1><small><a name="display"></a></small>Instruments and Displays</h1><h2><a name="instruments"></a>Instruments</h2><p>Luayats provides 2 basic instruments:</p><ul><li>Histograms are used to show statistical distributions: <span style="font-style: italic;">value = f(frequency)</span></li><li>Meters are used to show a sliding time history of a value: <span style="font-style: italic;">value = f(time)</span></li></ul><span style="font-style: italic;"></span><p>Instruments
+display data very fast and provide a mechanism for direct private data
+access based on memory references that is runtime controlled. This is
+called the Luayats EXPORT mechanism. Hence, only values actively
+exported by net object can be visualized in instruments.</p><p>An instrument can be associated to a display dialog during it's instantiation or it can be attached to the dialog later on.</p><p>A left click on an instruments opens a popup menu which allows the user to</p><ul><li>Print the graphics contents of the instrument</li><li>Store the instrument data into a file (snapshot)</li><li>Plot a more detailed view of the visible contents in a new dialog</li></ul><p>Luayats file: <a href="lua/files/yats/graphics.html">graphics.lua</a></p><table style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1"><tbody><tr><td style="font-weight: bold; width: 171px;">Network
+Object</td><td style="font-weight: bold; width: 112px;">Class</td><td style="font-weight: bold; width: 331px;">Notes</td></tr><tr><td style="width: 171px;">Histogram</td><td style="width: 112px;"><a href="lua/files/yats/graphics.html#histo:init">yats.histo</a></td><td style="width: 331px;">Displays the histogram of a distribution. The distribution is sampled at specified display intervals. </td></tr><tr><td style="width: 171px;">Histogram with Distribution construction</td><td style="width: 112px;"><a href="lua/files/yats/graphics.html#histo2:init">yats.histo2</a></td><td style="width: 331px;">Produces a distribution at specified update intervals and samples this distribution at specified display intervals.</td></tr><tr><td>Meter</td><td><a href="lua/files/yats/graphics.html#meter:init">yats.meter</a></td><td>Shows a sliding time history of a value</td></tr></tbody></table><h2><a name="dispdialog"></a>Display Dialogs</h2><p>Display
+dialogs are the frame work for using instruments. An instrument always
+appears in a new dialog, not in the Luayats main GUI. This allows to
+use instruments independently from the GUI.&nbsp;</p><p>There is a
+simple display for one single instrument and a big display for an array
+of instruments avoiding the frame overhead of a dialog for each
+instrument.</p><p>Luayats file: <a href="lua/files/yats/graphics.html">graphics.lua</a></p><table style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1"><tbody><tr><td style="font-weight: bold; width: 171px;">Network
+Object</td><td style="font-weight: bold; width: 112px;">Class</td><td style="font-weight: bold; width: 331px;">Notes</td></tr><tr><td>display</td><td><a href="lua/files/yats/graphics.html#display:init">yats.display</a></td><td>Simple display for one single instrument. </td></tr><tr><td>bigdisplay</td><td><a href="lua/files/yats/graphics.html#bigdisplay:init">yats.bigdisplay</a></td><td>Dialog
+with an array of instruments organized in rows and columns. Instruments
+can be detached or attached to the dialog during runtime.<br /><br />The bigdisplay has a menu for printing the instruments within the dialog and to exit the application.</td></tr></tbody></table><h3>Examples:&nbsp;</h3><p>Simple Display</p><p><img style="width: 410px; height: 236px;" alt="simple display" src="simpledisplay.jpg" /></p><p>Big Display</p><p><img style="height: 637px; width: 822px;" alt="big display" src="bigdisplay.jpg" /></p><p>Plot of Details:: </p><p><img style="width: 397px; height: 299px;" alt="plot display" src="plotdisplay.jpg" /></p></div>
+<div id="footer"><small>(c) 2003-2009 Herbert Leuwer, April 2009&nbsp;&nbsp;
+&nbsp;<a href="mailto:herbert.leuwer@t-online.de">Contact</a></small></div>
+</body></html>

@@ -1,0 +1,820 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li><strong>yats/gui/runctrl.lua</strong></li>
+	
+	<li>
+		<a href="../../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/gui/runctrl.lua</code></h1>
+
+
+<p>Luayats - Graphical User Interface (GUI) <br> <br><b>module: gui</b><br> <br> This module implements the simulation run control of Luayats. </p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer, Backnang.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;GNU Public License.</p>
+
+
+<p><small><b>Release:</b> 4.0 $Id$</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#addlist">addlist</a>&nbsp;(tab, list)</td>
+	<td class="summary">Add a list of items to the tree table.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#buildObjectTree">buildObjectTree</a>&nbsp;()</td>
+	<td class="summary">Create initial object and environment tree.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#enableSimControls">enableSimControls</a>&nbsp;(state)</td>
+	<td class="summary">Enable simulation controls.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#initSimulation">initSimulation</a>&nbsp;(script, nogui)</td>
+	<td class="summary">Initializes a simulation.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#intercept">intercept</a>&nbsp;(self, action, ev, when)</td>
+	<td class="summary"> </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#objbranchclose_cb">objbranchclose_cb</a>&nbsp;(tree, id)</td>
+	<td class="summary">Object browser branchclose callback.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#objbranchopen_cb">objbranchopen_cb</a>&nbsp;(tree, id)</td>
+	<td class="summary">Object browser branchopen callback.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#objexecuteleaf_cb">objexecuteleaf_cb</a>&nbsp;(tree, id)</td>
+	<td class="summary">Object browser branchopen callback.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#objgetval">objgetval</a>&nbsp;(tree, id)</td>
+	<td class="summary">Get information from object tree node.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#objopen">objopen</a>&nbsp;(tree, id, obj)</td>
+	<td class="summary">Opens an object and create members tree.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#objrightclick_cb">objrightclick_cb</a>&nbsp;(tree, id)</td>
+	<td class="summary">Object browser right click callback.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#objselection_cb">objselection_cb</a>&nbsp;(tree, id, status)</td>
+	<td class="summary">Object browser selection callback.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#objsetval">objsetval</a>&nbsp;(tree, id, t)</td>
+	<td class="summary">Set new value in object tree node.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#resetSimulation">resetSimulation</a>&nbsp;()</td>
+	<td class="summary">Reset the simulator.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#runSimulation">runSimulation</a>&nbsp;(script)</td>
+	<td class="summary">Runs the simulation from a script text.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#setSimControls">setSimControls</a>&nbsp;(state)</td>
+	<td class="summary"> </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sortlist">sortlist</a>&nbsp;(tin)</td>
+	<td class="summary">Sort a list into a list of key,value pairs.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="addlist"></a><strong>addlist</strong>&nbsp;(tab, list)</dt>
+<dd>
+Add a list of items to the tree table.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tab: Tree table.
+	</li>
+	
+	<li>
+	  list: List of items.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Tree table. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="buildObjectTree"></a><strong>buildObjectTree</strong>&nbsp;()</dt>
+<dd>
+Create initial object and environment tree.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+Table representing object tree. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="enableSimControls"></a><strong>enableSimControls</strong>&nbsp;(state)</dt>
+<dd>
+Enable simulation controls.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  state: Command 'ON' or 'OFF'
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="initSimulation"></a><strong>initSimulation</strong>&nbsp;(script, nogui)</dt>
+<dd>
+Initializes a simulation. The function wraps the user's script into a Lua coroutine and assignes a user defined environment to the loaded script. The simulation is halted for a few milliseconds in order to poll the GUI.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  script: Script text to be executed.
+	</li>
+	
+	<li>
+	  nogui: Indicate whether this function is called via the GUI or not.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="intercept"></a><strong>intercept</strong>&nbsp;(self, action, ev, when)</dt>
+<dd>
+
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  self: 
+	</li>
+	
+	<li>
+	  action: 
+	</li>
+	
+	<li>
+	  ev: 
+	</li>
+	
+	<li>
+	  when: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="objbranchclose_cb"></a><strong>objbranchclose_cb</strong>&nbsp;(tree, id)</dt>
+<dd>
+Object browser branchclose callback. Does nothing.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tree: Tree handle.
+	</li>
+	
+	<li>
+	  id: Node id.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="objbranchopen_cb"></a><strong>objbranchopen_cb</strong>&nbsp;(tree, id)</dt>
+<dd>
+Object browser branchopen callback. Shows details of an object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tree: Tree handle.
+	</li>
+	
+	<li>
+	  id: Node id.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="objexecuteleaf_cb"></a><strong>objexecuteleaf_cb</strong>&nbsp;(tree, id)</dt>
+<dd>
+Object browser branchopen callback. Change values of object properties.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tree: Tree handle.
+	</li>
+	
+	<li>
+	  id: Node id.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="objgetval"></a><strong>objgetval</strong>&nbsp;(tree, id)</dt>
+<dd>
+Get information from object tree node.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tree: Tree handle.
+	</li>
+	
+	<li>
+	  id: Node id.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Table with key, value info on success, nil + err on failure. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="objopen"></a><strong>objopen</strong>&nbsp;(tree, id, obj)</dt>
+<dd>
+Opens an object and create members tree.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tree: Object tree handle.
+	</li>
+	
+	<li>
+	  id: Id of selected node.
+	</li>
+	
+	<li>
+	  obj: Handle of object associated with the node.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="objrightclick_cb"></a><strong>objrightclick_cb</strong>&nbsp;(tree, id)</dt>
+<dd>
+Object browser right click callback.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tree: Tree handle.
+	</li>
+	
+	<li>
+	  id: Node id.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="objselection_cb"></a><strong>objselection_cb</strong>&nbsp;(tree, id, status)</dt>
+<dd>
+Object browser selection callback. Extend the branch node and show it's first level children.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tree: Tree handle.
+	</li>
+	
+	<li>
+	  id: Node id.
+	</li>
+	
+	<li>
+	  status: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="objsetval"></a><strong>objsetval</strong>&nbsp;(tree, id, t)</dt>
+<dd>
+Set new value in object tree node.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tree: Tree handle.
+	</li>
+	
+	<li>
+	  id: Node id.
+	</li>
+	
+	<li>
+	  t: Info table. 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="resetSimulation"></a><strong>resetSimulation</strong>&nbsp;()</dt>
+<dd>
+Reset the simulator.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="runSimulation"></a><strong>runSimulation</strong>&nbsp;(script)</dt>
+<dd>
+Runs the simulation from a script text. The controller maintains simulation states 'IDLE', 'RUN', 'PAUSE', 'FINISH', 'ERROR', 'ABORTED'. The script is run by calling the script running corouinte cyclically.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  script: Script to execute.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="setSimControls"></a><strong>setSimControls</strong>&nbsp;(state)</dt>
+<dd>
+
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  state: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sortlist"></a><strong>sortlist</strong>&nbsp;(tin)</dt>
+<dd>
+Sort a list into a list of key,value pairs.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tin: Input list.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+key, value table. 
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

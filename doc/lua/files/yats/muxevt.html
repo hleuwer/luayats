@@ -1,0 +1,823 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li><strong>yats/muxevt.lua</strong></li>
+	
+	<li>
+		<a href="../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/muxevt.lua</code></h1>
+
+
+<p>LuaYats - Event-driven Multiplexer and Demultiplexer. <br> <br><b>module: yats</b><br> <br> Lua classes for event driven multiplexers and demultiplexers. </p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer, Backnang.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;GNU Public License.</p>
+
+
+<p><small><b>Release:</b> 3.0 $Id: muxevt.lua 222 2009-06-06 05:51:35Z leuwer $</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#muxBase:getLosses">muxBase:getLosses</a>&nbsp;(from, to)</td>
+	<td class="summary">Get summary of losses for a ranage of inputs.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxBase:getLossesVCI">muxBase:getLossesVCI</a>&nbsp;(from, to)</td>
+	<td class="summary">Get summary of losses for a ranage of VCIs.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxBase:getQLen">muxBase:getQLen</a>&nbsp;()</td>
+	<td class="summary">Get output queue length.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxBase:getQMaxLen">muxBase:getQMaxLen</a>&nbsp;()</td>
+	<td class="summary">Get maximum length of queue.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxBase:init">muxBase:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'muxBase'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxFrmPrio:getPriority">muxFrmPrio:getPriority</a>&nbsp;(inprio)</td>
+	<td class="summary">Get priority of a priority code point.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxFrmPrio:getQueueMax">muxFrmPrio:getQueueMax</a>&nbsp;(prio)</td>
+	<td class="summary">Get maximum length of a priority queue.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxFrmPrio:init">muxFrmPrio:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'muxFrmPrio'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxFrmPrio:setPriority">muxFrmPrio:setPriority</a>&nbsp;(inprio, prio)</td>
+	<td class="summary">Set priority of a priority code point.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxFrmPrio:setQueueMax">muxFrmPrio:setQueueMax</a>&nbsp;(prio, len)</td>
+	<td class="summary">Set maximum length of priority queue (in frames).</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxFrmPrio:setService">muxFrmPrio:setService</a>&nbsp;(delta)</td>
+	<td class="summary">Set the service time.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxFrmPrio:setServiceRate">muxFrmPrio:setServiceRate</a>&nbsp;(delta)</td>
+	<td class="summary">Set the service rate time.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxPrio:getPriority">muxPrio:getPriority</a>&nbsp;(vci)</td>
+	<td class="summary">Get priority of a connection.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxPrio:getQueueMax">muxPrio:getQueueMax</a>&nbsp;(prio)</td>
+	<td class="summary">Get maximum length of a priority queue.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxPrio:init">muxPrio:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor for class 'muxPrio'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxPrio:setPriority">muxPrio:setPriority</a>&nbsp;(vci, prio)</td>
+	<td class="summary">Set priority of a connection.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxPrio:setQueueMax">muxPrio:setQueueMax</a>&nbsp;(prio, len)</td>
+	<td class="summary">Set maximum length of priority queue.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#muxPrio:setService">muxPrio:setService</a>&nbsp;(delta)</td>
+	<td class="summary">Set the service time.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="muxBase:getLosses"></a><strong>muxBase:getLosses</strong>&nbsp;(from, to)</dt>
+<dd>
+Get summary of losses for a ranage of inputs.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  from: number Lower input index.
+	</li>
+	
+	<li>
+	  to: number Upper input index.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+number Loss count.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxBase:getLossesVCI"></a><strong>muxBase:getLossesVCI</strong>&nbsp;(from, to)</dt>
+<dd>
+Get summary of losses for a ranage of VCIs.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  from: number -  Lower VCI.
+	</li>
+	
+	<li>
+	  to: number - Upper VCI.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+number - Loss count.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxBase:getQLen"></a><strong>muxBase:getQLen</strong>&nbsp;()</dt>
+<dd>
+Get output queue length.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+number - Length of the queue.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxBase:getQMaxLen"></a><strong>muxBase:getQMaxLen</strong>&nbsp;()</dt>
+<dd>
+Get maximum length of queue.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+number - Maximum length of the queue.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxBase:init"></a><strong>muxBase:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'muxBase'. The multiplexer provides 'ninp' inputs with a single output queue with a given maximum length 'buff'. Incoming cells are enqueued by fair strategy (random choice). The class is only used as a base class for other event driven multiplexers. It does not have a <code>late()</code> method for scheduling.<br> The multiplexer maintains loss counters<br> a) for the queue in total and<br> b) on a per VCI level.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - parameter list <ul> <li>name (optional)<br> Name of the display. Default: "objNN". <li>ninp)<br> Number of inputs. <li>buff)<br> Size of the output buffer. <li>maxvci (optional))<br> Maximum value for input VCI. Default: ninp+1. <li>service (optional))<br> Service time in slots. <li>out)<br> Connection to successor. Format: {"name-of-successor", "input-pin-of-successor"}. </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxFrmPrio:getPriority"></a><strong>muxFrmPrio:getPriority</strong>&nbsp;(inprio)</dt>
+<dd>
+Get priority of a priority code point.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  inprio: number Input Priority taken from frame.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Priority of the connection.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxFrmPrio:getQueueMax"></a><strong>muxFrmPrio:getQueueMax</strong>&nbsp;(prio)</dt>
+<dd>
+Get maximum length of a priority queue.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  prio: number - Priority of the queue.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+number - Length of the queue.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxFrmPrio:init"></a><strong>muxFrmPrio:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'muxFrmPrio'. The multiplexer provides <code>ninp</code> inputs and <code>nprio</code> queues. The priority carried in the frame (prioCodePoint) is interpreted as input priority. The priority of the output queue is then determined by an internal mapping table, that can be manipulated using the function <code>setPriority(inprio, prio)</code>. The default mapping is 1 by 1. Zero is the lowest priority. <br> Incoming frames are enqueued by fair strategy (random choice). The service time is configurable. The multiplexer operates either in work-conserving or non work-conserving manner. In work-conserving mode "async" a frame that hits an empty queue is transmitted immediately. In non work-conserving mode "sync" the server process is activated strictly synchron in fixed time intervals (frame rate scheduling).<br> The multiplexer maintains loss counters per input priority, per priority , per queue and total loss.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - parameter list <ul> <li>name (optional))<br> Name of the display. Default: "objNN". <li>ninp)<br> Number of inputs. <li>buff)<br> Size of the output buffer. <li>maxinprio (optional))<br> Maximum value for input priorities INPRIO. Default: 8. <li>nprio)<br> Maximum number of output priorities (traffic classes/queues). <li>service (optional))<br> Service time in slots. <li>servicerate (optional))<br> Service rate in bits per slot, overrides service time <li>mode)<br> "async": work-conserving operation with the bitrate defined by 'servicerate'. <br> "sync" : non work-conserving operation with the framerate defined by 'service'. <br> <li>out)<br> Connection to successor. Format: {"name-of-successor", "input-pin-of-successor"}. </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxFrmPrio:setPriority"></a><strong>muxFrmPrio:setPriority</strong>&nbsp;(inprio, prio)</dt>
+<dd>
+Set priority of a priority code point.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  inprio: number Input Priority taken from frame.
+	</li>
+	
+	<li>
+	  prio: number Priority.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxFrmPrio:setQueueMax"></a><strong>muxFrmPrio:setQueueMax</strong>&nbsp;(prio, len)</dt>
+<dd>
+Set maximum length of priority queue (in frames).
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  prio: number Priority of the queue.
+	</li>
+	
+	<li>
+	  len: number length of the queue in cells.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxFrmPrio:setService"></a><strong>muxFrmPrio:setService</strong>&nbsp;(delta)</dt>
+<dd>
+Set the service time.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  delta: number - Service cycle in slots (frame rate - non-work-conserving).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxFrmPrio:setServiceRate"></a><strong>muxFrmPrio:setServiceRate</strong>&nbsp;(delta)</dt>
+<dd>
+Set the service rate time.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  delta: number - Service cycle in bits per slot (bitrate - work-conserving).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxPrio:getPriority"></a><strong>muxPrio:getPriority</strong>&nbsp;(vci)</dt>
+<dd>
+Get priority of a connection.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vci: number Connection identifier.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Priority of the connection.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxPrio:getQueueMax"></a><strong>muxPrio:getQueueMax</strong>&nbsp;(prio)</dt>
+<dd>
+Get maximum length of a priority queue.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  prio: number - Priority of the queue.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+number - Length of the queue.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxPrio:init"></a><strong>muxPrio:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor for class 'muxPrio'. The multiplexer provides <code>ninp</code> inputs adn <code>nprio</code> queues. Each connection is assigned to a specific priority in the range 0 to <code>nprio-1</code>, where 0 is the lowest priority. Incoming cells are enqueued by fair strategy (random choice). The service time is configurable. The multiplexer operates either in work-conserving or non work-conserving manner. In work-conserving mode "async"  a cell that hits an empty queue is transmitted immediately. In non work-conserving mode "sync" the server process is activated strictly synchron in fixed time intervals.<br> The multiplexer maintains loss counters<br> a) for the queue in total and<br> b) on a per VCI level.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - parameter list <ul> <li>name (optional))<br> Name of the display. Default: "objNN". <li>ninp)<br> Number of inputs. <li>buff)<br> Size of the output buffer. <li>maxvci (optional))<br> Maximum value for input VCI. Default: ninp+1. <li>nprio)<br> Maximum number of priorities. <li>service (optional))<br> Service time in slots. <li>mode)<br> "async": work-conserving operation with the rate defined by 'service'. <br> "sync" : non work-conserving operation with the rate defined by 'service'. <br> <li>out)<br> Connection to successor. Format: {"name-of-successor", "input-pin-of-successor"}. </ul>.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxPrio:setPriority"></a><strong>muxPrio:setPriority</strong>&nbsp;(vci, prio)</dt>
+<dd>
+Set priority of a connection.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  vci: number Connection identifier.
+	</li>
+	
+	<li>
+	  prio: number Priority.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxPrio:setQueueMax"></a><strong>muxPrio:setQueueMax</strong>&nbsp;(prio, len)</dt>
+<dd>
+Set maximum length of priority queue.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  prio: number Priority of the queue.
+	</li>
+	
+	<li>
+	  len: number length of the queue in cells.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="muxPrio:setService"></a><strong>muxPrio:setService</strong>&nbsp;(delta)</dt>
+<dd>
+Set the service time.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  delta: number - Service cycle in slots.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

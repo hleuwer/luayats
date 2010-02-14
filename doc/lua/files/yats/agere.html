@@ -1,0 +1,742 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li><strong>yats/agere.lua</strong></li>
+	
+	<li>
+		<a href="../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/core.html">yats/core.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/agere.lua</code></h1>
+
+
+<p>Luayats - Agere Network Processor <br> <br><b>module: yats</b><br> <br> </p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer, Backnang.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;GNU Public License.</p>
+
+
+<p><small><b>Release:</b> 3.0 $Id: agere.lua 220 2009-06-06 05:45:34Z leuwer $</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:ConnSetDestinationPolicer">AgereTm:ConnSetDestinationPolicer</a>&nbsp;(cid, polid)</td>
+	<td class="summary">Assign a policer to a connection (VPL).</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:ConnSetDestinationQueue">AgereTm:ConnSetDestinationQueue</a>&nbsp;(cid, tqid)</td>
+	<td class="summary">Assign a traffic queue to a connection (VPL).</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:PolicerSetAction">AgereTm:PolicerSetAction</a>&nbsp;(polid, action)</td>
+	<td class="summary">Set the action a policer has to perform.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:PolicerSetRate">AgereTm:PolicerSetRate</a>&nbsp;(polid, cir, cbs, pir, pbs)</td>
+	<td class="summary">Set the rates of a policer.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:SchedSdwrrSetMaxPduSize">AgereTm:SchedSdwrrSetMaxPduSize</a>&nbsp;(size)</td>
+	<td class="summary">Set SDWRR maximum PDU size.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:SchedSdwrrSetServiceQuantum">AgereTm:SchedSdwrrSetServiceQuantum</a>&nbsp;(sq)</td>
+	<td class="summary">Set SDWRR service quantum.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:TqCosSetMaxBuff_b">AgereTm:TqCosSetMaxBuff_b</a>&nbsp;(tqid, cosid, maxbuff_b)</td>
+	<td class="summary">Set octet buffer size of CoS class.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:TqCosSetMaxBuff_p">AgereTm:TqCosSetMaxBuff_p</a>&nbsp;(tqid, cosid, maxbuff_p)</td>
+	<td class="summary">Set packet buffer size for CoS class.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:TqSetMaxBuff_b">AgereTm:TqSetMaxBuff_b</a>&nbsp;(tqid, maxbuff_b)</td>
+	<td class="summary">Set octet buffer size for a traffic queue.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:TqSetMaxBuff_p">AgereTm:TqSetMaxBuff_p</a>&nbsp;(tqid, buf, maxbuff_p)</td>
+	<td class="summary">Set packet buffer size for a traffic queue.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:TqSetMinimumRate">AgereTm:TqSetMinimumRate</a>&nbsp;(tqid, rate)</td>
+	<td class="summary">Set TQ minimum rate.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:TqSetSdwrrParam">AgereTm:TqSetSdwrrParam</a>&nbsp;(tqid, limit1, limit2, limit3)</td>
+	<td class="summary">Set SDWRR parameters: limits 1 to 3.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:TqSetShapingRate">AgereTm:TqSetShapingRate</a>&nbsp;(tqid, rate)</td>
+	<td class="summary">Set TQ shaping rate.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#AgereTm:init">AgereTm:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor of class 'AgereTm'.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="AgereTm:ConnSetDestinationPolicer"></a><strong>AgereTm:ConnSetDestinationPolicer</strong>&nbsp;(cid, polid)</dt>
+<dd>
+Assign a policer to a connection (VPL).
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  cid: number - Connection id starting a 0.
+	</li>
+	
+	<li>
+	  polid: number - Traffic queue id starting at 1.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:ConnSetDestinationQueue"></a><strong>AgereTm:ConnSetDestinationQueue</strong>&nbsp;(cid, tqid)</dt>
+<dd>
+Assign a traffic queue to a connection (VPL).
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  cid: number - Connection id starting a 0.
+	</li>
+	
+	<li>
+	  tqid: number - Traffic queue id starting at 1.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:PolicerSetAction"></a><strong>AgereTm:PolicerSetAction</strong>&nbsp;(polid, action)</dt>
+<dd>
+Set the action a policer has to perform.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  polid: number - Index of policer starting at 1.
+	</li>
+	
+	<li>
+	  action: constant - Action to perform (polNone, polMark, polCIRdrop, polPIRdrop).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:PolicerSetRate"></a><strong>AgereTm:PolicerSetRate</strong>&nbsp;(polid, cir, cbs, pir, pbs)</dt>
+<dd>
+Set the rates of a policer.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  polid: number - Index of policer starting at 1.
+	</li>
+	
+	<li>
+	  cir: - Committed information rate.
+	</li>
+	
+	<li>
+	  cbs: - Committed burst size.
+	</li>
+	
+	<li>
+	  pir: - Peak information rate.
+	</li>
+	
+	<li>
+	  pbs: - Peak burst size.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:SchedSdwrrSetMaxPduSize"></a><strong>AgereTm:SchedSdwrrSetMaxPduSize</strong>&nbsp;(size)</dt>
+<dd>
+Set SDWRR maximum PDU size.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  size: number - PDU size.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:SchedSdwrrSetServiceQuantum"></a><strong>AgereTm:SchedSdwrrSetServiceQuantum</strong>&nbsp;(sq)</dt>
+<dd>
+Set SDWRR service quantum.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  sq: number - Service quantum.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:TqCosSetMaxBuff_b"></a><strong>AgereTm:TqCosSetMaxBuff_b</strong>&nbsp;(tqid, cosid, maxbuff_b)</dt>
+<dd>
+Set octet buffer size of CoS class.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tqid: number - Traffic queue id starting at 1.
+	</li>
+	
+	<li>
+	  cosid: number - CoS class - 1 to 8.
+	</li>
+	
+	<li>
+	  maxbuff_b: number - Number of bytes. return none.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:TqCosSetMaxBuff_p"></a><strong>AgereTm:TqCosSetMaxBuff_p</strong>&nbsp;(tqid, cosid, maxbuff_p)</dt>
+<dd>
+Set packet buffer size for CoS class.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tqid: number - Traffic queue id starting at 1.
+	</li>
+	
+	<li>
+	  cosid: number - CoS class - 1 to 8.
+	</li>
+	
+	<li>
+	  maxbuff_p: number - Number of packets. return none.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:TqSetMaxBuff_b"></a><strong>AgereTm:TqSetMaxBuff_b</strong>&nbsp;(tqid, maxbuff_b)</dt>
+<dd>
+Set octet buffer size for a traffic queue.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tqid: number - Traffic queue id starting at 1.
+	</li>
+	
+	<li>
+	  maxbuff_b: number - Number of bytes. return none.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:TqSetMaxBuff_p"></a><strong>AgereTm:TqSetMaxBuff_p</strong>&nbsp;(tqid, buf, maxbuff_p)</dt>
+<dd>
+Set packet buffer size for a traffic queue.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tqid: number - Traffic queue id starting at 1.
+	</li>
+	
+	<li>
+	  buf: 
+	</li>
+	
+	<li>
+	  maxbuff_p: number - Number of packets. return none.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:TqSetMinimumRate"></a><strong>AgereTm:TqSetMinimumRate</strong>&nbsp;(tqid, rate)</dt>
+<dd>
+Set TQ minimum rate.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tqid: number - Traffic queue id starting at 1.
+	</li>
+	
+	<li>
+	  rate: number - Minimum rate in bits/s.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:TqSetSdwrrParam"></a><strong>AgereTm:TqSetSdwrrParam</strong>&nbsp;(tqid, limit1, limit2, limit3)</dt>
+<dd>
+Set SDWRR parameters: limits 1 to 3.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tqid: number - Traffic queue id starting at 1.
+	</li>
+	
+	<li>
+	  limit1: number - 1st limit.
+	</li>
+	
+	<li>
+	  limit2: number - 2nd limit.
+	</li>
+	
+	<li>
+	  limit3: number - 3rd limit.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:TqSetShapingRate"></a><strong>AgereTm:TqSetShapingRate</strong>&nbsp;(tqid, rate)</dt>
+<dd>
+Set TQ shaping rate.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  tqid: number - Traffic queue id starting at 1.
+	</li>
+	
+	<li>
+	  rate: number - Shaping rate in bits/s.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="AgereTm:init"></a><strong>AgereTm:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor of class 'AgereTm'. ~[[ref=yats.AgereTm:new{[name=]"objname",ninp=N,[nTrafficQueue|ntq=ninp,][nPolicier|npol=ninp,][maxconn=ninp,] maxbuff_p=N, maxbuff_b=N, ShapingRate=D, out = {"next", "pin"}]].
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Paramter list.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to TM object.
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

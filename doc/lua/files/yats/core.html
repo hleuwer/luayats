@@ -1,0 +1,1555 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../../luadoc.css" type="text/css" />
+	<!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
+</head>
+
+<body>
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+<div id="main">
+
+<div id="navigation">
+
+
+<h1>LuaDoc</h1>
+<ul>
+	
+	<li><a href="../../index.html">Index</a></li>
+	
+</ul>
+
+
+<!-- Module list -->
+
+
+
+<!-- File list -->
+
+<h1>Files</h1>
+<ul>
+
+	<li>
+		<a href="../../files/yats/agere.html">yats/agere.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/block.html">yats/block.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/config.html">yats/config.lua</a>
+	</li>
+
+	<li><strong>yats/core.lua</strong></li>
+	
+	<li>
+		<a href="../../files/yats/dummy.html">yats/dummy.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/getopt.html">yats/getopt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/graphics.html">yats/graphics.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/editor.html">yats/gui/editor.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/menu.html">yats/gui/menu.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/gui/runctrl.html">yats/gui/runctrl.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/logging.html">yats/logging.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/misc.html">yats/misc.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxdmx.html">yats/muxdmx.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/muxevt.html">yats/muxevt.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/object.html">yats/object.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/polshap.html">yats/polshap.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/rstp.html">yats/rstp.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/shell.html">yats/shell.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/src.html">yats/src.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/statist.html">yats/statist.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/stdlib.html">yats/stdlib.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/switch.html">yats/switch.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/tcpip.html">yats/tcpip.lua</a>
+	</li>
+
+	<li>
+		<a href="../../files/yats/user.html">yats/user.lua</a>
+	</li>
+
+</ul>
+
+
+
+
+
+
+</div> <!-- id="navigation" -->
+
+<div id="content">
+
+<h1>File <code>yats/core.lua</code></h1>
+
+
+<p>Luayats - Yats programming in Lua. <br> <br><b>module: yats</b><br> <br> YATS (Yet Another Tiny Simulator) has been developed at University of Dresden. This package provides Lua scripting capability to the Yats network simulator.<br><br> <b>Classes</b><br><br> <i>root</i><br> Lua level root class. All node objects inherit from 'root'. Note that there is no constructor, because an object of class 'root' is never instantiated directly.<br><br> <i>sim</i><br> The simulator object. The 'sim' object is created automatically upon startup. It provides methods to control the simulation execution.<br><br> <i>luacontrol</i><br> Generic object to perform arbitrary tasks at specific times during a simulation. See the constructor of object 'luacontrol' for details. </p>
+
+
+<p><b>Author:</b>
+<table class="authors_list">
+
+	<tr><td class="name">Herbert Leuwer, Backnang.</td></tr>
+
+</table>
+</p>
+
+
+<p>Copyright &copy;GNU Public License.</p>
+
+
+<p><small><b>Release:</b> 3.0 $Id: core.lua 222 2009-06-06 05:51:35Z leuwer $</small></p>
+
+
+
+<h2>Functions</h2>
+<table class="function_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#_G.__YATSEARLY">_G.__YATSEARLY</a>&nbsp;(obj, ev)</td>
+	<td class="summary">Callback for 'early'-method.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#_G.__YATSLATE">_G.__YATSLATE</a>&nbsp;(obj, ev)</td>
+	<td class="summary">Callback for 'late'-method.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#_G.__YATSREC">_G.__YATSREC</a>&nbsp;(obj, pd, idx)</td>
+	<td class="summary">Callback or 'rec'-method.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#autoname">autoname</a>&nbsp;(param)</td>
+	<td class="summary">Automatically generate a name or take it from 'param'.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#decode">decode</a>&nbsp;(frame, typ)</td>
+	<td class="summary">Decode a frame given in a string.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#deletegarbage">deletegarbage</a>&nbsp;()</td>
+	<td class="summary">Push objects to yats garbage.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#luacontrol:init">luacontrol:init</a>&nbsp;(param)</td>
+	<td class="summary">Constructor of class 'luacontrol'.<br> 'luacontrol' provides a means to influence yats behavior during simulation.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#mac2s">mac2s</a>&nbsp;(s)</td>
+	<td class="summary">Convert a MAC address to a string.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#nc">nc</a>&nbsp;()</td>
+	<td class="summary">Not connected pseudo object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#random">random</a>&nbsp;(l, u)</td>
+	<td class="summary">Generate a random number withing given limits.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#randomseed">randomseed</a>&nbsp;(n)</td>
+	<td class="summary">Set yats seed value for random number generation.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#root.successors">root.successors</a>&nbsp;(obj)</td>
+	<td class="summary">Iterator delivering successor objects of given object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#root:adjust">root:adjust</a>&nbsp;(p)</td>
+	<td class="summary">Adjust object's parameter table for easier handling.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#root:connect">root:connect</a>&nbsp;()</td>
+	<td class="summary">Generic connect function for each network object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#root:definp">root:definp</a>&nbsp;(name)</td>
+	<td class="summary">Define a input for an object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#root:defout">root:defout</a>&nbsp;(ot)</td>
+	<td class="summary">Define a output for an object.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#root:finish">root:finish</a>&nbsp;(t)</td>
+	<td class="summary">Finish object definition.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#root:getNext">root:getNext</a>&nbsp;(index)</td>
+	<td class="summary">Get complete successor info (reference + handle) for a specfiic output.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#root:getSHandle">root:getSHandle</a>&nbsp;(index)</td>
+	<td class="summary">Get successor input handle for a specific output.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#root:getSuc">root:getSuc</a>&nbsp;(index)</td>
+	<td class="summary">Get successor reference for a specific output.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#root:handle">root:handle</a>&nbsp;(peer, pin)</td>
+	<td class="summary">Generic handle function.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#root:signal">root:signal</a>&nbsp;(...)</td>
+	<td class="summary">Signal to an object.<br> The arguments are specific to the class that is addressed.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#setSlotLength">setSlotLength</a>&nbsp;(sl)</td>
+	<td class="summary">Set simulation slot length.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:connect">sim:connect</a>&nbsp;()</td>
+	<td class="summary">Connects all nodes.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:delete">sim:delete</a>&nbsp;(obj)</td>
+	<td class="summary">Delete an element from object list.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:deletegarbage">sim:deletegarbage</a>&nbsp;()</td>
+	<td class="summary">Delete objects in last garbage table.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:disconnect">sim:disconnect</a>&nbsp;()</td>
+	<td class="summary">Disconnect everything.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:flushEvents">sim:flushEvents</a>&nbsp;(del)</td>
+	<td class="summary">Clean pending events in early and late timeslot tables.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:getObj">sim:getObj</a>&nbsp;(name)</td>
+	<td class="summary">Retrieve an element from object list.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:getRand">sim:getRand</a>&nbsp;()</td>
+	<td class="summary">Generate a random number </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:insert">sim:insert</a>&nbsp;(obj)</td>
+	<td class="summary">Insert an element into object list.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:list">sim:list</a>&nbsp;(s, prefix)</td>
+	<td class="summary">List objects.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:pushgarbage">sim:pushgarbage</a>&nbsp;()</td>
+	<td class="summary">Collect all active objects into current garbage table.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:reset">sim:reset</a>&nbsp;(no_flush)</td>
+	<td class="summary">Reset Simulation (do not execute any further run (started by sim:run()).</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:resetTime">sim:resetTime</a>&nbsp;()</td>
+	<td class="summary">Reset simulation time.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:run">sim:run</a>&nbsp;(slots, dots)</td>
+	<td class="summary">Run simulation for 'slots' ticks.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:setRand">sim:setRand</a>&nbsp;(n)</td>
+	<td class="summary">Set the seed value for yats random number generator.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sim:stop">sim:stop</a>&nbsp;()</td>
+	<td class="summary">Stop Simulation (break running simulation loop (started by sim:run()).</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#stringhex">stringhex</a>&nbsp;(str, len)</td>
+	<td class="summary">Convert a string (embedded 0 allowed) into a printable representation.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#time2slot">time2slot</a>&nbsp;(t)</td>
+	<td class="summary">Calculate ticks from given time.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#yats.seeall">yats.seeall</a>&nbsp;(module)</td>
+	<td class="summary">Yats specialized version of the standard <code>package.seeall</code>.</td>
+	</tr>
+
+</table>
+
+
+
+
+
+
+<br/>
+<br/>
+
+
+
+
+<h2><a name="functions"></a>Functions</h2>
+<dl class="function">
+
+
+
+<dt><a name="_G.__YATSEARLY"></a><strong>_G.__YATSEARLY</strong>&nbsp;(obj, ev)</dt>
+<dd>
+Callback for 'early'-method. This routine is called during simulation from the sending object. The event is simply forwarded to the appropriate Lua object's 'early'-method.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  obj: userdata Reference to a yats C node object.
+	</li>
+	
+	<li>
+	  ev: userdata Reference to a yats C event object.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="_G.__YATSLATE"></a><strong>_G.__YATSLATE</strong>&nbsp;(obj, ev)</dt>
+<dd>
+Callback for 'late'-method. This routine is called during simulation from the sending object. The event is simply forwarded to the appropriate Lua object's 'late'-method.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  obj: userdata Reference to a yats C node object.
+	</li>
+	
+	<li>
+	  ev: userdata Reference to a yats C event object.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="_G.__YATSREC"></a><strong>_G.__YATSREC</strong>&nbsp;(obj, pd, idx)</dt>
+<dd>
+Callback or 'rec'-method. This routine is called during simulation from the sending object. The data is simply forwarded to the appropriate Lua object's 'rec'-method.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  obj: userdata Reference to a yats C node object.
+	</li>
+	
+	<li>
+	  pd: userdata Reference to a yats C data object.
+	</li>
+	
+	<li>
+	  idx: number Input handle.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="autoname"></a><strong>autoname</strong>&nbsp;(param)</dt>
+<dd>
+Automatically generate a name or take it from 'param'. 'autoname' is also provided in the global environment for convenience.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter table given to object constructor.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Generated name as string. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="decode"></a><strong>decode</strong>&nbsp;(frame, typ)</dt>
+<dd>
+Decode a frame given in a string.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  frame: string The frame to decode.
+	</li>
+	
+	<li>
+	  typ: string Command string which denotes the type of the frame.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Table representation of the frame.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="deletegarbage"></a><strong>deletegarbage</strong>&nbsp;()</dt>
+<dd>
+Push objects to yats garbage. We keep the last object list for postmortem debugging.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="luacontrol:init"></a><strong>luacontrol:init</strong>&nbsp;(param)</dt>
+<dd>
+Constructor of class 'luacontrol'.<br> 'luacontrol' provides a means to influence yats behavior during simulation. This achieved by instantiating an instance of 'luacontrol' in the simulation configuration file. An 'action' file given as parameter during object instantiation defines actions that are executed at specific time slots. There are action for the early phase and actions for the late phase of a simulation time slot.<br><br>  Format of an <i>action file</i>: <pre> actions = {early = early_action_table, late = late_action_table}.<br> <br> <code>early</code> and <code>late]</code> are <i>action tables</i> defining the actions, which are executed during early and late timeslot.<br> <br> An action table defines a timeslot and an action to perform:<br> <code>action_table = {slot, action, [arg=]{arg1, arg2, ..}, cycle=10000 [, ncycle=10]}.</code><br> <br> 'slot' defines the absoulte simulation time slot at which the action shall occur. </pre> An action is one of the following:<br> <ul> <li>A string containing Lua code. The string is simply executed. <li>A function which is executed. Return values are not evaluated.<br> <code>action[3]</code> or <code>arg</code> optionally define arguments for the function. <li> A table describing a sequence of actions. </ul> The action can be executed periodically by declaring a cycle, which defines the period in timeslots. If 'ncycle' is given, the periodic action is performed ncycle times.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  param: table - Parameter table.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to object instance.
+
+
+
+</dd>
+
+
+
+
+<dt><a name="mac2s"></a><strong>mac2s</strong>&nbsp;(s)</dt>
+<dd>
+Convert a MAC address to a string.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  s: string - MAC address given a string (with embedded 0).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+String of form: dd-dd-dd-dd-dd-dd 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="nc"></a><strong>nc</strong>&nbsp;()</dt>
+<dd>
+Not connected pseudo object. This function implicitly instantiates a sink object with name 'nc<index>'. The index is incremented automatically. The function is given for convenience reasons in user scripts.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+Table containing the string 'nc<index>' 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="random"></a><strong>random</strong>&nbsp;(l, u)</dt>
+<dd>
+Generate a random number withing given limits.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  l: number - lower limit
+	</li>
+	
+	<li>
+	  u: number - upper limit
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+random number 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="randomseed"></a><strong>randomseed</strong>&nbsp;(n)</dt>
+<dd>
+Set yats seed value for random number generation.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  n: number - some number to init the generator.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+<h3>See also:</h3>
+<ul>
+	
+	<li><a href="../../files/yats/core.html#sim:setRand">
+		sim:setRand
+	</a>
+	
+</ul>
+
+</dd>
+
+
+
+
+<dt><a name="root.successors"></a><strong>root.successors</strong>&nbsp;(obj)</dt>
+<dd>
+Iterator delivering successor objects of given object.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  obj: - This object.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+func, table, nil Iterator list. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="root:adjust"></a><strong>root:adjust</strong>&nbsp;(p)</dt>
+<dd>
+Adjust object's parameter table for easier handling. All keys are transformed to lower case words.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  p: table - parameter table.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+p table - adjusted parameter table 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="root:connect"></a><strong>root:connect</strong>&nbsp;()</dt>
+<dd>
+Generic connect function for each network object. This function is automatically called by <code>sim:connect()</code>.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="root:definp"></a><strong>root:definp</strong>&nbsp;(name)</dt>
+<dd>
+Define a input for an object. Produces a runtime error if the input is already defined.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: string - Name of the input pin.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="root:defout"></a><strong>root:defout</strong>&nbsp;(ot)</dt>
+<dd>
+Define a output for an object. Note: If ot is a function, defout executes this function, which then must return a valid output table format.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ot: table or string or function - output list or single output.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="root:finish"></a><strong>root:finish</strong>&nbsp;(t)</dt>
+<dd>
+Finish object definition. Call this routine to finish object definition. It performs common stuff, that is  necessary in network object definition.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  t: userdata - Reference to a 'yats' object.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+luaobj, yatsobj, name: References to Lua object, yats object and the object's name. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="root:getNext"></a><strong>root:getNext</strong>&nbsp;(index)</dt>
+<dd>
+Get complete successor info (reference + handle) for a specfiic output.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  index: number - Output index starting from 0. This parameter is optional.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+suc, shand - Reference to successor and the handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="root:getSHandle"></a><strong>root:getSHandle</strong>&nbsp;(index)</dt>
+<dd>
+Get successor input handle for a specific output.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  index: number - Output index starting from 0. This parameter is optional.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to successor input handle. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="root:getSuc"></a><strong>root:getSuc</strong>&nbsp;(index)</dt>
+<dd>
+Get successor reference for a specific output.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  index: number - Output index starting from 0. This parameter is optional.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+Reference to successor C object. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="root:handle"></a><strong>root:handle</strong>&nbsp;(peer, pin)</dt>
+<dd>
+Generic handle function. It provides the answer to an output's connect input. The returned handle is used when the predecessor's calls the object's <code>rec</code> function.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  peer: string - pin name of input as known by peer output.
+	</li>
+	
+	<li>
+	  pin: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+number - handle of input. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="root:signal"></a><strong>root:signal</strong>&nbsp;(...)</dt>
+<dd>
+Signal to an object.<br> The arguments are specific to the class that is addressed. <i>Demux</i>: Routing table as a list of n-tuples. With each call multiple entries can be defined. It is possible to call this method multiple times.<br> Each n-tuple is either a list of numbers or a structure with named members:<br> from = VCI-in, to = VCI-out, out = output index (port). <code>demux:signal{{from1, to1, out1},{from2, to2, out2}, ...}</code>.<br> <code>demux:signal{{from = N, to = N, out = N}, {from2, to2, out2}}</code>.<br>
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: arglist - List of n-tuples with n = 3.<br>
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="setSlotLength"></a><strong>setSlotLength</strong>&nbsp;(sl)</dt>
+<dd>
+Set simulation slot length.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  sl: number - slot length in seconds.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:connect"></a><strong>sim:connect</strong>&nbsp;()</dt>
+<dd>
+Connects all nodes.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:delete"></a><strong>sim:delete</strong>&nbsp;(obj)</dt>
+<dd>
+Delete an element from object list. This method should not be used in user scripts
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  obj: string - Lua object name.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:deletegarbage"></a><strong>sim:deletegarbage</strong>&nbsp;()</dt>
+<dd>
+Delete objects in last garbage table.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:disconnect"></a><strong>sim:disconnect</strong>&nbsp;()</dt>
+<dd>
+Disconnect everything. We don't really disconnect stuff, because we will need to delete the objects anyway and re-create them. The function changes only simulator's state.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:flushEvents"></a><strong>sim:flushEvents</strong>&nbsp;(del)</dt>
+<dd>
+Clean pending events in early and late timeslot tables.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  del: boolean - Delete the event items, if del is true.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:getObj"></a><strong>sim:getObj</strong>&nbsp;(name)</dt>
+<dd>
+Retrieve an element from object list.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  name: string - Name of the object.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+table - Reference to the object. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:getRand"></a><strong>sim:getRand</strong>&nbsp;()</dt>
+<dd>
+Generate a random number
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+random number 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:insert"></a><strong>sim:insert</strong>&nbsp;(obj)</dt>
+<dd>
+Insert an element into object list. This method should not be used in user scripts
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  obj: table - Lua object reference.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:list"></a><strong>sim:list</strong>&nbsp;(s, prefix)</dt>
+<dd>
+List objects.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  s: string - If not nil the list is printed to STDOUT, where each line is preprended by 'prefix'. If nil only a string containing the list is returned.
+	</li>
+	
+	<li>
+	  prefix: string - See above.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+string - List of objects as table. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:pushgarbage"></a><strong>sim:pushgarbage</strong>&nbsp;()</dt>
+<dd>
+Collect all active objects into current garbage table. Object are not deleted directly. They are put into a garbage table instead. This allows the observation of object internals after a simulation run has finished. Static objects remain in the objectlist and can be re-used. This method should normally not be used in user scripts.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:reset"></a><strong>sim:reset</strong>&nbsp;(no_flush)</dt>
+<dd>
+Reset Simulation (do not execute any further run (started by sim:run()). The event queue is flushed by default.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  no_flush: boolean - Do not flush the event queue.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:resetTime"></a><strong>sim:resetTime</strong>&nbsp;()</dt>
+<dd>
+Reset simulation time. All living objects are informed about time reset.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:run"></a><strong>sim:run</strong>&nbsp;(slots, dots)</dt>
+<dd>
+Run simulation for 'slots' ticks.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  slots: number - Number of slots in ticks.
+	</li>
+	
+	<li>
+	  dots: number - Display a dot every 'dots' ticks.
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:setRand"></a><strong>sim:setRand</strong>&nbsp;(n)</dt>
+<dd>
+Set the seed value for yats random number generator.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  n: number - seed value. 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sim:stop"></a><strong>sim:stop</strong>&nbsp;()</dt>
+<dd>
+Stop Simulation (break running simulation loop (started by sim:run()).
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="stringhex"></a><strong>stringhex</strong>&nbsp;(str, len)</dt>
+<dd>
+Convert a string (embedded 0 allowed) into a printable representation.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  str: string - String to convert.
+	</li>
+	
+	<li>
+	  len: number - Enforced length (optional).
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+String of form: dd-dd-dd-dd-... 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="time2slot"></a><strong>time2slot</strong>&nbsp;(t)</dt>
+<dd>
+Calculate ticks from given time.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  t: number - time
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+slot length in ticks. 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="yats.seeall"></a><strong>yats.seeall</strong>&nbsp;(module)</dt>
+<dd>
+Yats specialized version of the standard <code>package.seeall</code>. Allows an module to see the global namespace.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  module: table - Module's table
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+none. 
+
+
+
+</dd>
+
+
+</dl>
+
+
+
+
+
+
+
+</div> <!-- id="content" -->
+
+</div> <!-- id="main" -->
+
+<div id="about">
+	<p><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a></p>
+</div> <!-- id="about" -->
+
+</div> <!-- id="container" -->	
+</body>
+</html>

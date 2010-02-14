@@ -1,0 +1,38 @@
+data structures
+===============
+
+BITMAP: bitmap of ports - required internally
+more ...
+
+bridge startup
+===============
+
+bridge.c:main()
+
+  bridge.c:bridge_start()
+  1.1 init port bitmap			# DO THIS IN LUA during instantiation
+    
+    stp_in.c:STP_IN_stpm_set_cfg()	# USE THIS IN LUAYATS
+    1.1.1 set config if stp instance exists
+          OR
+          create new instance           # ...
+    1.1.2 enable stp machine            # all this here runs in bridge
+                                        # ...
+      stpm.c:STP_stm_enable
+      1.1.2.1 start the machine
+      
+        stpm.c:STP_stpm_start
+        1.1.2.1.1 iterate bridge state machines
+        1.1.2.1.1 iterate port state machines
+                  => ports enter DISCARDING state
+      1.1.2.1 ready
+    1.1.2 ready
+  
+  1.2 enter main loop			# replace this by REC method !
+      -- wait for
+         a) command from CLI
+	    ??
+         b) message from mngr
+            ??
+         c) BPDU from socket 
+            handle via STP_IN_rx_bpdu()

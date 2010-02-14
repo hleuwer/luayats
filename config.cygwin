@@ -1,0 +1,97 @@
+# Get the system name
+SYSTEM=$(shell uname -o)
+
+# Lua version to use
+LUAVERSION=5.1
+TOLUAVERSION=1.0.92
+
+# Repository
+REPOSITORY=file:///J:/leuwer/svn/luayats
+
+# Version Information
+MAJOR=4
+MINOR=0
+VERSION_INFO=-DVMAJOR=$(MAJOR) -DVMINOR=$(MINOR)
+
+# List of modules to process
+MODULES = kernel abr lua misc muxdmx muxevt polshap src statist tcpip user win rstp
+LUAMODULES = agere block gui/editor gui/menu config dummy graphics misc muxdmx src getopt\
+	     switch tcpip user core rstp polshap statist muxevt gui/runctrl  \
+	     logging object stdlib
+# Customize compiler
+# Profiling options
+#USERCFLAGS=-DDATA_OBJECT_TRACE=1 -pg -g -ftest-coverage -fprofile-arcs
+#USERLDFLAGS=-pg -g
+
+USERCFLAGS=  -g -ggdb
+USERLDFLAGS= -g -ggdb
+
+#USERCFLAGS= -DEVENT_DEBUG=1 -O3
+#USERCFLAGS= -DEVENT_LOG=1 -O3
+
+#USERCFLAGS=  -O3
+#USERLDFLAGS= -O3
+
+ifeq ($(SYSTEM), Cygwin)
+USERLDFLAGS+=
+else
+USERLDFLAGS+= -Wl,-E
+endif
+
+# Customize linker's search path
+INCLUDEDIR=/usr/local/include
+USERLIBDIR=
+USERINCDIR=
+
+# Lua Customization
+LUA=lua
+ifeq ($(LUAVERSION), 5.1)
+LUAINC=$(INCLUDEDIR)
+else
+LUAINC=$(INCLUDEDIR)/lua50
+endif
+
+# Tolua Customization
+
+ifeq ($(TOLUAVERSION), 1.0.6)
+  TOLUA_VERSION=1.0.6
+  TOLUA_EXT=106
+  TOLUA=tolua++106
+  TOLUAINC=$(INCLUDEDIR)/tolua++/$(TOLUA_VERSION)
+else
+  TOLUA_VERSION=1.0.92a
+  TOLUA_EXT=51
+  TOLUA=tolua++51
+  TOLUAINC=$(INCLUDEDIR)/tolua++/$(TOLUA_VERSION)
+endif
+
+ifeq ($(SYSTEM), Cygwin)
+EXE=.exe
+ifeq ($(LUAVERSION), 5.1)
+LUALIBS = -ltolua++$(TOLUA_EXT) -lreadline -lhistory -lncurses -llua
+else
+LUALIBS = -llua50 -llualib50 -ltolua++$(TOLUA_EXT) -lreadline -lhistory -lncurses 
+endif
+
+# IUP Customisation
+IUPINC=$(INCLUDEDIR)/iup
+IUPLIBS = -liup
+
+# CD Customisation
+CDINC=$(INCLUDEDIR)/cd
+CDLIBS = -lcd -liupcd 
+
+else
+EXE=
+LUALIBS = -llua50 -llualib50 -ltolua++$(TOLUA_EXT) -lreadline -lhistory -lncurses -ldl
+
+# IUP Customisation
+IUPINC=$(INCLUDEDIR)/iup
+IUPLIBS = -liup
+
+# CD Customisation
+CDINC=$(INCLUDEDIR)/cd
+#CDLIBS = -lcd -lcdiup -lcdlua5 -lcdluaiup5 -lcdpdflib
+CDLIBS = -lcd 
+endif
+

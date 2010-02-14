@@ -1,0 +1,169 @@
+Tests for 'luayats':
+
+test-1.lua	
+	Baisc Test.
+test-1-iup.lua	
+	Basic Test + user message box.
+test-1-runtime_error.lua	
+	Test of runtime error display.
+test-1-syntax_error.lua		
+	Test of syntax error disaply.
+test-1a.lua
+	Very short test-1, for reset test in loop (see test-1a-reset).
+test-1a-reset.lua	
+	Continuous test for garbage collection.
+test-1b.lua
+	Logging test for yats.log
+
+test-1-src.lua
+	Test for various sources
+
+test-2.lua	
+	Test for luadummy object written in Lua.
+
+test-3.lua	
+	Test for meas object.
+
+test-4.lua	
+	Test for hist2 object.
+test-4a.lua
+	Same as test-4 but shorter and less output text.
+test-4play.lua
+	Do not use. I play with this one.
+test-4-muxdf.lua
+test-4-muxaf.lua
+test-4-muxdist.lua
+test-4-muxwfq.lua
+test-4-muxprio.lua
+	Test 4 for various multiplexer types.
+	
+test-5.lua	
+	Test for meter object with implicit display.
+test-5a.lua
+	Same as test-5 but short and less output text.
+test-5-attach.lua
+	Same as test-5 but create display explicit with ref to instrument
+
+test-6.lua	
+	Test for control object.
+
+test-7.lua	
+	Test for luacontrol object. Requires also
+	test-7-control.lua
+		Contains the action for the luacontrol object.
+	test-7-control-include.lua
+		Contains a file read during luacontrol object action.
+
+test-8.lua	
+	Test for luayats block structures: 
+		switch = mux + demux.
+
+test-9.lua
+	Test for luayats multiple block structures: 
+		superswitch = 2 x switch = 2 x (mux + demux).
+	
+test-10.lua
+	Test for yats.tracer object. Note, that this requires project
+	recompilation with DATA_OBJECT_TRACE defined.
+
+test-11.lua
+	Simple RSTP test with 2 bridges
+
+test-11-pvst.lua
+	Per VLAN STP with 2 bridges and 2 Vlans.	
+
+test-11a.lua
+	Same as test-11.lua, but with changing forward delay
+	=> works fine
+
+test-11b.lua
+	Same as test-11a.lua, but with unplugging a port bidirectional
+	in the designated bridge.
+	=> works fine
+
+test-11b1.lua
+	Same as test-11a.lua, but setting linkDown/up instead of just unpluggin
+	=> works fine
+
+test-11b2.lua
+	Same as test-11b.lua, but changing pathcost instead of linkDown. Also
+	changing pathcost back.
+
+test-11c.lua
+	Same as test-11a.lua, but with unplugging receive portion only
+	=> continuous toplogy change
+
+test-11d.lua
+	Same as test-11a.lua, but with unplugging transmit portion only
+	=> nothing happens !
+
+test-11e.lua
+	Same as test-11a.lua using inspector pattern.
+
+test-11-pvst.lua
+	Same as test-11b but with 2 VLAN specific STPs.
+
+test-11b-pvst.lua
+	Same as test-11b but with 2 VLAN specific STPs. Unplug port.
+
+test-11b-2-pvst.lua
+	Same as test-11b-pvst with 2 VLAN specific STPs. LinkDown.
+
+test-11b-3-pvst.lua
+	Same as test-11b-pvst but additionally disabling the port with 
+	the unplug.
+
+pvlan-1.lua
+	A real bridge example with 6 bridges.
+
+test-12.lua
+	Shows as number of sources and their IAT distribution
+
+test-13.lua
+	Shows the usage of the confidence object.
+
+test-14.lua
+	Shows the usage of the confidence object in conjunction with
+	replications.
+
+test-15.lua
+	Shows the batch means algorithm in conjunction with the confid
+	object.
+
+test-16.lua
+	Shows confid object in conjunction with independent replications. 
+
+test-tcpip.lua
+	TCPIP connection simulation	
+
+test-all.lua
+	Regression test script
+
+ageretm.lua	
+	Agere NP test with lots of displays.
+	
+ageretm-shell.lua
+	Test reset when test runs via 2 other chunks.
+
+ageretm-color.lua
+	Agere NP test + different attributes
+
+ageretm-bigdisplay.lua
+	Agere NP test + displays in bigdisplay
+
+ageretm-bigdisplay-attach.lua
+	Agere NP test + displays in bigdisplay + re-attachment of displays
+
+rstp-test-ring.lua
+	RSTP test with ring; failure and revert
+
+rstp-test-play.lua
+	RSTP test with ring: use rstp/play.lua to handle event callbacks
+
+rstp-test-play-pathcost.lua
+rstp-test-play-shutdown.lua
+rstp-test-play-speed.lua
+rstp-test-play-speed-2.lua
+	RSTP test with ring: changing topology via pathcost, bridge
+	shutdown and link speed change.
+	
