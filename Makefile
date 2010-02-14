@@ -27,7 +27,7 @@ ifeq ($(SYSTEM), Cygwin)
 else
   RCOBJS=
 endif
-.PHONY: all libs clean uclean doc-clean depend dist tag doc doxy doxy-clean
+.PHONY: all libs clean uclean doc-clean depend dist-svn dist-git dist tag doc doxy doxy-clean
 .PHONY: install-code install-doc install-examples install
 .PHONY: uninstall-code uninstall-doc uninstall-examples uninstall
 
@@ -52,6 +52,7 @@ clean:
 	rm -f $(TARGETLUA)
 	rm -f lua/*~
 	rm -f gmon.out
+	rm -f $(RCOBJS)
 
 uclean:  
 	for i in $(MODULES); do $(MAKE) -C src/$$i lib-uclean; done
@@ -96,21 +97,26 @@ info::
 	luayats -i a > INFO
 
 tag::
-	echo "Using SVN - no tags yet"
+	echo "Using GIT - no tags yet"
 
 taglatest::
-	echo "Using SVN - no tags yet"
+	echo "Using GIT - no tags yet"
 
-distrelease:: 
+distrelease-svn:: 
 	svn export $(REPOSITORY)/$(SVNMODULE)/tags/release-$(MAJOR).$(MINOR) $(EXPORTDIR)/$(DISTNAME)
 	cd $(EXPORTDIR); tar -cvzf $(DISTARCH) $(DISTNAME)/*
 	rm -rf $(EXPORTDIR)/$(DISTNAME)
 
-dist:: 
+dist-svn: 
 	svn export $(REPOSITORY)/$(SVNMODULE)/trunk $(EXPORTDIR)/$(DISTNAME)
 	cd $(EXPORTDIR); tar -cvzf $(DISTARCH) $(DISTNAME)/*
 	rm -rf $(EXPORTDIR)/$(DISTNAME)
 
+dist-git:
+	mkdir -p $(EXPORTDIR)
+	git archive --format=tar --prefix=$(DISTNAME)/ HEAD | gzip >$(EXPORTDIR)/$(DISTARCH)
+
+dist: dist-git
 testresult::
 	LUAYATSTESTMODE=w luayats -n examples/test-all.lua
 
