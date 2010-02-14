@@ -52,8 +52,8 @@ Inheritance diagram for winobj:</div>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#aed06bad9352dfac934a357143b7c41f0">set_textsize</a> (int)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">cdCanvas *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#ac01559e41120617f805ebf24cad8eef3">map</a> (void *iupcanvas, void *wid, int <a class="el" href="classwinobj.html#af4e4e80ea9fd32096b91a6144f8d51ae">width</a>, int <a class="el" href="classwinobj.html#a39a9abca0530f1cc1d765464fc6c2818">height</a>, int <a class="el" href="classwinobj.html#a14d9c26ffe911a780edaa863a61cd5db">xpos</a>, int <a class="el" href="classwinobj.html#a09d31c0505a11232509d3e5b8174cd39">ypos</a>, const char *wrtypeface=&quot;Helvetica&quot;, int wrstyle=CD_BOLD, int wrsize=10, void *wrcol=(void *) CD_BLACK, int wrmode=CD_REPLACE, void *fgcol=(void *) CD_BLACK, int fgmode=CD_REPLACE, int fgstyle=CD_CONTINUOUS, int fgwidth=1, void *bgcol=(void *) CD_WHITE, int opacity=CD_TRANSPARENT, int <a class="el" href="classwinobj.html#a338445bcf35090a13f8991aa1384cbe3">usepoly</a>=0, int <a class="el" href="classwinobj.html#a14b24189118f91e41ef35a3dd52d7c9a">polytype</a>=CD_OPEN_LINES, int <a class="el" href="classwinobj.html#a99435c16c71caef3c37cca6438a55c28">polystep</a>=0, int canvastype=CDTYPE_SERVERIMG)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#ab6103b0a4f873a6b2d3aa265722c91a9">unmap</a> (void)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a2b73e63f01cec730241917d533060100">draw_values</a> (int *, int color, int nvals, int <a class="el" href="classwinobj.html#a338445bcf35090a13f8991aa1384cbe3">usepoly</a>, int <a class="el" href="classwinobj.html#a14b24189118f91e41ef35a3dd52d7c9a">polytype</a>, int <a class="el" href="classwinobj.html#a99435c16c71caef3c37cca6438a55c28">polystep</a>, int flush)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a0a73d063ae05dcc1fe659750dd8a3ef9">draw_values</a> (double *, double *, int color, int nvals, int <a class="el" href="classwinobj.html#a338445bcf35090a13f8991aa1384cbe3">usepoly</a>, int <a class="el" href="classwinobj.html#a14b24189118f91e41ef35a3dd52d7c9a">polytype</a>, int <a class="el" href="classwinobj.html#a99435c16c71caef3c37cca6438a55c28">polystep</a>, int flush)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a8815c22efb95f851421df6cafecdd92b">draw_values</a> (int *, void *color, int nvals, int <a class="el" href="classwinobj.html#a338445bcf35090a13f8991aa1384cbe3">usepoly</a>, int <a class="el" href="classwinobj.html#a14b24189118f91e41ef35a3dd52d7c9a">polytype</a>, int <a class="el" href="classwinobj.html#a99435c16c71caef3c37cca6438a55c28">polystep</a>, int flush)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a0a2be2c041105f3c8cba8e9511181a25">draw_values</a> (double *, double *, void *color, int nvals, int <a class="el" href="classwinobj.html#a338445bcf35090a13f8991aa1384cbe3">usepoly</a>, int <a class="el" href="classwinobj.html#a14b24189118f91e41ef35a3dd52d7c9a">polytype</a>, int <a class="el" href="classwinobj.html#a99435c16c71caef3c37cca6438a55c28">polystep</a>, int flush)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a1211aaf8fb8f77713217543c85c741f5">drawWin</a> (int activate=1, int clear=1, int flush=1)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#aa9d178670489edfaffcca4cb427500fe">getexp</a> (<a class="el" href="structexp__typ.html">exp_typ</a> *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">cdCanvas *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a3fb336be24d1eea6577db8c0521ad7e4">setCanvas</a> (cdCanvas *cv)</td></tr>
@@ -73,16 +73,16 @@ Inheritance diagram for winobj:</div>
 <tr><td class="memItemLeft" align="right" valign="top">cdImage *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a9f8ebe79dfa0683610bdf68c6d8d8582">simg</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a06ac21edba964c6b76fab35bf8039dbc">canvas_mapped</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#af041c6b7fd6ff07d92ae3eb9beeb457e">drawoper</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a26cd22447c3eefb388b4ce0f8b3c34ea">drawcolor</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a47c066fcf1692dbb6632f9d4eb2c8b65">drawstyle</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a8e8b11ae02ced81b825726bfb3830d7c">drawwidth</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a3d5d467da7f531e6615143a2e0cda205">textoper</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#aa7a79ced697fded84c60d9b9c62784e1">texttypeface</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a88151f63245aac2924f2488a055dc1fe">textstyle</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#ae20176235d1cf10bb40b4a8ceb9a3d20">textcolor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a6213da470644191345393eb791d6d721">textcolor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a92ecfdc12216529a62fc4e24ba56a297">bgcolor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a292b1a68c62ca6b54b4db924d65f785a">drawcolor</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#ab88ceec0bb8f96ee18e3a3f1afbd2dca">textsize</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a7fe1494c3b52b71e5fa2df6aed1a6059">bgopacity</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a973fee984e0c2762297d20c421962002">bgcolor</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#af4e4e80ea9fd32096b91a6144f8d51ae">width</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a39a9abca0530f1cc1d765464fc6c2818">height</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwinobj.html#a14d9c26ffe911a780edaa863a61cd5db">xpos</a></td></tr>
@@ -150,7 +150,7 @@ Inheritance diagram for winobj:</div>
 
 </div>
 </div>
-<a class="anchor" id="a0a73d063ae05dcc1fe659750dd8a3ef9"></a><!-- doxytag: member="winobj::draw_values" ref="a0a73d063ae05dcc1fe659750dd8a3ef9" args="(double *, double *, int color, int nvals, int usepoly, int polytype, int polystep, int flush)" -->
+<a class="anchor" id="a0a2be2c041105f3c8cba8e9511181a25"></a><!-- doxytag: member="winobj::draw_values" ref="a0a2be2c041105f3c8cba8e9511181a25" args="(double *, double *, void *color, int nvals, int usepoly, int polytype, int polystep, int flush)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -169,7 +169,7 @@ Inheritance diagram for winobj:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&nbsp;</td>
+          <td class="paramtype">void *&nbsp;</td>
           <td class="paramname"> <em>color</em>, </td>
         </tr>
         <tr>
@@ -213,7 +213,7 @@ Inheritance diagram for winobj:</div>
 
 </div>
 </div>
-<a class="anchor" id="a2b73e63f01cec730241917d533060100"></a><!-- doxytag: member="winobj::draw_values" ref="a2b73e63f01cec730241917d533060100" args="(int *, int color, int nvals, int usepoly, int polytype, int polystep, int flush)" -->
+<a class="anchor" id="a8815c22efb95f851421df6cafecdd92b"></a><!-- doxytag: member="winobj::draw_values" ref="a8815c22efb95f851421df6cafecdd92b" args="(int *, void *color, int nvals, int usepoly, int polytype, int polystep, int flush)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -226,7 +226,7 @@ Inheritance diagram for winobj:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&nbsp;</td>
+          <td class="paramtype">void *&nbsp;</td>
           <td class="paramname"> <em>color</em>, </td>
         </tr>
         <tr>
@@ -616,12 +616,12 @@ Inheritance diagram for winobj:</div>
 
 </div>
 </div>
-<a class="anchor" id="a973fee984e0c2762297d20c421962002"></a><!-- doxytag: member="winobj::bgcolor" ref="a973fee984e0c2762297d20c421962002" args="" -->
+<a class="anchor" id="a92ecfdc12216529a62fc4e24ba56a297"></a><!-- doxytag: member="winobj::bgcolor" ref="a92ecfdc12216529a62fc4e24ba56a297" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="classwinobj.html#a973fee984e0c2762297d20c421962002">winobj::bgcolor</a></td>
+          <td class="memname">void* <a class="el" href="classwinobj.html#a92ecfdc12216529a62fc4e24ba56a297">winobj::bgcolor</a></td>
         </tr>
       </table>
 </div>
@@ -681,12 +681,12 @@ Inheritance diagram for winobj:</div>
 
 </div>
 </div>
-<a class="anchor" id="a26cd22447c3eefb388b4ce0f8b3c34ea"></a><!-- doxytag: member="winobj::drawcolor" ref="a26cd22447c3eefb388b4ce0f8b3c34ea" args="" -->
+<a class="anchor" id="a292b1a68c62ca6b54b4db924d65f785a"></a><!-- doxytag: member="winobj::drawcolor" ref="a292b1a68c62ca6b54b4db924d65f785a" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="classwinobj.html#a26cd22447c3eefb388b4ce0f8b3c34ea">winobj::drawcolor</a></td>
+          <td class="memname">void* <a class="el" href="classwinobj.html#a292b1a68c62ca6b54b4db924d65f785a">winobj::drawcolor</a></td>
         </tr>
       </table>
 </div>
@@ -863,12 +863,12 @@ Inheritance diagram for winobj:</div>
 
 </div>
 </div>
-<a class="anchor" id="ae20176235d1cf10bb40b4a8ceb9a3d20"></a><!-- doxytag: member="winobj::textcolor" ref="ae20176235d1cf10bb40b4a8ceb9a3d20" args="" -->
+<a class="anchor" id="a6213da470644191345393eb791d6d721"></a><!-- doxytag: member="winobj::textcolor" ref="a6213da470644191345393eb791d6d721" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="classwinobj.html#ae20176235d1cf10bb40b4a8ceb9a3d20">winobj::textcolor</a></td>
+          <td class="memname">void* <a class="el" href="classwinobj.html#a6213da470644191345393eb791d6d721">winobj::textcolor</a></td>
         </tr>
       </table>
 </div>
@@ -1037,7 +1037,7 @@ Inheritance diagram for winobj:</div>
 <li>src/win/<a class="el" href="winobj_8c.html">winobj.c</a></li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on Wed Jan 6 16:46:33 2010 for Luayats by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on Sun Feb 14 12:32:30 2010 for Luayats by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

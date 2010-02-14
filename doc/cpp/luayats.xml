@@ -27959,15 +27959,15 @@
       <type>void</type>
       <name>draw_values</name>
       <anchorfile>classwinobj.html</anchorfile>
-      <anchor>a2b73e63f01cec730241917d533060100</anchor>
-      <arglist>(int *, int color, int nvals, int usepoly, int polytype, int polystep, int flush)</arglist>
+      <anchor>a8815c22efb95f851421df6cafecdd92b</anchor>
+      <arglist>(int *, void *color, int nvals, int usepoly, int polytype, int polystep, int flush)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>draw_values</name>
       <anchorfile>classwinobj.html</anchorfile>
-      <anchor>a0a73d063ae05dcc1fe659750dd8a3ef9</anchor>
-      <arglist>(double *, double *, int color, int nvals, int usepoly, int polytype, int polystep, int flush)</arglist>
+      <anchor>a0a2be2c041105f3c8cba8e9511181a25</anchor>
+      <arglist>(double *, double *, void *color, int nvals, int usepoly, int polytype, int polystep, int flush)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual void</type>
@@ -28097,13 +28097,6 @@
     </member>
     <member kind="variable">
       <type>int</type>
-      <name>drawcolor</name>
-      <anchorfile>classwinobj.html</anchorfile>
-      <anchor>a26cd22447c3eefb388b4ce0f8b3c34ea</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>int</type>
       <name>drawstyle</name>
       <anchorfile>classwinobj.html</anchorfile>
       <anchor>a47c066fcf1692dbb6632f9d4eb2c8b65</anchor>
@@ -28138,10 +28131,24 @@
       <arglist></arglist>
     </member>
     <member kind="variable">
-      <type>int</type>
+      <type>void *</type>
       <name>textcolor</name>
       <anchorfile>classwinobj.html</anchorfile>
-      <anchor>ae20176235d1cf10bb40b4a8ceb9a3d20</anchor>
+      <anchor>a6213da470644191345393eb791d6d721</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>void *</type>
+      <name>bgcolor</name>
+      <anchorfile>classwinobj.html</anchorfile>
+      <anchor>a92ecfdc12216529a62fc4e24ba56a297</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>void *</type>
+      <name>drawcolor</name>
+      <anchorfile>classwinobj.html</anchorfile>
+      <anchor>a292b1a68c62ca6b54b4db924d65f785a</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
@@ -28156,13 +28163,6 @@
       <name>bgopacity</name>
       <anchorfile>classwinobj.html</anchorfile>
       <anchor>a7fe1494c3b52b71e5fa2df6aed1a6059</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable">
-      <type>int</type>
-      <name>bgcolor</name>
-      <anchorfile>classwinobj.html</anchorfile>
-      <anchor>a973fee984e0c2762297d20c421962002</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

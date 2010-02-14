@@ -23,14 +23,14 @@ LUAMODULES = agere block gui/editor gui/menu config dummy graphics misc muxdmx s
 #USERCFLAGS=-DDATA_OBJECT_TRACE=1 -pg -g -ftest-coverage -fprofile-arcs
 #USERLDFLAGS=-pg -g
 
-USERCFLAGS=  -g -ggdb
-USERLDFLAGS= -g -ggdb
+#USERCFLAGS=  -g -ggdb
+#USERLDFLAGS= -g -ggdb
 
 #USERCFLAGS= -DEVENT_DEBUG=1 -O3
 #USERCFLAGS= -DEVENT_LOG=1 -O3
 
-#USERCFLAGS=  -O3
-#USERLDFLAGS= -O3
+USERCFLAGS=  -O3
+USERLDFLAGS= -O3
 
 ifeq ($(SYSTEM), Cygwin)
 USERLDFLAGS+=
