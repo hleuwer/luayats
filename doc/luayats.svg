@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -11,15 +12,15 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg1340"
    sodipodi:version="0.32"
-   inkscape:version="0.46"
+   inkscape:version="0.47 r22583"
    width="210mm"
    height="297mm"
-   sodipodi:docbase="/home/leuwer/lua/lua-5.0/modules/luagraph/doc/html"
    sodipodi:docname="luayats.svg"
-   inkscape:export-filename="/cygwin/home/leuwer/projects/luayats/luayats-migrate/doc/luayats.png"
+   inkscape:export-filename="/home/leuwer/projects/luayats/luayats-4.0/doc/luayats.png"
    inkscape:export-xdpi="90.000000"
    inkscape:export-ydpi="90.000000"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.1">
   <metadata
      id="metadata1345">
     <rdf:RDF>
@@ -28,6 +29,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -49,16 +51,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:window-width="1272"
-     inkscape:window-height="965"
+     inkscape:window-height="946"
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:zoom="3.55348"
      inkscape:cx="121.36351"
      inkscape:cy="856.0592"
      inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-y="27"
      inkscape:current-layer="svg1340"
-     showgrid="false">
+     showgrid="false"
+     inkscape:window-maximized="0">
     <sodipodi:guide
        orientation="vertical"
        position="150.03259"
