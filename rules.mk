@@ -16,7 +16,7 @@ LD = c++
 #WARN = -Wall -Wno-deprecated
 WARN = -Wall -Wno-write-strings
 # CFLAGS = -DUSELUA -D__LINUX__ -Dexport=export_ -fwritable-strings -fno-operator-names $(INCS) $(WARN) $(MODCFLAGS) $(USERCFLAGS) 
-CFLAGS = -DUSELUA -D__LINUX__ -Dexport=export_ -DCD_NO_OLD_INTERFACE -fno-operator-names $(WARN) $(INCS) $(MODCFLAGS) $(USERCFLAGS) 
+CFLAGS = -DUSELUA -D__LINUX__ -Dexport=export_ -DCD_NO_OLD_INTERFACE -fno-operator-names $(WARN) $(INCS) $(MODCFLAGS) $(USERCFLAGS) -fPIC
 LDFLAGS =  $(MODLDFLAGS) $(USERLDFLAGS)
 LIBDIR = -L/usr/local/lib $(USERLIBDIR)
 LIBS = -lm $(LUALIBS) $(IUPLIBS) $(CDLIBS)
